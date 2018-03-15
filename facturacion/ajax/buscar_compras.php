@@ -79,8 +79,8 @@
 						$nombre_proveedor=$row['nombre_proveedor'];
 						$telefono_proveedor=$row['telefono_proveedor'];
 						$email_proveedor=$row['email_proveedor'];
-						$nombre_proveedor=$row['firstname']." ".$row['lastname'];
-						$estado_compra=$row['estado_compra'];
+						$nombre_vendedor=$row['firstname']." ".$row['lastname'];
+						$estado_compra=$row['estado_factura'];
 						if ($estado_compra==1){$text_estado="Pagada";$label_class='label-success';}
 						else{$text_estado="Pendiente";$label_class='label-warning';}
 						$total_compra=$row['total_compra'];
@@ -88,8 +88,8 @@
 					<tr>
 						<td><?php echo $numero_compra; ?></td>
 						<td><?php echo $fecha; ?></td>
-						<td><a href="#" data-toggle="tooltip" data-placement="top" title="<i class='glyphicon glyphicon-phone'></i> <?php echo $telefono_proveedor;?><br><i class='glyphicon glyphicon-envelope'></i>  <?php echo $email_cliente;?>" ><?php echo $nombre_proveedor;?></a></td>
-						<td><?php echo $nombre_vendedor; ?></td>
+						<td><a href="#" data-toggle="tooltip" data-placement="top" title="<i class='glyphicon glyphicon-phone'></i> <?php echo $telefono_proveedor;?><br><i class='glyphicon glyphicon-envelope'></i>  <?php echo $email_proveedor;?>" ><?php echo $nombre_proveedor;?></a></td>
+						<td><?php echo $nombre_vendedor;?></td>
 						<td><span class="label <?php echo $label_class;?>"><?php echo $text_estado; ?></span></td>
 						<td class='text-right'><?php echo number_format ($total_compra,2); ?></td>					
 					<td class="text-right">

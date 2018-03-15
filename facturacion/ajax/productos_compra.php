@@ -44,6 +44,7 @@
 			<div class="table-responsive">
 			  <table class="table">
 				<tr  class="warning">
+					<th>id</th>
 					<th>Código</th>
 					<th>Producto</th>
 					<th><span class="pull-right">Cant.</span></th>
@@ -59,6 +60,7 @@
 					$precio_compra=number_format($precio_compra,2,'.','');
 					?>
 					<tr>
+						<td><?php echo $id_producto; ?></td>
 						<td><?php echo $codigo_producto; ?></td>
 						<td><?php echo $nombre_producto; ?></td>
 						<td class='col-xs-1'>

@@ -1,18 +1,27 @@
 <?php
 include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
 $session_id= session_id();
-if (isset($_POST['id'])){$id=$_POST['id'];}
-if (isset($_POST['cantidad'])){$cantidad=$_POST['cantidad'];}
-if (isset($_POST['precio_compra'])){$precio_compra=$_POST['precio_compra'];}
+if (isset($_POST['id'])){
+	$id=$_POST['id'];
+}
+if (isset($_POST['cantidad'])){
+	$cantidad=$_POST['cantidad'];
+}
+if (isset($_POST['precio_compra'])){
+	$precio_compra=$_POST['precio_compra'];
+}
 
 	/* Connect To Database*/
 	require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 	require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 	//Archivo de funciones PHP
 	include("../funciones.php");
+echo($id);
+echo($cantidad);
+echo($precio_compra);
 if (!empty($id) and !empty($cantidad) and !empty($precio_compra))
 {
-$insert_tmp=mysqli_query($con, "INSERT INTO tmp_compras (id_producto,cantidad_tmp,precio_tmp,session_id) VALUES ('$id','$cantidad','$precio_compra','$session_id')");
+$insert_tmp=mysqli_query($con, "INSERT INTO tmp_compras (id_producto,cant_tmp,precio_tmp,session_id) VALUES ('$id','$cantidad','$precio_compra','$session_id')");
 
 }
 if (isset($_GET['id']))//codigo elimina un elemento del array
@@ -33,12 +42,12 @@ $simbolo_moneda=get_row('perfil','moneda', 'id_perfil', 1);
 </tr>
 <?php
 	$sumador_total=0;
-	$sql=mysqli_query($con, "select * from products, tmp_compras where products.id_producto=tmp.id_producto and tmp.session_id='".$session_id."'");
+	$sql=mysqli_query($con, "select * from products, tmp_compras where products.id_producto=tmp_compras.id_producto and tmp_compras.session_id='".$session_id."'");
 	while ($row=mysqli_fetch_array($sql))
 	{
 	$id_tmp=$row["id_tmp"];
 	$codigo_producto=$row['codigo_producto'];
-	$cantidad=$row['cantidad_tmp'];
+	$cantidad=$row['cant_tmp'];
 	$nombre_producto=$row['nombre_producto'];
 	
 	

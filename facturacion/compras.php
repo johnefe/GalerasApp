@@ -11,7 +11,7 @@
 	$active_ventas="";
 	$active_clientes="";
 	$active_usuarios="";	
-	$title="Facturas | Simple Invoice";
+	$title="Compras | Sys-Galeras";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,6 +64,6 @@
 	include("footer.php");
 	?>
 	<script type="text/javascript" src="js/VentanaCentrada.js"></script>
-	<script type="text/javascript" src="js/facturas.js"></script>
+	<script type="text/javascript" src="js/compras.js"></script>
   </body>
 </html>
