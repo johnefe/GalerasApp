@@ -1,25 +1,37 @@
 <?php
-	/*-------------------------
-	Autor: Obed Alvarado
-	Web: obedalvarado.pw
-	Mail: info@obedalvarado.pw
-	---------------------------*/
+	
 include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
 $session_id= session_id();
-if (isset($_POST['id'])){$id=$_POST['id'];}
-if (isset($_POST['cantidad'])){$cantidad=$_POST['cantidad'];}
-if (isset($_POST['precio_venta'])){$precio_venta=$_POST['precio_venta'];}
+if (isset($_POST['id'])){
+	$id=$_POST['id'];
+}
+if (isset($_POST['cantidad'])){
+	$cantidad=$_POST['cantidad'];
+}
+if (isset($_POST['precio_venta'])){
+	$precio_venta=$_POST['precio_venta'];
+}
 
 	/* Connect To Database*/
 	require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 	require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 	//Archivo de funciones PHP
 	include("../funciones.php");
+/*----------------------------------------------------------------------*/
 if (!empty($id) and !empty($cantidad) and !empty($precio_venta))
-{
-$insert_tmp=mysqli_query($con, "INSERT INTO tmp (id_producto,cantidad_tmp,precio_tmp,session_id) VALUES ('$id','$cantidad','$precio_venta','$session_id')");
+	{
+	$select_temp=mysqli_query($con,"SELECT * from tmp where id_producto='".$id."'");
+	if($select_temp==null){
+		$insert_tmp=mysqli_query($con, "INSERT INTO tmp (id_producto,cantidad_tmp,precio_tmp,session_id) VALUES ('$id','$cantidad','$precio_venta','$session_id')");
 
-}
+	}
+	else{
+		$update_temp=mysqli_query($con,"UPDATE tmp set fr4");
+	}
+
+	}
+	
+/*----------------------------------------------------------------------*/
 if (isset($_GET['id']))//codigo elimina un elemento del array
 {
 $id_tmp=intval($_GET['id']);	
