@@ -1,20 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Raleway|Roboto');
 /*
-navbar-default personalizada en:
-http://work.smarchal.com/twbscolor/
+font-family: 'Montserrat', sans-serif;
+font-family: 'Roboto', sans-serif;
+font-family: 'Raleway', sans-serif;
 
 */
 .navbar-default {
-  background-color: #673AB7;
-  border-color: #2980b9;
+  background-color: #311B92;
+  border-color: #311B92;
   border-radius: 0px;
-  font-size: 20px;
+  font-size: 18px;
+  font-family: 'Raleway', sans-serif;
 }
 .navbar-default .navbar-brand {
   color: #ecf0f1;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-  color: #ecdbff;
+  color: #673AB7;
 }
 .navbar-default .navbar-text {
   color: #ecf0f1;
@@ -30,7 +33,7 @@ http://work.smarchal.com/twbscolor/
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
   color: #ecdbff;
-  background-color: #4527A0;
+  background-color: #673AB7;
 }
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
@@ -39,14 +42,14 @@ http://work.smarchal.com/twbscolor/
   background-color: #2980b9;
 }
 .navbar-default .navbar-toggle {
-  border-color: #2980b9;
+  border-color: #673AB7;
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-  background-color: #2980b9;
+  background-color: #673AB7;
 }
 .navbar-default .navbar-toggle .icon-bar {
-  background-color: #ecf0f1;
+  background-color: #E1BEE7;
 }
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
