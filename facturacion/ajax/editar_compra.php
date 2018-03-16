@@ -11,7 +11,7 @@
 		} else if ($_POST['estado_compra']==""){
 			$errors[] = "Selecciona el estado de la compra";
 		} else if (
-			!empty($_POST['id_cliente']) &&
+			!empty($_POST['id_proveedor']) &&
 			!empty($_POST['id_vendedor']) &&
 			!empty($_POST['condiciones']) &&
 			$_POST['estado_compra']!="" 

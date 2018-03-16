@@ -21,7 +21,7 @@
 
 	function agregar (id)
 		{
-			var precio_venta=document.getElementById('precio_compra_'+id).value;
+			var precio_compra=document.getElementById('precio_compra_'+id).value;
 			var cantidad=document.getElementById('cantidad_'+id).value;
 			//Inicia validacion
 			if (isNaN(cantidad))

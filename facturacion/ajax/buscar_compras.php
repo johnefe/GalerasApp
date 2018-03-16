@@ -80,7 +80,7 @@
 						$telefono_proveedor=$row['telefono_proveedor'];
 						$email_proveedor=$row['email_proveedor'];
 						$nombre_vendedor=$row['firstname']." ".$row['lastname'];
-						$estado_compra=$row['estado_factura'];
+						$estado_compra=$row['estado_compra'];
 						if ($estado_compra==1){$text_estado="Pagada";$label_class='label-success';}
 						else{$text_estado="Pendiente";$label_class='label-warning';}
 						$total_compra=$row['total_compra'];

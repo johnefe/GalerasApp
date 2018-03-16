@@ -2,9 +2,15 @@
 include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
 $id_compra= $_SESSION['id_compra'];
 $numero_compra= $_SESSION['numero_compra'];
-if (isset($_POST['id'])){$id=intval($_POST['id']);}
-if (isset($_POST['cantidad'])){$cantidad=intval($_POST['cantidad']);}
-if (isset($_POST['precio_compra'])){$precio_venta=floatval($_POST['precio_compra']);}
+if (isset($_POST['id'])){
+	$id=intval($_POST['id']);
+}
+if (isset($_POST['cantidad'])){
+	$cantidad=intval($_POST['cantidad']);
+}
+if (isset($_POST['precio_compra'])){
+	$precio_compra=floatval($_POST['precio_compra']);
+}
 
 	/* Connect To Database*/
 	require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
