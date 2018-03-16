@@ -23,7 +23,7 @@
 	<?php
 	include("navbar.php");
 	?>  
-    <div class="container">
+    <section class="container">
 		<div class="panel panel-info">
 		<div class="panel-heading">
 		    <div class="btn-group pull-right">
@@ -58,7 +58,7 @@
 			</div>
 		</div>	
 		
-	</div>
+	</section>
 	<hr>
 	<?php
 	include("footer.php");
