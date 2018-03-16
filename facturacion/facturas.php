@@ -6,11 +6,12 @@
         }
 	
 	$active_facturas="active";
+	$active_compras="";
 	$active_productos="";
-	$active_ventas="";
+	$active_proveedores="";
 	$active_clientes="";
 	$active_usuarios="";	
-	$title="Facturas | Simple Invoice";
+	$title="Ventas | Sys-Galeras";
 ?>
 <!DOCTYPE html>
 <html lang="en">

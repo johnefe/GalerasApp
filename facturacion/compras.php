@@ -5,13 +5,14 @@
 		exit;
         }
 	
-	$active_compras="active";
-	$active_facturas="";
-	$active_productos="";
 	$active_ventas="";
+	$active_compras="active";
+	$active_productos="";
+	$active_proveedores="";
 	$active_clientes="";
 	$active_usuarios="";	
 	$title="Compras | Sys-Galeras";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -154,8 +154,18 @@ while ($row=mysqli_fetch_array($sql))
 
 	<?php 
 	//Insert en la tabla detalle_cotizacion
+	//$insert_detail=mysqli_query($con, "INSERT INTO detalle_factura VALUES ('','$numero_factura','$id_producto','$cantidad','$precio_venta_r')");
+	
+	$select_stock=mysqli_query($con, "SELECT stock from products where id_producto='".$id_producto."'");
+	
+	$row= mysqli_fetch_array($select_stock);
+
+	$stock_old=$row['stock'];
+	$stock_new = $stock_old-$cantidad;
 	$insert_detail=mysqli_query($con, "INSERT INTO detalle_factura VALUES ('','$numero_factura','$id_producto','$cantidad','$precio_venta_r')");
 	
+	$update_products=mysqli_query($con, "UPDATE products SET stock='".$stock_new."' where id_producto='".$id_producto."'");
+
 	$nums++;
 	}
 	$impuesto=get_row('perfil','impuesto', 'id_perfil', 1);

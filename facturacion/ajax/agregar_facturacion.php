@@ -12,7 +12,17 @@ if (isset($_POST['precio_venta'])){$precio_venta=$_POST['precio_venta'];}
 	include("../funciones.php");
 if (!empty($id) and !empty($cantidad) and !empty($precio_venta))
 {
-$insert_tmp=mysqli_query($con, "INSERT INTO tmp (id_producto,cantidad_tmp,precio_tmp,session_id) VALUES ('$id','$cantidad','$precio_venta','$session_id')");
+//$insert_tmp=mysqli_query($con, "INSERT INTO tmp (id_producto,cantidad_tmp,precio_tmp,session_id) VALUES ('$id','$cantidad','$precio_venta','$session_id')");
+	$select_tmp=mysqli_query($con,"SELECT* FROM tmp where id_producto='".$id."'");
+	$row= mysqli_fetch_array($select_tmp);
+	if($row == ""){
+		$insert_tmp=mysqli_query($con, "INSERT INTO tmp (id_producto,cantidad_tmp,precio_tmp,session_id) VALUES ('$id','$cantidad','$precio_venta','$session_id')");
+	}else{
+
+		$cantidad_old=$row['cantidad_tmp'];
+		$cantidad_new = $cantidad + $cantidad_old;
+		$update_tmp=mysqli_query($con, "UPDATE tmp SET cantidad_tmp='".$cantidad_new."' where id_producto='".$id."'");
+	}
 
 }
 if (isset($_GET['id']))//codigo elimina un elemento del array

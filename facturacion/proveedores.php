@@ -9,13 +9,13 @@
 	require_once ("config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 	require_once ("config/conexion.php");//Contiene funcion que conecta a la base de datos
 	
-	$active_facturas="";
+	$active_ventas="";
 	$active_compras="";
 	$active_productos="";
-	$active_clientes="";
 	$active_proveedores="active";
+	$active_clientes="";
 	$active_usuarios="";	
-	$title="Clientes | Simple Invoice";
+	$title="Proveedores | Sys-Galeras";
 ?>
 <!DOCTYPE html>
 <html lang="en">
