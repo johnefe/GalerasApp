@@ -74,6 +74,7 @@ $simbolo_moneda=get_row('perfil','moneda', 'id_perfil', 1);
 	$total_iva=number_format($total_iva,2,'.','');
 	$total_compra=$subtotal+$total_iva;
 	$update=mysqli_query($con,"update compras set total_compra='$total_compra' where id_compra='$id_compra'");
+	
 ?>
 <tr>
 	<td class='text-right' colspan=4>SUBTOTAL <?php echo $simbolo_moneda;?></td>

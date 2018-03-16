@@ -41,6 +41,6 @@ $(document).ready(function(){
 		}
 		}
 		
-		function imprimir_compra(id_factura){
+		function imprimir_compra(id_compra){
 			VentanaCentrada('./pdf/documentos/ver_compra.php?id_compra='+id_compra,'Compra','','1024','768','true');
 		}

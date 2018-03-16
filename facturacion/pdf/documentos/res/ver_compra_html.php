@@ -44,12 +44,12 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
                     P&aacute;gina [[page_cu]]/[[page_nb]]
                 </td>
                 <td style="width: 50%; text-align: right">
-                    &copy; <?php echo "sys-galeras"; echo  $anio=date('Y'); ?>
+                    &copy; <?php echo "Sys-galeras "; echo  $anio=date('Y'); ?>
                 </td>
             </tr>
         </table>
     </page_footer>
-    <?php include("encabezado_compra.php");?>
+	<?php include("encabezado_compra.php");?>
     <br>
     
 
@@ -61,8 +61,8 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 		<tr>
            <td style="width:50%;" >
 			<?php 
-				$sql_proveedor=mysqli_query($con,"select * from proveedores where id_proveedor='$id_proveedor'");
-				$rw_proveedor=mysqli_fetch_array($sql_proveedor);
+				$sql_compra=mysqli_query($con,"select * from proveedores where id_proveedor='$id_proveedor'");
+				$rw_proveedor=mysqli_fetch_array($sql_compra);
 				echo $rw_proveedor['nombre_proveedor'];
 				echo "<br>";
 				echo $rw_proveedor['direccion_proveedor'];
@@ -93,7 +93,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 				echo $rw_user['firstname']." ".$rw_user['lastname'];
 			?>
 		   </td>
-		  <td style="width:25%;"><?php echo date("d/m/Y");?></td>
+		  <td style="width:25%;"><?php echo date("d/m/Y", strtotime($fecha_compra));?></td>
 		   <td style="width:40%;" >
 				<?php 
 				if ($condiciones==1){echo "Efectivo";}
@@ -121,19 +121,19 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 <?php
 $nums=1;
 $sumador_total=0;
-$sql=mysqli_query($con, "select * from products, tmp_compras where products.id_producto=tmp_compras.id_producto and tmp_compras.session_id='".$session_id."'");
+$sql=mysqli_query($con, "select * from products, detalle_compra, compras where products.id_producto=detalle_compra.id_producto and detalle_compra.numero_compra=compras.numero_compra and compras.id_compra='".$id_compra."'");
+
 while ($row=mysqli_fetch_array($sql))
 	{
-	$id_tmp=$row["id_tmp"];
 	$id_producto=$row["id_producto"];
 	$codigo_producto=$row['codigo_producto'];
-	$cantidad=$row['cant_tmp'];
+	$cantidad=$row['cantidad'];
 	$nombre_producto=$row['nombre_producto'];
 	
-	$precio_compra=$row['precio_tmp'];
-	$precio_compra_f=number_format($precio_compra,2);//Formateo variables
-	$precio_compra_r=str_replace(",","",$precio_compra_f);//Reemplazo las comas
-	$precio_total=$precio_compra_r*$cantidad;
+	$precio_venta=$row['precio_compra'];
+	$precio_venta_f=number_format($precio_venta,2);//Formateo variables
+	$precio_venta_r=str_replace(",","",$precio_venta_f);//Reemplazo las comas
+	$precio_total=$precio_venta_r*$cantidad;
 	$precio_total_f=number_format($precio_total,2);//Precio total formateado
 	$precio_total_r=str_replace(",","",$precio_total_f);//Reemplazo las comas
 	$sumador_total+=$precio_total_r;//Sumador
@@ -147,20 +147,13 @@ while ($row=mysqli_fetch_array($sql))
         <tr>
             <td class='<?php echo $clase;?>' style="width: 10%; text-align: center"><?php echo $cantidad; ?></td>
             <td class='<?php echo $clase;?>' style="width: 60%; text-align: left"><?php echo $nombre_producto;?></td>
-            <td class='<?php echo $clase;?>' style="width: 15%; text-align: right"><?php echo $precio_compra_f;?></td>
+            <td class='<?php echo $clase;?>' style="width: 15%; text-align: right"><?php echo $precio_venta_f;?></td>
             <td class='<?php echo $clase;?>' style="width: 15%; text-align: right"><?php echo $precio_total_f;?></td>
             
         </tr>
 
 	<?php 
-	//Insert en la tabla detalle_cotizacion
-	$select_stock=mysqli_query($con, "SELECT stock from products where id_producto='".$id_producto."'");
-	$row= mysqli_fetch_array($select_stock);
 
-	$stock_old=$row['stock'];
-	$stock_new = $stock_old+$cantidad;
-	$insert_detail=mysqli_query($con, "INSERT INTO detalle_compra VALUES ('','$numero_compra','$id_producto','$cantidad','$precio_compra_r')");
-	$update_products=mysqli_query($con, "UPDATE products SET stock='".$stock_new."' where id_producto='".$id_producto."'");
 	
 	$nums++;
 	}
@@ -168,7 +161,7 @@ while ($row=mysqli_fetch_array($sql))
 	$subtotal=number_format($sumador_total,2,'.','');
 	$total_iva=($subtotal * $impuesto )/100;
 	$total_iva=number_format($total_iva,2,'.','');
-	$total_compra=$subtotal+$total_iva;
+	$total_factura=$subtotal+$total_iva;
 ?>
 	  
         <tr>
@@ -176,26 +169,20 @@ while ($row=mysqli_fetch_array($sql))
             <td style="widtd: 15%; text-align: right;"> <?php echo number_format($subtotal,2);?></td>
         </tr>
 		<tr>
-            <td colspan="3" style="widtd: 85%; text-align: right;">IVA (<?php echo $impuesto; ?>)% <?php echo $simbolo_moneda;?> </td>
+            <td colspan="3" style="widtd: 85%; text-align: right;">IVA (<?php echo $impuesto;?>)% <?php echo $simbolo_moneda;?> </td>
             <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_iva,2);?></td>
         </tr><tr>
             <td colspan="3" style="widtd: 85%; text-align: right;">TOTAL <?php echo $simbolo_moneda;?> </td>
-            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_compra,2);?></td>
+            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_factura,2);?></td>
         </tr>
     </table>
 	
 	
 	
 	<br>
-	<div style="font-size:11pt;text-align:center;font-weight:bold">Sys-Galeras</div>
+	<div style="font-size:11pt;text-align:center;font-weight:bold">Gracias !</div>
 	
 	
 	  
 
 </page>
-
-<?php
-$date=date("Y-m-d H:i:s");
-$insert=mysqli_query($con,"INSERT INTO compras VALUES (NULL,'$numero_compra','$date','$id_proveedor','$id_vendedor','$condiciones','$total_compra','1')");
-$delete=mysqli_query($con,"DELETE FROM tmp_compras WHERE session_id='".$session_id."'");
-?>

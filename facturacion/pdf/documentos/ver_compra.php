@@ -9,27 +9,27 @@
 	include("../../config/conexion.php");
 	//Archivo de funciones PHP
 	include("../../funciones.php");
-	$id_factura= intval($_GET['id_factura']);
-	$sql_count=mysqli_query($con,"select * from facturas where id_factura='".$id_factura."'");
+	$id_compra= intval($_GET['id_compra']);
+	$sql_count=mysqli_query($con,"select * from compras where id_compra='".$id_compra."'");
 	$count=mysqli_num_rows($sql_count);
 	if ($count==0)
 	{
-	echo "<script>alert('Factura no encontrada')</script>";
+	echo "<script>alert('Compra no encontrada')</script>";
 	echo "<script>window.close();</script>";
 	exit;
 	}
-	$sql_factura=mysqli_query($con,"select * from facturas where id_factura='".$id_factura."'");
-	$rw_factura=mysqli_fetch_array($sql_factura);
-	$numero_factura=$rw_factura['numero_factura'];
-	$id_cliente=$rw_factura['id_cliente'];
-	$id_vendedor=$rw_factura['id_vendedor'];
-	$fecha_factura=$rw_factura['fecha_factura'];
-	$condiciones=$rw_factura['condiciones'];
+	$sql_compra=mysqli_query($con,"select * from compras where id_compra='".$id_compra."'");
+	$rw_compra=mysqli_fetch_array($sql_compra);
+	$numero_compra=$rw_compra['numero_compra'];
+	$id_proveedor=$rw_compra['id_proveedor'];
+	$id_vendedor=$rw_compra['id_vendedor'];
+	$fecha_compra=$rw_compra['fecha_compra'];
+	$condiciones=$rw_compra['condiciones'];
 	$simbolo_moneda=get_row('perfil','moneda', 'id_perfil', 1);
 	require_once(dirname(__FILE__).'/../html2pdf.class.php');
     // get the HTML
      ob_start();
-     include(dirname('__FILE__').'/res/ver_factura_html.php');
+     include(dirname('__FILE__').'/res/ver_compra_html.php');
     $content = ob_get_clean();
 
     try
@@ -41,7 +41,7 @@
         // convert
         $html2pdf->writeHTML($content, isset($_GET['vuehtml']));
         // send the PDF
-        $html2pdf->Output('Factura.pdf');
+        $html2pdf->Output('Compra.pdf');
     }
     catch(HTML2PDF_exception $e) {
         echo $e;

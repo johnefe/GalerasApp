@@ -16,12 +16,23 @@ if (isset($_POST['precio_compra'])){
 	require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 	//Archivo de funciones PHP
 	include("../funciones.php");
-echo($id);
-echo($cantidad);
-echo($precio_compra);
+//echo($id);
+//echo($cantidad);
+//echo($precio_compra);
 if (!empty($id) and !empty($cantidad) and !empty($precio_compra))
 {
-$insert_tmp=mysqli_query($con, "INSERT INTO tmp_compras (id_producto,cant_tmp,precio_tmp,session_id) VALUES ('$id','$cantidad','$precio_compra','$session_id')");
+	$select_tmp=mysqli_query($con,"SELECT* FROM tmp_compras where id_producto='".$id."'");
+	$row= mysqli_fetch_array($select_tmp);
+	if($row == ""){
+		$insert_tmp=mysqli_query($con, "INSERT INTO tmp_compras (id_producto,cant_tmp,precio_tmp,session_id) VALUES ('$id','$cantidad','$precio_compra','$session_id')");
+
+	}else{
+
+		$cantidad_old=$row['cant_tmp'];
+		$cantidad_new = $cantidad + $cantidad_old;
+		$update_tmp=mysqli_query($con, "UPDATE tmp_compras SET cant_tmp='".$cantidad_new."' where id_producto='".$id."'");
+	}
+//
 
 }
 if (isset($_GET['id']))//codigo elimina un elemento del array

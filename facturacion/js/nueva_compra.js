@@ -54,7 +54,7 @@ $(document).ready(function(){
 
 
 
-			function eliminar (id)
+		function eliminar (id)
 		{
 			
 			$.ajax({
@@ -71,6 +71,7 @@ $(document).ready(function(){
 
 		}
 		
+		//funcion cuando se envía a imprimir
 		$("#datos_compra").submit(function(){
 		  var id_proveedor = $("#id_proveedor").val();
 		  var id_vendedor = $("#id_vendedor").val();
