@@ -156,7 +156,7 @@ while ($row=mysqli_fetch_array($sql))
 	//Insert en la tabla detalle_cotizacion
 	//$insert_detail=mysqli_query($con, "INSERT INTO detalle_factura VALUES ('','$numero_factura','$id_producto','$cantidad','$precio_venta_r')");
 	
-	$select_stock=mysqli_query($con, "SELECT stock from products where id_producto='".$id_producto."'");
+	$select_stock=mysqli_query($con, "SELECT * FROM products where id_producto='".$id_producto."'");
 	
 	$row= mysqli_fetch_array($select_stock);
 
