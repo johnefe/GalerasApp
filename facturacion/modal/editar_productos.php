@@ -38,9 +38,15 @@
 				</div>
 			  </div>
 			  <div class="form-group">
-				<label for="mod_precio" class="col-sm-3 control-label">Precio</label>
+				<label for="mod_precio" class="col-sm-3 control-label">Precio compra</label>
 				<div class="col-sm-8">
-				  <input type="text" class="form-control" id="mod_precio" name="mod_precio" placeholder="Precio de venta del producto" required pattern="^[0-9]{1,5}(\.[0-9]{0,2})?$" title="Ingresa sólo números con 0 ó 2 decimales" maxlength="8">
+				  <input type="text" class="form-control" id="mod_precio_compra" name="mod_precio_compra" placeholder="Precio de compra del producto" required pattern="^[0-9]{1,5}(\.[0-9]{0,2})?$" title="Ingresa sólo números con 0 ó 2 decimales" maxlength="8">
+				</div>
+			  </div>
+			    <div class="form-group">
+				<label for="mod_precio" class="col-sm-3 control-label">Precio venta</label>
+				<div class="col-sm-8">
+				  <input type="text" class="form-control" id="mod_precio" name="mod_precio" placeholder="Precio de venta al publico" required pattern="^[0-9]{1,5}(\.[0-9]{0,2})?$" title="Ingresa sólo números con 0 ó 2 decimales" maxlength="8">
 				</div>
 			  </div>
 			 

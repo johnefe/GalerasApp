@@ -2,20 +2,47 @@
 include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
 $id_factura= $_SESSION['id_factura'];
 $numero_factura= $_SESSION['numero_factura'];
-if (isset($_POST['id'])){$id=intval($_POST['id']);}
-if (isset($_POST['cantidad'])){$cantidad=intval($_POST['cantidad']);}
-if (isset($_POST['precio_venta'])){$precio_venta=floatval($_POST['precio_venta']);}
+if (isset($_POST['id'])){
+	$id=intval($_POST['id']);
+}
+if (isset($_POST['cantidad'])){
+	$cantidad=intval($_POST['cantidad']);
+}
+if (isset($_POST['precio_venta'])){
+	$precio_venta=floatval($_POST['precio_venta']);
+}
 
 	/* Connect To Database*/
 	require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 	require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 	//Archivo de funciones PHP
 	include("../funciones.php");
+
+	
+
+
 if (!empty($id) and !empty($cantidad) and !empty($precio_venta))
 {
-$insert_tmp=mysqli_query($con, "INSERT INTO detalle_factura (numero_factura, id_producto,cantidad,precio_venta) VALUES ('$numero_factura','$id','$cantidad','$precio_venta')");
+
+	//selecciona los productos si existen en la tabla detalle_factura
+	//si no estan lo inserta como nuevo producto
+	//si ya esta simplemente actualiza la cantidad de ese producto
+	$select_tmp_detalle_factura=mysqli_query($con,"SELECT* FROM detalle_factura where id_producto='".$id."' and numero_factura='".$numero_factura."' ");
+	$row= mysqli_fetch_array($select_tmp_detalle_factura);
+
+	if($row == ""){
+
+		$insert_tmp=mysqli_query($con, "INSERT INTO detalle_factura (numero_factura, id_producto,cantidad,precio_venta) VALUES ('$numero_factura','$id','$cantidad','$precio_venta')");
+	}else{
+		$cantidad_old=$row['cantidad'];
+		$cantidad_new = $cantidad + $cantidad_old;
+		$update_tmp=mysqli_query($con, "UPDATE detalle_factura SET cantidad='".$cantidad_new."' where id_producto='".$id."' and numero_factura='".$numero_factura."' ");
+	}
+
 
 }
+
+
 if (isset($_GET['id']))//codigo elimina un elemento del array
 {
 $id_detalle=intval($_GET['id']);	
@@ -62,23 +89,24 @@ $simbolo_moneda=get_row('perfil','moneda', 'id_perfil', 1);
 		</tr>		
 		<?php
 	}
-	$impuesto=get_row('perfil','impuesto', 'id_perfil', 1);
+	//$impuesto=get_row('perfil','impuesto', 'id_perfil', 1);
 	$subtotal=number_format($sumador_total,2,'.','');
-	$total_iva=($subtotal * $impuesto )/100;
-	$total_iva=number_format($total_iva,2,'.','');
-	$total_factura=$subtotal+$total_iva;
+	//$total_iva=($subtotal * $impuesto )/100;
+	//$total_iva=number_format($total_iva,2,'.','');
+	//$total_factura=$subtotal+$total_iva;
+	$total_factura=$subtotal;
 	$update=mysqli_query($con,"update facturas set total_venta='$total_factura' where id_factura='$id_factura'");
 ?>
-<tr>
+<!--<tr>
 	<td class='text-right' colspan=4>SUBTOTAL <?php echo $simbolo_moneda;?></td>
 	<td class='text-right'><?php echo number_format($subtotal,2);?></td>
 	<td></td>
-</tr>
-<tr>
-	<td class='text-right' colspan=4>IVA (<?php echo $impuesto;?>)% <?php echo $simbolo_moneda;?></td>
-	<td class='text-right'><?php echo number_format($total_iva,2);?></td>
+</tr>-->
+<!--<tr>
+	<td class='text-right' colspan=4>IVA (<?php //echo $impuesto;?>)% <?php echo $simbolo_moneda;?></td>
+	<td class='text-right'><?php //echo number_format($total_iva,2);?></td>
 	<td></td>
-</tr>
+</tr>-->
 <tr>
 	<td class='text-right' colspan=4>TOTAL <?php echo $simbolo_moneda;?></td>
 	<td class='text-right'><?php echo number_format($total_factura,2);?></td>

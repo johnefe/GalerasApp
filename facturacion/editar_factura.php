@@ -131,12 +131,12 @@
 						<button type="submit" class="btn btn-default">
 						  <span class="glyphicon glyphicon-refresh"></span> Actualizar datos
 						</button>
-						<button type="button" class="btn btn-default" data-toggle="modal" data-target="#nuevoProducto">
+						<!--<button type="button" class="btn btn-default" data-toggle="modal" data-target="#nuevoProducto">
 						 <span class="glyphicon glyphicon-plus"></span> Nuevo producto
-						</button>
-						<button type="button" class="btn btn-default" data-toggle="modal" data-target="#nuevoCliente">
+						</button>-->
+						<!--<button type="button" class="btn btn-default" data-toggle="modal" data-target="#nuevoCliente">
 						 <span class="glyphicon glyphicon-user"></span> Nuevo cliente
-						</button>
+						</button>-->
 						<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
 						 <span class="glyphicon glyphicon-search"></span> Agregar productos
 						</button>

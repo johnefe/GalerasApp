@@ -1,10 +1,4 @@
 <?php
-
-	/*-------------------------
-	Autor: Obed Alvarado
-	Web: obedalvarado.pw
-	Mail: info@obedalvarado.pw
-	---------------------------*/
 	include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
 	/* Connect To Database*/
 	require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
@@ -45,6 +39,8 @@
 		}
 		
 		$sWhere.=" order by facturas.id_factura desc";
+
+
 		include 'pagination.php'; //include pagination file
 		//pagination variables
 		$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
@@ -60,6 +56,11 @@
 		//main query to fetch the data
 		$sql="SELECT * FROM  $sTable $sWhere LIMIT $offset,$per_page";
 		$query = mysqli_query($con, $sql);
+
+		//main query to fetch the data
+		$sql_delete="DELETE FROM tmp ";
+		$query_delete = mysqli_query($con, $sql_delete);
+
 		//loop through fetched data
 		if ($numrows>0){
 			echo mysqli_error($con);

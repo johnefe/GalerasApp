@@ -55,6 +55,9 @@
 		//main query to fetch the data
 		$sql="SELECT * FROM  $sTable $sWhere LIMIT $offset,$per_page";
 		$query = mysqli_query($con, $sql);
+
+		$sql_delete="DELETE FROM tmp_compras ";
+		$query_delete = mysqli_query($con, $sql_delete);
 		//loop through fetched data
 		if ($numrows>0){
 			echo mysqli_error($con);

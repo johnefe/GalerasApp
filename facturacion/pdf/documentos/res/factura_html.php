@@ -122,6 +122,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 $nums=1;
 $sumador_total=0;
 $sql=mysqli_query($con, "select * from products, tmp where products.id_producto=tmp.id_producto and tmp.session_id='".$session_id."'");
+
 while ($row=mysqli_fetch_array($sql))
 	{
 	$id_tmp=$row["id_tmp"];
@@ -168,21 +169,23 @@ while ($row=mysqli_fetch_array($sql))
 
 	$nums++;
 	}
-	$impuesto=get_row('perfil','impuesto', 'id_perfil', 1);
+	//$impuesto=get_row('perfil','impuesto', 'id_perfil', 1);
 	$subtotal=number_format($sumador_total,2,'.','');
-	$total_iva=($subtotal * $impuesto )/100;
-	$total_iva=number_format($total_iva,2,'.','');
-	$total_factura=$subtotal+$total_iva;
+	//$total_iva=($subtotal * $impuesto )/100;
+	//$total_iva=number_format($total_iva,2,'.','');
+	//$total_factura=$subtotal+$total_iva;
+	$total_factura=$subtotal;
 ?>
 	  
-        <tr>
+        <!--<tr>
             <td colspan="3" style="widtd: 85%; text-align: right;">SUBTOTAL <?php echo $simbolo_moneda;?> </td>
             <td style="widtd: 15%; text-align: right;"> <?php echo number_format($subtotal,2);?></td>
-        </tr>
-		<tr>
-            <td colspan="3" style="widtd: 85%; text-align: right;">IVA (<?php echo $impuesto; ?>)% <?php echo $simbolo_moneda;?> </td>
-            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_iva,2);?></td>
-        </tr><tr>
+        </tr>-->
+		<!-- <tr>
+           <td colspan="3" style="widtd: 85%; text-align: right;">IVA (<?php //echo $impuesto; ?>)% <?php// echo $simbolo_moneda;?> </td>
+            <td style="widtd: 15%; text-align: right;"> <?php //echo number_format($total_iva,2);?></td>
+        </tr>-->
+        <tr>
             <td colspan="3" style="widtd: 85%; text-align: right;">TOTAL <?php echo $simbolo_moneda;?> </td>
             <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_factura,2);?></td>
         </tr>

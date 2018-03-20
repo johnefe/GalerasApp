@@ -5,15 +5,16 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
            $errors[] = "Código vacío";
         } else if (empty($_POST['nombre'])){
 			$errors[] = "Nombre del producto vacío";
-		} else if (empty($_POST['stock'])){
-			$errors[] = "stock del producto vacío";
 		} else if ($_POST['estado']==""){
 			$errors[] = "Selecciona el estado del producto";
 		} else if (empty($_POST['precio'])){
 			$errors[] = "Precio de venta vacío";
-		} else if (
+		}else if (empty($_POST['precio_compra'])){
+			$errors[] = "Precio de compra vacío";
+		}else if (
 			!empty($_POST['codigo']) &&
 			!empty($_POST['nombre']) &&
+			!empty($_POST['precio_compra']) &&
 			$_POST['estado']!="" &&
 			!empty($_POST['precio'])
 		){
@@ -26,8 +27,9 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
 		$stock=intval($_POST["stock"]);
 		$estado=intval($_POST['estado']);
 		$precio_venta=floatval($_POST['precio']);
+		$precio_compra=floatval($_POST['precio_compra']);
 		$date_added=date("Y-m-d H:i:s");
-		$sql="INSERT INTO products (codigo_producto, nombre_producto,stock, status_producto, date_added, precio_producto) VALUES ('$codigo','$nombre','$stock','$estado','$date_added','$precio_venta')";
+		$sql="INSERT INTO products (codigo_producto, nombre_producto,stock, status_producto, date_added, precio_producto, precio_compra) VALUES ('$codigo','$nombre','$stock','$estado','$date_added', '$precio_compra','$precio_venta')";
 		$query_new_insert = mysqli_query($con,$sql);
 			if ($query_new_insert){
 				$messages[] = "Producto ha sido ingresado satisfactoriamente.";

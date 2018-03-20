@@ -17,11 +17,33 @@ if (isset($_POST['precio_compra'])){
 	require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 	//Archivo de funciones PHP
 	include("../funciones.php");
+
+
 if (!empty($id) and !empty($cantidad) and !empty($precio_compra))
 {
-$insert_tmp=mysqli_query($con, "INSERT INTO detalle_compra (numero_compra, id_producto,cantidad,precio_compra) VALUES ('$numero_compra','$id','$cantidad','$precio_compra')");
+
+	//selecciona los productos si existen en la tabla detalle_factura
+	//si no estan lo inserta como nuevo producto
+	//si ya esta simplemente actualiza la cantidad de ese producto
+	$select_tmp_detalle_compra=mysqli_query($con,"SELECT* FROM detalle_compra where id_producto='".$id."' and numero_compra='".$numero_compra."' ");
+	$row= mysqli_fetch_array($select_tmp_detalle_compra);
+
+	if($row == ""){
+
+		$insert_tmp=mysqli_query($con, "INSERT INTO detalle_compra (numero_compra, id_producto,cantidad,precio_compra) VALUES ('$numero_compra','$id','$cantidad','$precio_compra')");
+
+	}else{
+		$cantidad_old=$row['cantidad'];
+		$cantidad_new = $cantidad + $cantidad_old;
+		$update_tmp=mysqli_query($con, "UPDATE detalle_compra SET cantidad='".$cantidad_new."' where id_producto='".$id."' and numero_compra='".$numero_compra."' ");
+	}
+
 
 }
+
+
+
+
 if (isset($_GET['id']))//codigo elimina un elemento del array
 {
 $id_detalle=intval($_GET['id']);	
@@ -63,29 +85,30 @@ $simbolo_moneda=get_row('perfil','moneda', 'id_perfil', 1);
 			<td class='text-center'><?php echo $cantidad;?></td>
 			<td><?php echo $nombre_producto;?></td>
 			<td class='text-right'><?php echo $precio_compra_f;?></td>
-			<td class='text-right'><?php echo $precio_compra_f;?></td>
+			<td class='text-right'><?php echo $precio_total_f;?></td>
 			<td class='text-center'><a href="#" onclick="eliminar('<?php echo $id_detalle ?>')"><i class="glyphicon glyphicon-trash"></i></a></td>
 		</tr>		
 		<?php
 	}
-	$impuesto=get_row('perfil','impuesto', 'id_perfil', 1);
+	//$impuesto=get_row('perfil','impuesto', 'id_perfil', 1);
 	$subtotal=number_format($sumador_total,2,'.','');
-	$total_iva=($subtotal * $impuesto )/100;
-	$total_iva=number_format($total_iva,2,'.','');
-	$total_compra=$subtotal+$total_iva;
+	//$total_iva=($subtotal * $impuesto )/100;
+	//$total_iva=number_format($total_iva,2,'.','');
+	//$total_compra=$subtotal+$total_iva;
+	$total_compra=$subtotal;
 	$update=mysqli_query($con,"update compras set total_compra='$total_compra' where id_compra='$id_compra'");
 	
 ?>
-<tr>
+<!--<tr>
 	<td class='text-right' colspan=4>SUBTOTAL <?php echo $simbolo_moneda;?></td>
 	<td class='text-right'><?php echo number_format($subtotal,2);?></td>
 	<td></td>
-</tr>
-<tr>
+</tr>-->
+<!--<tr>
 	<td class='text-right' colspan=4>IVA (<?php echo $impuesto;?>)% <?php echo $simbolo_moneda;?></td>
 	<td class='text-right'><?php echo number_format($total_iva,2);?></td>
 	<td></td>
-</tr>
+</tr>-->
 <tr>
 	<td class='text-right' colspan=4>TOTAL <?php echo $simbolo_moneda;?></td>
 	<td class='text-right'><?php echo number_format($total_compra,2);?></td>

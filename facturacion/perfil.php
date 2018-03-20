@@ -18,7 +18,7 @@
 	$active_clientes="";
 	$active_usuarios="";	
 	$active_perfil="active";	
-	$title="Configuración | Simple Invoice";
+	$title="Configuración | Sys- Galeras";
 	
 	$query_empresa=mysqli_query($con,"select * from perfil where id_perfil=1");
 	$row=mysqli_fetch_array($query_empresa);
@@ -76,8 +76,8 @@
                         <td><input type="email" class="form-control input-sm" name="email" value="<?php echo $row['email']?>" ></td>
                       </tr>
 					  <tr>
-                        <td>IVA (%):</td>
-                        <td><input type="text" class="form-control input-sm" required name="impuesto" value="<?php echo $row['impuesto']?>"></td>
+                       <!-- <td>IVA (%):</td>
+                        <td><input type="text" class="form-control input-sm" required name="impuesto" value="<?php echo $row['impuesto']?>"></td>-->
                       </tr>
 					  <tr>
                         <td>Simbolo de moneda:</td>

@@ -10,11 +10,13 @@ if (isset($_POST['precio_venta'])){$precio_venta=$_POST['precio_venta'];}
 	require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 	//Archivo de funciones PHP
 	include("../funciones.php");
+
+	
 if (!empty($id) and !empty($cantidad) and !empty($precio_venta))
 {
-//$insert_tmp=mysqli_query($con, "INSERT INTO tmp (id_producto,cantidad_tmp,precio_tmp,session_id) VALUES ('$id','$cantidad','$precio_venta','$session_id')");
 	$select_tmp=mysqli_query($con,"SELECT* FROM tmp where id_producto='".$id."'");
 	$row= mysqli_fetch_array($select_tmp);
+	
 	if($row == ""){
 		$insert_tmp=mysqli_query($con, "INSERT INTO tmp (id_producto,cantidad_tmp,precio_tmp,session_id) VALUES ('$id','$cantidad','$precio_venta','$session_id')");
 	}else{
@@ -71,23 +73,24 @@ $simbolo_moneda=get_row('perfil','moneda', 'id_perfil', 1);
 		</tr>		
 		<?php
 	}
-	$impuesto=get_row('perfil','impuesto', 'id_perfil', 1);
+	//$impuesto=get_row('perfil','impuesto', 'id_perfil', 1);
 	$subtotal=number_format($sumador_total,2,'.','');
-	$total_iva=($subtotal * $impuesto )/100;
-	$total_iva=number_format($total_iva,2,'.','');
-	$total_factura=$subtotal+$total_iva;
+	//$total_iva=($subtotal * $impuesto )/100;
+	//$total_iva=number_format($total_iva,2,'.','');
+	//$total_factura=$subtotal+$total_iva;
+	$total_factura=$subtotal;
 
 ?>
-<tr>
+<!--<tr>
 	<td class='text-right' colspan=4>SUBTOTAL <?php echo $simbolo_moneda;?></td>
 	<td class='text-right'><?php echo number_format($subtotal,2);?></td>
 	<td></td>
-</tr>
-<tr>
-	<td class='text-right' colspan=4>IVA (<?php echo $impuesto;?>)% <?php echo $simbolo_moneda;?></td>
-	<td class='text-right'><?php echo number_format($total_iva,2);?></td>
+</tr>-->
+<!--<tr>
+	<td class='text-right' colspan=4>IVA (<?php// echo $impuesto;?>)% <?php //echo $simbolo_moneda;?></td>
+	<td class='text-right'><?php// echo number_format($total_iva,2);?></td>
 	<td></td>
-</tr>
+</tr>-->
 <tr>
 	<td class='text-right' colspan=4>TOTAL <?php echo $simbolo_moneda;?></td>
 	<td class='text-right'><?php echo number_format($total_factura,2);?></td>

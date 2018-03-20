@@ -81,7 +81,7 @@
 								<input type="text" class="form-control input-sm" id="tel1" placeholder="Teléfono" value="<?php echo $telefono_proveedor;?>" readonly>
 							</div>
 					<label for="mail" class="col-md-1 control-label">Email</label>
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<input type="text" class="form-control input-sm" id="mail" placeholder="Email" readonly value="<?php echo $email_proveedor;?>">
 							</div>
 				 </div>
@@ -133,12 +133,12 @@
 						<button type="submit" class="btn btn-default">
 						  <span class="glyphicon glyphicon-refresh"></span> Actualizar datos
 						</button>
-						<button type="button" class="btn btn-default" data-toggle="modal" data-target="#nuevoProducto">
+						<!--<button type="button" class="btn btn-default" data-toggle="modal" data-target="#nuevoProducto">
 						 <span class="glyphicon glyphicon-plus"></span> Nuevo producto
-						</button>
-						<button type="button" class="btn btn-default" data-toggle="modal" data-target="#nuevoProveedor">
+						</button>-->
+						<!--<button type="button" class="btn btn-default" data-toggle="modal" data-target="#nuevoProveedor">
 						 <span class="glyphicon glyphicon-user"></span> Nuevo Proveedor
-						</button>
+						</button>-->
 						<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
 						 <span class="glyphicon glyphicon-search"></span> Agregar productos
 						</button>

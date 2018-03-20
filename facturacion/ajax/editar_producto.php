@@ -9,12 +9,15 @@
 			$errors[] = "Nombre del producto vacío";
 		} else if ($_POST['mod_estado']==""){
 			$errors[] = "Selecciona el estado del producto";
-		} else if (empty($_POST['mod_precio'])){
+		}else if (empty($_POST['mod_precio_compra'])){
+			$errors[] = "Precio de compra vacío";
+		}else if (empty($_POST['mod_precio'])){
 			$errors[] = "Precio de venta vacío";
 		} else if (
 			!empty($_POST['mod_id']) &&
 			!empty($_POST['mod_codigo']) &&
 			!empty($_POST['mod_nombre']) &&
+			!empty($_POST['mod_precio_compra']) &&
 			$_POST['mod_estado']!="" &&
 			!empty($_POST['mod_precio'])
 		){
@@ -27,7 +30,7 @@
 		$estado=intval($_POST['mod_estado']);
 		$precio_venta=floatval($_POST['mod_precio']);
 		$id_producto=$_POST['mod_id'];
-		$sql="UPDATE products SET codigo_producto='".$codigo."', nombre_producto='".$nombre."', status_producto='".$estado."', precio_producto='".$precio_venta."' WHERE id_producto='".$id_producto."'";
+		$sql="UPDATE products SET codigo_producto='".$codigo."', nombre_producto='".$nombre."', status_producto='".$estado."', precio_compra='".$precio_compra."', precio_producto='".$precio_venta."' WHERE id_producto='".$id_producto."'";
 		$query_update = mysqli_query($con,$sql);
 			if ($query_update){
 				$messages[] = "Producto ha sido actualizado satisfactoriamente.";

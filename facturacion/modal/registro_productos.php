@@ -30,7 +30,7 @@
 			  <div class="form-group">
 				<label for="stock" class="col-sm-3 control-label">Stock</label>
 				<div class="col-sm-8">
-				  <input type="text" class="form-control" id="stock" name="stock" placeholder="Cantidad de existencias del producto" required>
+				  <input type="text" class="form-control" id="stock" name="stock" placeholder="Cantidad de existencias del producto" value="0" readonly="">
 				</div>
 			  </div>
 			  
@@ -45,9 +45,15 @@
 				</div>
 			  </div>
 			  <div class="form-group">
-				<label for="precio" class="col-sm-3 control-label">Precio</label>
+				<label for="precio" class="col-sm-3 control-label">Precio compra</label>
 				<div class="col-sm-8">
-				  <input type="text" class="form-control" id="precio" name="precio" placeholder="Precio de venta del producto" required pattern="^[0-9]{1,5}(\.[0-9]{0,2})?$" title="Ingresa sólo números con 0 ó 2 decimales" maxlength="8">
+				  <input type="text" class="form-control" id="precio_compra" name="precio_compra" placeholder="Precio de compra del proveedor" required pattern="^[0-9]{1,5}(\.[0-9]{0,2})?$" title="Ingresa sólo números con 0 ó 2 decimales" maxlength="8">
+				</div>
+			  </div>
+			  <div class="form-group">
+				<label for="precio" class="col-sm-3 control-label">Precio venta</label>
+				<div class="col-sm-8">
+				  <input type="text" class="form-control" id="precio" name="precio" placeholder="Precio de venta al público" required pattern="^[0-9]{1,5}(\.[0-9]{0,2})?$" title="Ingresa sólo números con 0 ó 2 decimales" maxlength="8">
 				</div>
 			  </div>
 			 
