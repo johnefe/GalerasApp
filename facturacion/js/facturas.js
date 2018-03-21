@@ -9,11 +9,11 @@
 			$.ajax({
 				url:'./ajax/buscar_facturas.php?action=ajax&page='+page+'&q='+q,
 				 beforeSend: function(objeto){
-				 $('#loader').html('<img src="./img/ajax-loader.gif"> Cargando...');
+				 //$('#loader').html('<img src="./img/ajax-loader.gif"> Cargando...');
 			  },
 				success:function(data){
 					$(".outer_div").html(data).fadeIn('slow');
-					$('#loader').html('');
+					//$('#loader').html('');
 					$('[data-toggle="tooltip"]').tooltip({html:true}); 
 					
 				}

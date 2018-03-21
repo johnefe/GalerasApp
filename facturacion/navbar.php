@@ -1,46 +1,49 @@
-	<?php
-		if (isset($title))
-		{
-	?>
-<nav class="navbar navbar-default ">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Sys Galeras</a>
-    </div>
+  <?php
+    if (isset($title))
+    {
+  ?> 
+    <header>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md navbar-purple fixed-top bg-purple">
+        <a class="navbar-brand" href="#">SYS-GALERAS</a>
+        <button class="navbar-toggler icon-menu" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="fa fa-bars fa-1x"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item <?php echo $active_facturas;?>">
+              <a class="nav-link" href="facturas.php">Ventas <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item <?php echo $active_compras;?>">
+              <a class="nav-link" href="compras.php">Compras</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="productos.php">productos</a>
+            </li>
+            <li class="nav-item dropdown ">
+              <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Configuraciones</a>
+              <div class="dropdown-menu bg-purple sub-menu" aria-labelledby="dropdown01">
+                <a class="dropdown-item <?php echo $active_proveedores;?>" href="proveedores.php">Proveedores</a>
+                <a class="dropdown-item <?php echo $active_clientes;?>" href="clientes.php">Clientes</a>
+                <a class="dropdown-item" href="perfil.php">Mi perfil</a>
+                <a class="dropdown-item" href="usuarios.php">Usuarios</a>
+                <a class="dropdown-item" href="#">Soporte</a>
+              </div>
+            </li>
+            
+           
+          </ul>
+           <form class="form-inline my-2 my-lg-0">
+         
+            <a class="btn btn-logout cerrar my-2 my-sm-0" href="login.php?logout">Cerrar sesión</a>
+          
+          </form>
+        </div>
+      </nav>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="<?php echo $active_facturas;?>"><a href="facturas.php"><i class='glyphicon glyphicon-list-alt'></i> Ventas <span class="sr-only">(current)</span></a></li>
-        
-        <li class="<?php echo $active_compras;?>"><a href="compras.php"><i class='glyphicon glyphicon-barcode'></i> Compras</a></li>
+    </header>
+<?php  
+ }
 
-        <li class="<?php echo $active_productos;?>"><a href="productos.php"><i class='glyphicon glyphicon-barcode'></i> Productos</a></li>
-        
-        
-
-		    <li class="<?php echo $active_clientes;?>"><a href="clientes.php"><i class='glyphicon glyphicon-user'></i> Clientes</a></li>
-
-        <li class="<?php echo $active_proveedores;?>"><a href="proveedores.php"><i class='glyphicon glyphicon-barcode'></i> Proveedores</a></li>
-
-		    <li class="<?php echo $active_usuarios;?>"><a href="usuarios.php"><i  class='glyphicon glyphicon-lock'></i> Usuarios</a></li>
-
-		    <li class="<?php if(isset($active_perfil)){echo $active_perfil;}?>"><a href="perfil.php"><i  class='glyphicon glyphicon-cog'></i> Configuración</a></li>
-       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://obedalvarado.pw/contacto/" target='_blank'><i class='glyphicon glyphicon-envelope'></i> Soporte</a></li>
-		<li><a href="login.php?logout"><i class='glyphicon glyphicon-off'></i> Salir</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-	<?php
-		}
-	?>
+?>
+   

@@ -65,16 +65,16 @@
 		if ($numrows>0){
 			echo mysqli_error($con);
 			?>
-			<div class="table-responsive">
-			  <table class="table">
-				<tr  class="info">
-					<th>#</th>
+			<div class="table-responsive ">
+			  <table class="table table-striped table-facturas datos">
+				<tr  class="info header-table">
+					<th class="">#</th>
 					<th>Fecha</th>
 					<th>Cliente</th>
-					<th>Vendedor</th>
+					<th>Vendido por</th>
 					<th>Estado</th>
-					<th class='text-right'>Total</th>
-					<th class='text-right'>Acciones</th>
+					<th class='text-center'>Total</th>
+					<th class='text-center'>Acciones</th>
 					
 				</tr>
 				<?php
@@ -94,21 +94,21 @@
 					<tr>
 						<td><?php echo $numero_factura; ?></td>
 						<td><?php echo $fecha; ?></td>
-						<td><a href="#" data-toggle="tooltip" data-placement="top" title="<i class='glyphicon glyphicon-phone'></i> <?php echo $telefono_cliente;?><br><i class='glyphicon glyphicon-envelope'></i>  <?php echo $email_cliente;?>" ><?php echo $nombre_cliente;?></a></td>
+						<td><?php echo $nombre_cliente;?></td>
 						<td><?php echo $nombre_vendedor; ?></td>
 						<td><span class="label <?php echo $label_class;?>"><?php echo $text_estado; ?></span></td>
-						<td class='text-right'><?php echo number_format ($total_venta,2); ?></td>					
-					<td class="text-right">
-						<a href="editar_factura.php?id_factura=<?php echo $id_factura;?>" class='btn btn-default' title='Editar factura' ><i class="glyphicon glyphicon-edit"></i></a> 
-						<a href="#" class='btn btn-default' title='Descargar factura' onclick="imprimir_factura('<?php echo $id_factura;?>');"><i class="glyphicon glyphicon-download"></i></a> 
-						<a href="#" class='btn btn-default' title='Borrar factura' onclick="eliminar('<?php echo $numero_factura; ?>')"><i class="glyphicon glyphicon-trash"></i> </a>
+						<td class='text-center'><?php echo number_format ($total_venta,2); ?></td>					
+					<td class="text-center">
+						<a href="editar_factura.php?id_factura=<?php echo $id_factura;?>" class='btn btn-default' title='Editar factura' ><span class="fa fa-pencil-square-o fa-1x icono-table"></span></a> 
+						<a href="#" class='btn btn-default' title='Descargar factura' onclick="imprimir_factura('<?php echo $id_factura;?>');"><span class="fa fa-print fa-1x icono-table"></span></a> 
+						<a href="#" class='btn btn-default' title='Borrar factura' onclick="eliminar('<?php echo $numero_factura; ?>')"><span class="fa fa-trash fa-1x icono-table"></span> </a>
 					</td>
 						
 					</tr>
 					<?php
 				}
 				?>
-				<tr>
+				<tr class="header-table">
 					<td colspan=7><span class="pull-right"><?php
 					 echo paginate($reload, $page, $total_pages, $adjacents);
 					?></span></td>

@@ -23,12 +23,58 @@
   <body>
 	<?php
 	include("navbar.php");
-	?>  
+	?> 
+	 <section class="container bg-gris section-1">
+		<div class="row my-3   mx-0">
+			<div class="col-lg-12 ">
+				<div class="pt-md-3 pb-md-4">
+					<a href="facturas.php" class="btn btn-lg btn-new"><span class="fa fa-arrow-left fa-1x"></span></a>				   					    
+				 </div>		
+			</div>
+		</div>	
+	</section>
+	<section class="container bg-gris">
+		<div class="col-md-12 order-md-1">
+          <h4 class="mb-3">Datos del cliente</h4>
+          <form class="needs-validation" novalidate>
+            <div class="row">
+              <div class="col-lg-4 col-md-4 mb-3">
+                <label for="firstName">Cliente</label>
+                <input type="text" class="form-control" id="nombre_cliente" placeholder="Selecciona un cliente" required>
+                 <input id="id_cliente"  type='hidden'>
+                <div class="invalid-feedback">
+                  Se requiere un cliente, si no tiene ingrese anonimo
+                </div>
+              </div>
+
+              <div class="col-lg-4 col-md-4 mb-3">
+                <label for="firstName">Teléfono</label>
+                <input type="text" class="form-control" id="firstName" placeholder="" value="" readonly="">
+              </div>
+              <div class="col-lg-4 col-md-4 mb-3">
+                <label for="firstName">Correo</label>
+                <input type="text" class="form-control" id="firstName" placeholder="" value="" readonly="">
+              </div>
+              <div class="col-lg-4 col-md-4 mb-3">
+                <label for="firstName">Vendedor</label>
+                <input type="text" class="form-control" id="firstName" placeholder="" value="" readonly="">
+              </div><div class="col-lg-4 col-md-4 mb-3">
+                <label for="firstName">Fecha</label>
+                <input type="text" class="form-control" id="firstName" placeholder="" value="" readonly="">
+              </div><div class="col-lg-4 col-md-4 mb-3">
+                <label for="firstName">Pago</label>
+                <input type="text" class="form-control" id="firstName" placeholder="" value="" readonly="">
+              </div>
+
+          	</div>
+        	</form>
+    	</div>	
+	</section>
+
+
+
     <div class="container">
-	<div class="panel panel-info">
-		<div class="panel-heading">
-			<h4><i class='glyphicon glyphicon-edit'></i> Nueva Venta</h4>
-		</div>
+	<div class="">
 		<div class="panel-body">
 		<?php 
 			include("modal/buscar_productos.php");
@@ -39,22 +85,22 @@
 				<div class="form-group row">
 				  <label for="nombre_cliente" class="col-md-1 control-label">Cliente</label>
 				  <div class="col-md-3">
-					  <input type="text" class="form-control input-sm" id="nombre_cliente" placeholder="Selecciona un cliente" required>
-					  <input id="id_cliente" type='hidden'>	
+					  <input type="text" class="form-control input-sm input-form" id="nombre_cliente" placeholder="Selecciona un cliente" required>
+					  <input id="id_cliente"  type='hidden'>	
 				  </div>
 				  <label for="tel1" class="col-md-1 control-label">Teléfono</label>
 							<div class="col-md-2">
-								<input type="text" class="form-control input-sm" id="tel1" placeholder="Teléfono" readonly>
+								<input type="text" class="form-control input-sm input-form" id="tel1" placeholder="Teléfono" readonly>
 							</div>
 					<label for="mail" class="col-md-1 control-label">Email</label>
 							<div class="col-md-3">
-								<input type="text" class="form-control input-sm" id="mail" placeholder="Email" readonly>
+								<input type="text" class="form-control input-sm input-form" id="mail" placeholder="Email" readonly>
 							</div>
 				 </div>
 						<div class="form-group row">
 							<label for="empresa" class="col-md-1 control-label">Vendedor</label>
 							<div class="col-md-3">
-								<select class="form-control input-sm" id="id_vendedor">
+								<select class="form-control input-sm input-form" id="id_vendedor">
 									<?php
 										$sql_vendedor=mysqli_query($con,"select * from users order by lastname");
 										while ($rw=mysqli_fetch_array($sql_vendedor)){
@@ -74,11 +120,11 @@
 							</div>
 							<label for="tel2" class="col-md-1 control-label">Fecha</label>
 							<div class="col-md-2">
-								<input type="text" class="form-control input-sm" id="fecha" value="<?php echo date("d/m/Y");?>" readonly>
+								<input type="text" class="form-control input-sm input-form" id="fecha" value="<?php echo date("d/m/Y");?>" readonly>
 							</div>
 							<label for="email" class="col-md-1 control-label">Pago</label>
 							<div class="col-md-3">
-								<select class='form-control input-sm' id="condiciones">
+								<select class='form-control input-sm input-form' id="condiciones">
 									<option value="1">Efectivo</option>
 									<option value="2">Cheque</option>
 									<option value="3">Transferencia bancaria</option>

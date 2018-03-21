@@ -27,69 +27,7 @@ if ($login->isUserLoggedIn() == true) {
 } else {
     // the user is not logged in. you can do whatever you want here.
     // for demonstration purposes, we simply show the "you are not logged in" view.
-    ?>
-	<!--<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-  <title>Sys Galeras | Login</title>-->
-	<!-- Latest compiled and minified CSS -->
-	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">-->
-  <!-- CSS  -->
-   <!--<link href="css/login.css" type="text/css" rel="stylesheet" media="screen,projection"/>-->
-<!--</head>
-<body>
- <div class="container">
-        <div class="card card-container">
-            <img id="profile-img" class="profile-img-card" src="img/avatar_2x.png" />
-            <p id="profile-name" class="profile-name-card"></p>
-            <form method="post" accept-charset="utf-8" action="login.php" name="loginform" autocomplete="off" role="form" class="form-signin">-->
-			<?php
-				// show potential errors / feedback (from login object)
-				//if (isset($login)) {
-					//if ($login->errors) {
-						?>
-						<!--<div class="alert alert-danger alert-dismissible" role="alert">
-						    <strong>Error!</strong> -->
-						
-						<?php 
-						//foreach ($login->errors as $error) {
-							//echo $error;
-						//}
-						?>
-						<!--</div>-->
-						<?php
-					//}
-					//if ($login->messages) {
-						?>
-						<!--<div class="alert alert-success alert-dismissible" role="alert">
-						    <strong>Aviso!</strong>-->
-						<?php
-						///foreach ($login->messages as $message) {
-							//echo $message;
-						//}
-						?>
-						<!--</div> -->
-						<?php 
-					//}
-				//}
-				?>
-             <!--   <span id="reauth-email" class="reauth-email"></span>
-                <input class="form-control" placeholder="Usuario" name="user_name" type="text" value="" autofocus="" required>
-                <input class="form-control" placeholder="Contraseña" name="user_password" type="password" value="" autocomplete="off" required>
-                <button type="submit" class="btn btn-lg btn-success btn-block btn-signin" name="login" id="submit">Iniciar Sesión</button>
-            </form><!- /form -->
-            
-        <!--</div></card-container -->
-   <!-- </div></container -->
- <!-- </body>-->
-<!--</html>-->
-
-	<?php
-}
-
-
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -99,32 +37,68 @@ if ($login->isUserLoggedIn() == true) {
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Signin Template for Bootstrap</title>
+    <title>Sys-Galeras | Login</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../../../../dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link href="css/login.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   </head>
 
   <body class="text-center">
-    <form class="form-signin">
+    <form method="post" accept-charset="utf-8" action="login.php" name="loginform" autocomplete="off" role="form" class="form-signin" >
+      
+        <?php
+        //show potential errors / feedback (from login object)
+        if (isset($login)) {
+          if ($login->errors) {
+            ?>
+            <div class="alert alert-danger alert-dismissible" role="alert" style="font-size: 13px; text-align: center;">
+                <strong>Error!</strong><br>
+                Nombre de usuario o contraseña incorrectos.
+            
+            <?php 
+            foreach ($login->errors as $error) {
+              //echo $error;
+            }
+            ?>
+            </div>
+            <?php
+          }
+          if ($login->messages) {
+            ?>
+            <div class="alert alert-secondary alert-dismissible " role="alert" style="font-size: 15px; text-align: center;">
+                <strong>Aviso!</strong>
+            <?php
+            foreach ($login->messages as $message) {
+              echo $message;
+            }
+            ?>
+            </div> 
+            <?php 
+          }
+        }
+        ?>
+
       <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-      <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <h1 class="h3 mb-3 font-weight-normal">SYS-GALERAS 2018</h1>
+      <label for="user_name" class="sr-only">Nombre de usuario</label>
+      <input type="text" id="user_name" name="user_name" class="form-control py-2 my-2" placeholder="Nombre de usuario" required autofocus>
+      <label for="inputPassword" class="sr-only">Contraseña</label>
+      <input type="password" id="user_password" name="user_password" class="form-control py-2 my-2" placeholder="Contraseña" required>
       <div class="checkbox mb-3">
         <label>
-          <input type="checkbox" value="remember-me"> Remember me
+          <input type="checkbox" value="remember-me"> Recordarme
         </label>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+      <button class="btn btn-lg btn-primary btn-block" name="login" id="submit" type="submit">Inicia Sesión</button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2018 | Pasto,Nariño</p>
     </form>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   </body>
 </html>
-
+  <?php
+}
 

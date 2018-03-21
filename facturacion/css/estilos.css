@@ -1,0 +1,117 @@
+/*
+font-family: 'Montserrat', sans-serif;
+font-family: 'Lato', sans-serif;
+font-family: 'Roboto Condensed', sans-serif;
+font-family: 'IBM Plex Sans', sans-serif;
+font-family: 'Raleway', sans-serif;
+
+*/
+
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Lato|Montserrat|Raleway|Roboto+Condensed');
+.section-1{
+	padding-bottom: 0px;
+	margin-top: 50px;
+}
+
+/*------ fondos---------*/
+.bg-purple{
+	background: #283593;
+}
+
+.bg-cafe{
+	background: #EFEBE9;
+}
+
+.bg-gris{
+	background: #FAFAFA;
+}
+
+/*.................*/
+.navbar-purple{
+	border-top: 7px solid #12005e;
+	color:#eee;
+}
+.navbar-purple a{
+	color: #fff;
+	font-family: 'Raleway', sans-serif;
+}
+/*-----botones---------------*/
+
+.btn-logout{
+	border: 1px solid #FFCA28;
+	background: #283593;
+	color: #FFCA28;
+}
+.btn-new{
+	border: 1px solid #283593;;
+	color: #283593;;
+	text-decoration: none;
+}
+.btn-new:hover{
+	color:#283593;
+}
+.datos{
+
+	border:1px solid #3949AB;
+}
+
+.header-table{
+	background: #3F51B5!important;
+	border:none !important;
+	color: #fff;
+	font-family: 'Raleway', sans-serif;
+}
+.header-table th{
+	font-family: 'Raleway', sans-serif;
+}
+.header-table span{
+	padding: 0 !important;
+}
+.icono-table{
+	color:#424242;
+}
+/*
+font-family: 'Lato', sans-serif;
+font-family: 'Roboto Condensed', sans-serif;
+font-family: 'IBM Plex Sans', sans-serif;
+font-family: 'Raleway', sans-serif;
+*/
+.table-facturas{
+	border:none !important;
+}
+/*-------------------------*/
+.cerrar{
+	color: #FFCA28 !important;
+}
+
+.sub-menu{
+	border-top: 1px solid #283593;
+}
+.active{
+	background: #3F51B5;
+}
+.sub-menu .active{
+	background: #3F51B5;
+}
+.icon-menu{
+	color: #FFCA28 !important;
+	border: 1px solid #FFCA28 !important;
+	background:#283593;
+} 
+.icono{
+	color: #FFCA28 !important;
+	background: #FFCA28;
+}
+/*---------- footer--------------*/
+
+.pie{
+	background: #1A237E;
+	border-bottom: 5px solid #12005e;
+	color:#eee;
+}
+/*------------inputs------------------*/
+.input-form{
+	border:1px solid #283593;
+}
+
+/*----------------------------*/
