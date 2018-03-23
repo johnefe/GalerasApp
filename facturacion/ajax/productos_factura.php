@@ -48,7 +48,7 @@
 			?>
 			<div class="table-responsive">
 			  <table class="table table-striped table-facturas datos">
-				<tr  class="warning">
+				<tr  class="info header-table">
 					<th>Código</th>
 					<th>Producto</th>
 					<th><span class="pull-right">Cant.</span></th>
@@ -78,7 +78,7 @@
 					<?php
 				}
 				?>
-				<tr>
+				<tr class="header-table">
 					<td colspan=5><span class="pull-right">
 					<?php
 					 echo paginate($reload, $page, $total_pages, $adjacents);

@@ -27,7 +27,7 @@
 		<div class="row my-5   mx-0">
 			<div class="col-lg-12 my-3 ">
 					<div class="pt-md-3 pb-md-4">
-					    <h1 class="bd-title mt-0">Módulo de ventas</h1>
+					    <h1 class="bd-title mt-0">Módulo Ventas</h1>
 					    <p class="bd-lead">Aqui puedes realizar una nueva venta o pueder buscar una venta realizada a un cliente en especifico</p>
 					    <a href="nueva_factura.php" class="btn btn-lg btn-new">Realizar una nueva venta</a>
 					  </div>

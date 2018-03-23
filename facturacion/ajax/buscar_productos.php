@@ -79,7 +79,7 @@
 			?>
 			<div class="table-responsive">
 			  <table class="table table-striped table-facturas datos">
-				<tr  class="info">
+				<tr  class="info header-table">
 					<th>Código</th>
 					<th>Producto</th>
 					<th>Stock</th>
@@ -112,9 +112,9 @@
 
 					<input type="hidden" value="<?php echo $status_producto;?>" id="estado<?php echo $id_producto;?>">
 
-					<input type="hidden" value="<?php echo number_format($precio_producto,2,'.','');?>" id="precio_producto<?php echo $id_producto;?>">
+					<input type="hidden" value="<?php echo number_format($precio_producto,0,'.','');?>" id="precio_producto<?php echo $id_producto;?>">
 
-					<input type="hidden" value="<?php echo number_format($precio_compra,2,'.','');?>" id="precio_compra<?php echo $id_producto;?>">
+					<input type="hidden" value="<?php echo number_format($precio_compra,0,'.','');?>" id="precio_compra<?php echo $id_producto;?>">
 					<tr>
 						
 						<td><?php echo $codigo_producto; ?></td>
@@ -122,18 +122,18 @@
 						<td ><?php echo $stock_producto; ?></td>
 						<td><?php echo $estado;?></td>
 						<td><?php echo $date_added;?></td>
-						<td><span class='pull-right'><?php echo number_format($precio_producto,2);?></span></td>
-						<td><span class='pull-right'><?php echo number_format($precio_compra,2);?></span></td>
+						<td><span class='pull-right'><?php echo number_format($precio_producto,0);?></span></td>
+						<td><span class='pull-right'><?php echo number_format($precio_compra,0);?></span></td>
 					<td ><span class="pull-right">
-					<a href="#" class='btn btn-default' title='Editar producto' onclick="obtener_datos('<?php echo $id_producto;?>');" data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-edit"></i></a> 
-					<a href="#" class='btn btn-default' title='Borrar producto' onclick="eliminar('<?php echo $id_producto; ?>')"><i class="glyphicon glyphicon-trash"></i> </a></span></td>
+					<a href="#" class='btn btn-default' title='Editar producto' onclick="obtener_datos('<?php echo $id_producto;?>');" data-toggle="modal" data-target="#myModal2"><span class="fa fa-pencil-square-o fa-1x icono-table"></span></a> 
+					<a href="#" class='btn btn-default' title='Borrar producto' onclick="eliminar('<?php echo $id_producto; ?>')"><span class="fa fa-trash fa-1x icono-table"></span> </a></span></td>
 						
 					</tr>
 					<?php
 				}
 				?>
-				<tr>
-					<td colspan=6><span class="pull-right">
+				<tr class="header-table">
+					<td colspan=8><span class="pull-right">
 					<?php
 					 echo paginate($reload, $page, $total_pages, $adjacents);
 					?></span></td>

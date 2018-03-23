@@ -43,7 +43,7 @@
 			?>
 			<div class="table-responsive">
 			  <table class="table table-striped table-facturas datos">
-				<tr  class="warning">
+				<tr  class="info header-table">
 					<th>id</th>
 					<th>Código</th>
 					<th>Producto</th>
@@ -70,13 +70,13 @@
 						<td class='col-xs-2'><div class="pull-right">
 						<input type="text" class="form-control" style="text-align:right" id="precio_compra_<?php echo $id_producto; ?>"  value="<?php echo $precio_compra;?>" >
 						</div></td>
-						<td class='text-center'><a class='btn btn-info'href="#" onclick="agregar('<?php echo $id_producto ?>')"><i class="glyphicon glyphicon-plus"></i></a></td>
+						<td class='text-center'><a class='btn btn-info'href="#" onclick="agregar('<?php echo $id_producto ?>')"><i class="fa fa-plus fa-1x"></i></a></td>
 					</tr>
 					<?php
 				}
 				?>
-				<tr>
-					<td colspan=5><span class="pull-right">
+				<tr class="header-table">
+					<td colspan=7><span class="pull-right">
 					<?php
 					 echo paginate($reload, $page, $total_pages, $adjacents);
 					?></span></td>

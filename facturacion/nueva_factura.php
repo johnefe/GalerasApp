@@ -103,7 +103,7 @@
 						 <span class="glyphicon glyphicon-plus"></span> Nuevo producto
 						</button>-->
 						<button type="button" class="btn btn-lg btn-new" data-toggle="modal" data-target="#nuevoCliente">
-						 <span class="glyphicon glyphicon-user"></span> Nuevo cliente
+						 <span class="fa fa-user fa-1x"></span> Nuevo cliente
 						</button>
 						<button type="button" class="btn btn-lg btn-new" data-toggle="modal" data-target="#myModal">
 						 <span class="glyphicon glyphicon-search"></span> Agregar productos

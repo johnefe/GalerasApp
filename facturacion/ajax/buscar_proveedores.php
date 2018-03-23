@@ -78,8 +78,8 @@
 			
 			?>
 			<div class="table-responsive">
-			  <table class="table">
-				<tr  class="info">
+			  <table class="table table-striped table-facturas datos">
+				<tr  class="info header-table">
 					<th>Nombre</th>
 					<th>Teléfono</th>
 					<th>Email</th>
@@ -119,14 +119,14 @@
 						<td><?php echo $date_added;?></td>
 						
 					<td ><span class="pull-right">
-					<a href="#" class='btn btn-default' title='Editar proveedor' onclick="obtener_datos('<?php echo $id_proveedor;?>');" data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-edit"></i></a> 
+					<a href="#" class='btn btn-default' title='Editar proveedor' onclick="obtener_datos('<?php echo $id_proveedor;?>');" data-toggle="modal" data-target="#myModal2"><span class="fa fa-pencil-square-o fa-1x icono-table"></span></a> 
 					<a href="#" class='btn btn-default' title='Borrar proveedor' onclick="eliminar('<?php echo $id_proveedor; ?>')"><i class="glyphicon glyphicon-trash"></i> </a></span></td>
 						
 					</tr>
 					<?php
 				}
 				?>
-				<tr>
+				<tr class="header-table">
 					<td colspan=7><span class="pull-right">
 					<?php
 					 echo paginate($reload, $page, $total_pages, $adjacents);

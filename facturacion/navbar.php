@@ -20,6 +20,12 @@
             <li class="nav-item <?php echo $active_productos;?>">
               <a class="nav-link" href="productos.php">productos</a>
             </li>
+            <li class="nav-item <?php echo $active_proveedores;?>">
+              <a class="nav-link" href="proveedores.php">Proveedores</a>
+            </li>
+            <li class="nav-item <?php echo $active_clientes;?>">
+              <a class="nav-link" href="clientes.php">Clientes</a>
+            </li>
             <li class="nav-item dropdown ">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Configuraciones</a>
               <div class="dropdown-menu bg-purple sub-menu" aria-labelledby="dropdown01">
