@@ -17,11 +17,11 @@
             <li class="nav-item <?php echo $active_compras;?>">
               <a class="nav-link" href="compras.php">Compras</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item <?php echo $active_productos;?>">
               <a class="nav-link" href="productos.php">productos</a>
             </li>
             <li class="nav-item dropdown ">
-              <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Configuraciones</a>
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Configuraciones</a>
               <div class="dropdown-menu bg-purple sub-menu" aria-labelledby="dropdown01">
                 <a class="dropdown-item <?php echo $active_proveedores;?>" href="proveedores.php">Proveedores</a>
                 <a class="dropdown-item <?php echo $active_clientes;?>" href="clientes.php">Clientes</a>
@@ -29,8 +29,7 @@
                 <a class="dropdown-item" href="usuarios.php">Usuarios</a>
                 <a class="dropdown-item" href="#">Soporte</a>
               </div>
-            </li>
-            
+            </li>           
            
           </ul>
            <form class="form-inline my-2 my-lg-0">

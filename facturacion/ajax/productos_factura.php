@@ -47,7 +47,7 @@
 			
 			?>
 			<div class="table-responsive">
-			  <table class="table">
+			  <table class="table table-striped table-facturas datos">
 				<tr  class="warning">
 					<th>Código</th>
 					<th>Producto</th>
@@ -60,7 +60,7 @@
 					$id_producto=$row['id_producto'];
 					$codigo_producto=$row['codigo_producto'];
 					$nombre_producto=$row['nombre_producto'];
-					$precio_venta=$row["precio_producto"];
+					$precio_venta=$row["precio_compra"];
 					$precio_venta=number_format($precio_venta,2,'.','');
 					?>
 					<tr>
@@ -73,7 +73,7 @@
 						<td class='col-xs-2'><div class="pull-right">
 						<input type="text" class="form-control" style="text-align:right" id="precio_venta_<?php echo $id_producto; ?>"  value="<?php echo $precio_venta;?>" >
 						</div></td>
-						<td class='text-center'><a class='btn btn-info'href="#" onclick="agregar('<?php echo $id_producto ?>')"><i class="glyphicon glyphicon-plus"></i></a></td>
+						<td class='text-center'><a class='btn btn-info'href="#" onclick="agregar('<?php echo $id_producto ?>')"><i class="fa fa-plus fa-1x"></i></a></td>
 					</tr>
 					<?php
 				}

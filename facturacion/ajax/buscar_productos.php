@@ -78,7 +78,7 @@
 			$simbolo_moneda=get_row('perfil','moneda', 'id_perfil', 1);
 			?>
 			<div class="table-responsive">
-			  <table class="table">
+			  <table class="table table-striped table-facturas datos">
 				<tr  class="info">
 					<th>Código</th>
 					<th>Producto</th>

@@ -63,15 +63,15 @@
 			echo mysqli_error($con);
 			?>
 			<div class="table-responsive">
-			  <table class="table">
-				<tr  class="info">
+			  <table class="table table-striped table-facturas datos">
+				<tr  class="info header-table">
 					<th>#</th>
 					<th>Fecha</th>
 					<th>proveedor</th>
 					<th>Vendedor</th>
 					<th>Estado</th>
-					<th class='text-right'>Total</th>
-					<th class='text-right'>Acciones</th>
+					<th class='text-center'>Total</th>
+					<th class='text-center'>Acciones</th>
 					
 				</tr>
 				<?php
@@ -91,21 +91,21 @@
 					<tr>
 						<td><?php echo $numero_compra; ?></td>
 						<td><?php echo $fecha; ?></td>
-						<td><a href="#" data-toggle="tooltip" data-placement="top" title="<i class='glyphicon glyphicon-phone'></i> <?php echo $telefono_proveedor;?><br><i class='glyphicon glyphicon-envelope'></i>  <?php echo $email_proveedor;?>" ><?php echo $nombre_proveedor;?></a></td>
+						<td><?php echo $nombre_proveedor;?></td>
 						<td><?php echo $nombre_vendedor;?></td>
 						<td><span class="label <?php echo $label_class;?>"><?php echo $text_estado; ?></span></td>
 						<td class='text-right'><?php echo number_format ($total_compra,2); ?></td>					
 					<td class="text-right">
-						<a href="editar_compra.php?id_compra=<?php echo $id_compra;?>" class='btn btn-default' title='Editar compra' ><i class="glyphicon glyphicon-edit"></i></a> 
-						<a href="#" class='btn btn-default' title='Descargar facctura de compra' onclick="imprimir_compra('<?php echo $id_compra;?>');"><i class="glyphicon glyphicon-download"></i></a> 
-						<a href="#" class='btn btn-default' title='Borrar compra' onclick="eliminar('<?php echo $numero_compra; ?>')"><i class="glyphicon glyphicon-trash"></i> </a>
+						<a href="editar_compra.php?id_compra=<?php echo $id_compra;?>" class='btn btn-default' title='Editar compra' ><span class="fa fa-pencil-square-o fa-1x icono-table"></a> 
+						<a href="#" class='btn btn-default' title='Descargar facctura de compra' onclick="imprimir_compra('<?php echo $id_compra;?>');"><span class="fa fa-print fa-1x icono-table"></span></a> 
+						<a href="#" class='btn btn-default' title='Borrar compra' onclick="eliminar('<?php echo $numero_compra; ?>')"><span class="fa fa-trash fa-1x icono-table"></span> </a>
 					</td>
 						
 					</tr>
 					<?php
 				}
 				?>
-				<tr>
+				<tr class="header-table">
 					<td colspan=7><span class="pull-right"><?php
 					 echo paginate($reload, $page, $total_pages, $adjacents);
 					?></span></td>

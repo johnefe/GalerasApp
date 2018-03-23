@@ -34,8 +34,8 @@ $delete=mysqli_query($con, "DELETE FROM tmp WHERE id_tmp='".$id_tmp."'");
 }
 $simbolo_moneda=get_row('perfil','moneda', 'id_perfil', 1);
 ?>
-<table class="table table-hover">
-<tr>
+<table class="table table-striped table-facturas datos">
+<tr class="info header-table">
 	<th class='text-center'>CODIGO</th>
 	<th class='text-center'>CANT.</th>
 	<th>DESCRIPCION</th>
@@ -69,7 +69,7 @@ $simbolo_moneda=get_row('perfil','moneda', 'id_perfil', 1);
 			<td><?php echo $nombre_producto;?></td>
 			<td class='text-right'><?php echo $precio_venta_f;?></td>
 			<td class='text-right'><?php echo $precio_total_f;?></td>
-			<td class='text-center'><a href="#" onclick="eliminar('<?php echo $id_tmp ?>')"><i class="glyphicon glyphicon-trash"></i></a></td>
+			<td class='text-center'><a href="#" onclick="eliminar('<?php echo $id_tmp ?>')"><i class="fa fa-trash fa-1x icono-table"></i></a></td>
 		</tr>		
 		<?php
 	}
@@ -91,7 +91,7 @@ $simbolo_moneda=get_row('perfil','moneda', 'id_perfil', 1);
 	<td class='text-right'><?php// echo number_format($total_iva,2);?></td>
 	<td></td>
 </tr>-->
-<tr>
+<tr class="header-table">
 	<td class='text-right' colspan=4>TOTAL <?php echo $simbolo_moneda;?></td>
 	<td class='text-right'><?php echo number_format($total_factura,2);?></td>
 	<td></td>

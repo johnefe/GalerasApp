@@ -42,7 +42,7 @@
 			
 			?>
 			<div class="table-responsive">
-			  <table class="table">
+			  <table class="table table-striped table-facturas datos">
 				<tr  class="warning">
 					<th>id</th>
 					<th>Código</th>

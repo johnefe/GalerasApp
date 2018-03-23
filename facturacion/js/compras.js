@@ -14,7 +14,7 @@ $(document).ready(function(){
 				success:function(data){
 					$(".outer_div").html(data).fadeIn('slow');
 					$('#loader').html('');
-					$('[data-toggle="tooltip"]').tooltip({html:true}); 
+					//$('[data-toggle="tooltip"]').tooltip({html:true}); 
 					
 				}
 			})

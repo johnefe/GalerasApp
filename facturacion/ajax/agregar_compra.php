@@ -42,7 +42,7 @@ $delete=mysqli_query($con, "DELETE FROM tmp_compras WHERE id_tmp='".$id_tmp."'")
 }
 $simbolo_moneda=get_row('perfil','moneda', 'id_perfil', 1);
 ?>
-<table class="table">
+<table class="table table-striped table-facturas datos">
 <tr>
 	<th class='text-center'>CODIGO</th>
 	<th class='text-center'>CANT.</th>

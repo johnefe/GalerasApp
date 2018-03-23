@@ -23,29 +23,53 @@
   <body>
 	<?php
 	include("navbar.php");
-	?>  
-    <div class="container">
-	<div class="panel panel-info">
-		<div class="panel-heading">
-			<h4><i class='glyphicon glyphicon-edit'></i> Nueva Compra</h4>
-		</div>
-		<div class="panel-body">
+	?> 
+	 <section class="container bg-gris section-1">
+		<div class="row my-5   mx-0">
+			<div class="col-lg-12 my-3 ">
+				<div class="pt-md-3 pb-md-4">
+					<a href="compras.php" class="btn btn-lg btn-new"><span class="fa fa-arrow-left fa-1x"></span></a>				   					    
+				 </div>		
+			</div>
+		</div>	
+	</section>
+	<section class="container bg-gris">
+		<div class="col-md-12 order-md-1">
+          <h4 class="mb-3">Datos del proveedor</h4>
+
+          <form class="needs-validation" ole="form" id="datos_factura">
+            <div class="row">
+              
+             <div class="panel-body">
 		<?php 
 			include("modal/buscar_productos.php");
 			include("modal/registro_proveedores.php");
 			include("modal/registro_productos.php");
 		?>
 			<form class="form-horizontal" role="form" id="datos_compra">
+				
+				<div class="row">
+
+				<div class="col-lg-4 col-md-4 mb-3">
+	                <label for="nombre_proveedor">Proveedor</label>
+	                <input type="text" class="form-control" id="nombre_proveedor" placeholder="Selecciona un proveedor" required>
+	                 <input id="id_proveedor"  type='hidden'>
+	                <div class="invalid-feedback">
+	                  Se requiere un cliente, si no tiene ingrese anonimo
+	                </div>
+	             </div>
+	             <div class="col-lg-4 col-md-4 mb-3">
+	                <label for="tel1">Teléfono</label>
+	                <input type="text" class="form-control" id="tel1" placeholder="Teléfono" readonly>
+	              </div>
+
+				
+
+				</div>
+<!-- ********************************************************************* -->
 				<div class="form-group row">
-				  <label for="nombre_proveedor" class="col-md-1 control-label">Proveedor</label>
-				  <div class="col-md-3">
-					  <input type="text" class="form-control input-sm" id="nombre_proveedor" placeholder="Selecciona un proveedor" required>
-					  <input id="id_proveedor" type='hidden'>	
-				  </div>
-				  <label for="tel1" class="col-md-1 control-label">Teléfono</label>
-							<div class="col-md-2">
-								<input type="text" class="form-control input-sm" id="tel1" placeholder="Teléfono" readonly>
-							</div>
+				  
+		
 					<label for="mail" class="col-md-1 control-label">Email</label>
 							<div class="col-md-3">
 								<input type="text" class="form-control input-sm" id="mail" placeholder="Email" readonly>
@@ -108,16 +132,30 @@
 			
 		<div id="resultados" class='col-md-12' style="margin-top:10px"></div><!-- Carga los datos ajax -->			
 		</div>
-	</div>		
-		  <div class="row-fluid">
-			<div class="col-md-12">
-			
-	
+           
+          	</div>
+          	<!--<div class="row">
+          		<div class="col-md-12 order-md-1">
+			<div class="pull-right">
+						<button type="button" class="btn btn-lg btn-new" data-toggle="modal" data-target="#nuevoProducto">
+						 <span class="glyphicon glyphicon-plus"></span> Nuevo producto
+						</button>
+						<button type="button" class="btn btn-lg btn-new" data-toggle="modal" data-target="#nuevoProveedor">
+						 <span class="glyphicon glyphicon-user"></span> Nuevo proveedor
+						</button>
+						<button type="button" class="btn btn-lg btn-new" data-toggle="modal" data-target="#myModal">
+						 <span class="glyphicon glyphicon-search"></span> Agregar productos
+						</button>
+						<button type="submit" class="btn btn-lg btn-new" title="Guardar e imprimir">Guardar e Imprimir </button>
+					</div>	
+		</div>
+          	</div>-->
+          </form>
+    	</div>	
+	</section>
 
-			
-			</div>	
-		 </div>
-	</div>
+<!--********************* -->
+  
 	<hr>
 	<?php
 	include("footer.php");

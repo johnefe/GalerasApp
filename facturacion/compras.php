@@ -24,28 +24,37 @@
 	<?php
 	include("navbar.php");
 	?>  
-    <div class="container">
-		<div class="panel panel-info">
-		<div class="panel-heading">
-		    <div class="btn-group pull-right">
-				<a  href="nueva_compra.php" class="btn btn-info"><span class="glyphicon glyphicon-plus" ></span> Nueva compra</a>
+	<section class="container bg-gris section-1">
+		<div class="row my-5   mx-0">
+			<div class="col-lg-12 my-3 ">
+					<div class="pt-md-3 pb-md-4">
+					    <h1 class="bd-title mt-0">Módulo Compras</h1>
+					    <p class="bd-lead">Aqui puedes realizar una nueva compra a un proveedor o pueder buscar una compra realizada a un proveedor en especifico</p>
+					    <a href="nueva_compra.php" class="btn btn-lg btn-new">Realizar una nueva compra</a>
+					  </div>
+				
 			</div>
-			<h4><i class='glyphicon glyphicon-th'></i> MODULO DE COMPRAS</h4>
+
 		</div>
-			<div class="panel-body">
+		
+	</section>
+    <section class="container">
+		<div class="panel panel-info">
+		
+			<div class="">
 				<form class="form-horizontal" role="form" id="datos_cotizacion">
 				
 						<div class="form-group row">
 							
-							<div class="col-md-10">
+							<div class="col-lg-11 col-md-11 col-sm-11">
 								<input type="text" class="form-control" id="q" placeholder="Escribir nombre del proveedor o número de Factura de Compra" onkeyup='load(1);'>
 							</div>
 							
 							
 							
-							<div class="col-md-2">
+							 <div class="col-lg-1 col-md-1 col-sm-1 text-left">
 								<button type="button" class="btn btn-default" onclick='load(1);'>
-									<span class="glyphicon glyphicon-search" ></span> Buscar</button>
+									<span class="fa fa-search fa-1x" ></span></button>
 								<span id="loader"></span>
 							</div>
 							
@@ -59,7 +68,7 @@
 			</div>
 		</div>	
 		
-	</div>
+	</section>
 	<hr>
 	<?php
 	include("footer.php");

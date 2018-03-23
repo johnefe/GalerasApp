@@ -13,7 +13,7 @@
 			  },
 				success:function(data){
 					$(".outer_div").html(data).fadeIn('slow');
-					//$('#loader').html('');
+					$('#loader').html('');
 					$('[data-toggle="tooltip"]').tooltip({html:true}); 
 					
 				}
