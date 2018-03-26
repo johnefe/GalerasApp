@@ -29,6 +29,9 @@
             <li class="nav-item <?php echo $active_clientes;?>">
               <a class="nav-link" href="clientes.php">Clientes</a>
             </li>
+            <li class="nav-item <?php echo $active_estadisticas;?>">
+              <a class="nav-link" href="estadisticas.php">Estadísticas</a>
+            </li>
             <?php if($usuario==1){ ?>
             <li class="nav-item <?php echo $active_usuarios;?>">
               <a class="nav-link" href="usuarios.php">Usuario</a>

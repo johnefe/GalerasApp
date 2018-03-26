@@ -16,9 +16,7 @@ if (isset($_POST['precio_compra'])){
 	require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 	//Archivo de funciones PHP
 	include("../funciones.php");
-//echo($id);
-//echo($cantidad);
-//echo($precio_compra);
+
 if (!empty($id) and !empty($cantidad) and !empty($precio_compra))
 {
 	$select_tmp=mysqli_query($con,"SELECT* FROM tmp_compras where id_producto='".$id."'");

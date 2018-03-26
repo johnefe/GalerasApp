@@ -138,7 +138,7 @@ while ($row=mysqli_fetch_array($sql))
 	$precio_total_f=number_format($precio_total,0);//Precio total formateado
 	$precio_total_r=str_replace(",","",$precio_total_f);//Reemplazo las comas
 	$sumador_total+=$precio_total_r;//Sumador
-	if ($nums%2==0){
+	if ($nums%1==0){
 		$clase="clouds";
 	} else {
 		$clase="silver";
@@ -174,8 +174,8 @@ while ($row=mysqli_fetch_array($sql))
 ?>
 	  
         <tr>
-            <td colspan="3" style="widtd: 85%; text-align: right;">TOTAL <?php echo $simbolo_moneda;?> </td>
-            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_factura,0);?></td>
+            <td colspan="3" style="width:  85%; text-align: right;">TOTAL <?php echo $simbolo_moneda;?> </td>
+            <td style="width: 15%; text-align: right;"> <?php echo number_format($total_factura,0);?></td>
         </tr>
     </table>
 	
