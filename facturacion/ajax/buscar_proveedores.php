@@ -120,7 +120,7 @@
 						
 					<td ><span class="pull-right">
 					<a href="#" class='btn btn-default' title='Editar proveedor' onclick="obtener_datos('<?php echo $id_proveedor;?>');" data-toggle="modal" data-target="#myModal2"><span class="fa fa-pencil-square-o fa-1x icono-table"></span></a> 
-					<a href="#" class='btn btn-default' title='Borrar proveedor' onclick="eliminar('<?php echo $id_proveedor; ?>')"><i class="glyphicon glyphicon-trash"></i> </a></span></td>
+					<a href="#" class='btn btn-default' title='Borrar proveedor' onclick="eliminar('<?php echo $id_proveedor; ?>')"><span class="fa fa-trash fa-1x icono-table"></span> </a></span></td>
 						
 					</tr>
 					<?php

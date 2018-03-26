@@ -57,17 +57,25 @@
   <body>
 	<?php
 	include("navbar.php");
-	?>  
+	include("modal/buscar_productos.php");
+	include("modal/registro_proveedores.php");
+	include("modal/registro_productos.php");
+	?> 
+	<section class="container bg-gris section-1">
+		<div class="row my-5   mx-0">
+			<div class="col-lg-12 my-3 ">
+				<div class="pt-md-3 pb-md-4">
+					<a href="compras.php" class="btn btn-lg btn-new"><span class="fa fa-arrow-left fa-1x"></span></a>				   					    
+				 </div>		
+			</div>
+		</div>	
+	</section> 
     <div class="container">
 	<div class="panel panel-info">
-		<div class="panel-heading">
-			<h4><i class='glyphicon glyphicon-edit'></i> Editar Compra</h4>
-		</div>
+		
 		<div class="panel-body">
 		<?php 
-			include("modal/buscar_productos.php");
-			include("modal/registro_proveedores.php");
-			include("modal/registro_productos.php");
+			
 		?>
 			<form class="form-horizontal" role="form" id="datos_factura">
 				<div class="form-group row">
@@ -133,12 +141,6 @@
 						<button type="submit" class="btn btn-default">
 						  <span class="glyphicon glyphicon-refresh"></span> Actualizar datos
 						</button>
-						<!--<button type="button" class="btn btn-default" data-toggle="modal" data-target="#nuevoProducto">
-						 <span class="glyphicon glyphicon-plus"></span> Nuevo producto
-						</button>-->
-						<!--<button type="button" class="btn btn-default" data-toggle="modal" data-target="#nuevoProveedor">
-						 <span class="glyphicon glyphicon-user"></span> Nuevo Proveedor
-						</button>-->
 						<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
 						 <span class="glyphicon glyphicon-search"></span> Agregar productos
 						</button>

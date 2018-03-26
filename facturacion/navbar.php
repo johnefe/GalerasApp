@@ -1,9 +1,12 @@
   <?php
+  $usuario=$_SESSION['user_id']; 
     if (isset($title))
     {
+
   ?> 
     <header>
       <!-- Fixed navbar -->
+
       <nav class="navbar navbar-expand-md navbar-purple fixed-top bg-purple">
         <a class="navbar-brand" href="#">SYS-GALERAS</a>
         <button class="navbar-toggler icon-menu" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,16 +29,17 @@
             <li class="nav-item <?php echo $active_clientes;?>">
               <a class="nav-link" href="clientes.php">Clientes</a>
             </li>
-            <li class="nav-item dropdown ">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Configuraciones</a>
-              <div class="dropdown-menu bg-purple sub-menu" aria-labelledby="dropdown01">
-                <a class="dropdown-item <?php echo $active_proveedores;?>" href="proveedores.php">Proveedores</a>
-                <a class="dropdown-item <?php echo $active_clientes;?>" href="clientes.php">Clientes</a>
-                <a class="dropdown-item" href="perfil.php">Mi perfil</a>
-                <a class="dropdown-item" href="usuarios.php">Usuarios</a>
-                <a class="dropdown-item" href="#">Soporte</a>
-              </div>
-            </li>           
+            <?php if($usuario==1){ ?>
+            <li class="nav-item <?php echo $active_usuarios;?>">
+              <a class="nav-link" href="usuarios.php">Usuario</a>
+            </li>
+            <?php  } ?>
+             <?php if($usuario==1){ ?>
+            <li class="nav-item <?php echo $active_perfil;?>">
+              <a class="nav-link" href="perfil.php">Mi perfil</a>
+            </li>
+            <?php  } ?>
+                     
            
           </ul>
            <form class="form-inline my-2 my-lg-0">

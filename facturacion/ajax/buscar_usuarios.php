@@ -1,10 +1,5 @@
 <?php
 
-	/*-------------------------
-	Autor: Obed Alvarado
-	Web: obedalvarado.pw
-	Mail: info@obedalvarado.pw
-	---------------------------*/
 	/* Connect To Database*/
 	require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 	require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
@@ -82,8 +77,8 @@
 			
 			?>
 			<div class="table-responsive">
-			  <table class="table">
-				<tr  class="info">
+			  <table class="table table-striped table-facturas datos">
+				<tr  class="info header-table">
 					<th>ID</th>
 					<th>Nombres</th>
 					<th>Usuario</th>
@@ -115,15 +110,15 @@
 						<td><?php echo $date_added;?></td>
 						
 					<td ><span class="pull-right">
-					<a href="#" class='btn btn-default' title='Editar usuario' onclick="obtener_datos('<?php echo $user_id;?>');" data-toggle="modal" data-target="#myModal2"><i class="glyphicon glyphicon-edit"></i></a> 
-					<a href="#" class='btn btn-default' title='Cambiar contraseña' onclick="get_user_id('<?php echo $user_id;?>');" data-toggle="modal" data-target="#myModal3"><i class="glyphicon glyphicon-cog"></i></a>
-					<a href="#" class='btn btn-default' title='Borrar usuario' onclick="eliminar('<? echo $user_id; ?>')"><i class="glyphicon glyphicon-trash"></i> </a></span></td>
+					<a href="#" class='btn btn-default' title='Editar usuario' onclick="obtener_datos('<?php echo $user_id;?>');" data-toggle="modal" data-target="#myModal2"><span class="fa fa-pencil-square-o fa-1x icono-table"></span></a> 
+					<a href="#" class='btn btn-default' title='Cambiar contraseña' onclick="get_user_id('<?php echo $user_id;?>');" data-toggle="modal" data-target="#myModal3"><span class="fa fa-cog fa-1x icono-table"></span></a>
+					<a href="#" class='btn btn-default' title='Borrar usuario' onclick="eliminar('<? echo $user_id; ?>')"><span class="fa fa-trash fa-1x icono-table"></span> </a></span></td>
 						
 					</tr>
 					<?php
 				}
 				?>
-				<tr>
+				<tr class="header-table">
 					<td colspan=9><span class="pull-right">
 					<?php
 					 echo paginate($reload, $page, $total_pages, $adjacents);

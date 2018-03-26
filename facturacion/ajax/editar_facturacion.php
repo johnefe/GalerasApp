@@ -51,7 +51,7 @@ $delete=mysqli_query($con, "DELETE FROM detalle_factura WHERE id_detalle='".$id_
 $simbolo_moneda=get_row('perfil','moneda', 'id_perfil', 1);
 ?>
 <table class="table">
-<tr>
+<tr class="header-table">
 	<th class='text-center'>CODIGO</th>
 	<th class='text-center'>CANT.</th>
 	<th>DESCRIPCION</th>
@@ -71,10 +71,10 @@ $simbolo_moneda=get_row('perfil','moneda', 'id_perfil', 1);
 	
 	
 	$precio_venta=$row['precio_venta'];
-	$precio_venta_f=number_format($precio_venta,2);//Formateo variables
+	$precio_venta_f=number_format($precio_venta,0);//Formateo variables
 	$precio_venta_r=str_replace(",","",$precio_venta_f);//Reemplazo las comas
 	$precio_total=$precio_venta_r*$cantidad;
-	$precio_total_f=number_format($precio_total,2);//Precio total formateado
+	$precio_total_f=number_format($precio_total,0);//Precio total formateado
 	$precio_total_r=str_replace(",","",$precio_total_f);//Reemplazo las comas
 	$sumador_total+=$precio_total_r;//Sumador
 	
@@ -89,27 +89,14 @@ $simbolo_moneda=get_row('perfil','moneda', 'id_perfil', 1);
 		</tr>		
 		<?php
 	}
-	//$impuesto=get_row('perfil','impuesto', 'id_perfil', 1);
-	$subtotal=number_format($sumador_total,2,'.','');
-	//$total_iva=($subtotal * $impuesto )/100;
-	//$total_iva=number_format($total_iva,2,'.','');
-	//$total_factura=$subtotal+$total_iva;
+	
+	$subtotal=number_format($sumador_total,0,'.','');
 	$total_factura=$subtotal;
 	$update=mysqli_query($con,"update facturas set total_venta='$total_factura' where id_factura='$id_factura'");
 ?>
-<!--<tr>
-	<td class='text-right' colspan=4>SUBTOTAL <?php echo $simbolo_moneda;?></td>
-	<td class='text-right'><?php echo number_format($subtotal,2);?></td>
-	<td></td>
-</tr>-->
-<!--<tr>
-	<td class='text-right' colspan=4>IVA (<?php //echo $impuesto;?>)% <?php echo $simbolo_moneda;?></td>
-	<td class='text-right'><?php //echo number_format($total_iva,2);?></td>
-	<td></td>
-</tr>-->
-<tr>
+<tr class="header-table">
 	<td class='text-right' colspan=4>TOTAL <?php echo $simbolo_moneda;?></td>
-	<td class='text-right'><?php echo number_format($total_factura,2);?></td>
+	<td class='text-right'><?php echo number_format($total_factura,0);?></td>
 	<td></td>
 </tr>
 

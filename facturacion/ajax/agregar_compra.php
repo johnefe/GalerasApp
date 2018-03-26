@@ -43,7 +43,7 @@ $delete=mysqli_query($con, "DELETE FROM tmp_compras WHERE id_tmp='".$id_tmp."'")
 $simbolo_moneda=get_row('perfil','moneda', 'id_perfil', 1);
 ?>
 <table class="table table-striped table-facturas datos">
-<tr>
+<tr class="info header-table">
 	<th class='text-center'>CODIGO</th>
 	<th class='text-center'>CANT.</th>
 	<th>DESCRIPCION</th>
@@ -63,10 +63,10 @@ $simbolo_moneda=get_row('perfil','moneda', 'id_perfil', 1);
 	
 	
 	$precio_compra=$row['precio_tmp'];
-	$precio_compra_f=number_format($precio_compra,2);//Formateo variables
+	$precio_compra_f=number_format($precio_compra,0);//Formateo variables
 	$precio_compra_r=str_replace(",","",$precio_compra_f);//Reemplazo las comas
 	$precio_total=$precio_compra_r*$cantidad;
-	$precio_total_f=number_format($precio_total,2);//Precio total formateado
+	$precio_total_f=number_format($precio_total,0);//Precio total formateado
 	$precio_total_r=str_replace(",","",$precio_total_f);//Reemplazo las comas
 	$sumador_total+=$precio_total_r;//Sumador
 	
@@ -81,27 +81,14 @@ $simbolo_moneda=get_row('perfil','moneda', 'id_perfil', 1);
 		</tr>		
 		<?php
 	}
-	//$impuesto=get_row('perfil','impuesto', 'id_perfil', 1);
-	$subtotal=number_format($sumador_total,2,'.','');
-	//$total_iva=($subtotal * $impuesto )/100;
-	//$total_iva=number_format($total_iva,2,'.','');
-	//$total_compra=$subtotal+$total_iva;
+	$subtotal=number_format($sumador_total,0,'.','');
 	$total_compra=$subtotal;
 
 ?>
-<!--<tr>
-	<td class='text-right' colspan=4>SUBTOTAL <?php echo $simbolo_moneda;?></td>
-	<td class='text-right'><?php echo number_format($subtotal,2);?></td>
-	<td></td>
-</tr>-->
-<!--<tr>
-	<td class='text-right' colspan=4>IVA (<?php echo $impuesto;?>)% <?php echo $simbolo_moneda;?></td>
-	<td class='text-right'><?php echo number_format($total_iva,2);?></td>
-	<td></td>
-</tr>-->
-<tr>
+
+<tr class="header-table">
 	<td class='text-right' colspan=4>TOTAL <?php echo $simbolo_moneda;?></td>
-	<td class='text-right'><?php echo number_format($total_compra,2);?></td>
+	<td class='text-right'><?php echo number_format($total_compra,0);?></td>
 	<td></td>
 </tr>
 

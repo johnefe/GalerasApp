@@ -1,9 +1,4 @@
 <?php
-	/*-------------------------
-	Autor: Obed Alvarado
-	Web: obedalvarado.pw
-	Mail: info@obedalvarado.pw
-	---------------------------*/
 	session_start();
 	if (!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 1) {
         header("location: login.php");
@@ -31,7 +26,22 @@
   <body>
  	<?php
 	include("navbar.php");
+
 	?> 
+	 <section class="container bg-gris section-1">
+		<div class="row my-5   mx-0">
+			<div class="col-lg-12 my-3 ">
+					<div class="pt-md-3 pb-md-4">
+					    <h1 class="bd-title mt-0">Mi Perfil</h1>
+					    <p class="bd-lead">Información de mi empresa</p>
+					   
+					  </div>
+				
+			</div>
+
+		</div>
+		
+	</section>
 	<div class="container">
       <div class="row">
       <form method="post" id="perfil">
@@ -39,33 +49,30 @@
    
    
           <div class="panel panel-info">
-            <div class="panel-heading">
-              <h3 class="panel-title"><i class='glyphicon glyphicon-cog'></i> Configuración</h3>
-            </div>
+
             <div class="panel-body">
               <div class="row">
 			  
-                <div class="col-md-3 col-lg-3 " align="center"> 
-				<div id="load_img">
-					<img class="img-responsive" src="<?php echo $row['logo_url'];?>" alt="Logo">
-					
-				</div>
-				<br>				
+                <div class="col-md-3 col-lg-3 img-perfil "> 
+					<div>
+						<img class="img-responsive" src="<?php echo $row['logo_url'];?>" alt="Logo">	
+					</div>
+					<br>				
 					<div class="row">
   						<div class="col-md-12">
 							<div class="form-group">
-								<input class='filestyle' data-buttonText="Logo" type="file" name="imagefile" id="imagefile" onchange="upload_image();">
+								<input class='filestyle' data-buttonText="Click aqui" type="file" name="imagefile" id="imagefile" onchange="upload_image();">
 							</div>
 						</div>
 						
 					</div>
 				</div>
                 <div class=" col-md-9 col-lg-9 "> 
-                  <table class="table table-condensed">
+                  <table class="table table-striped table-facturas datos">
                     <tbody>
-                      <tr>
-                        <td class='col-md-3'>Nombre de la empresa:</td>
-                        <td><input type="text" class="form-control input-sm" name="nombre_empresa" value="<?php echo $row['nombre_empresa']?>" required></td>
+                      <tr >
+                        <td>Nombre de la empresa:</td>
+                        <td><input type="text" class="form-control" name="nombre_empresa" value="<?php echo $row['nombre_empresa']?>" required></td>
                       </tr>
                       <tr>
                         <td>Teléfono:</td>
@@ -75,10 +82,7 @@
                         <td>Correo electrónico:</td>
                         <td><input type="email" class="form-control input-sm" name="email" value="<?php echo $row['email']?>" ></td>
                       </tr>
-					  <tr>
-                       <!-- <td>IVA (%):</td>
-                        <td><input type="text" class="form-control input-sm" required name="impuesto" value="<?php echo $row['impuesto']?>"></td>-->
-                      </tr>
+					  
 					  <tr>
                         <td>Simbolo de moneda:</td>
                         <td>
@@ -129,21 +133,20 @@
 				<div class='col-md-12' id="resultados_ajax"></div><!-- Carga los datos ajax -->
               </div>
             </div>
-                 <div class="panel-footer text-center">
+            <div class="col-md-4 offset-4 panel-footer text-center">
                     
-                     
-                            <button type="submit" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-refresh"></i> Actualizar datos</button>
-                       
-                       
-                    </div>
+                 <button type="submit" class="form-control btn btn-sm btn-success"><i class="fa fa-refresh fa-1x"></i> ACTUALIZAR DATOS</button>          
+            </div>
             
           </div>
         </div>
 		</form>
       </div>
 
-	
-	<?php
+	</div>
+	<br>
+	<hr>
+	<?php 
 	include("footer.php");
 	?>
   </body>

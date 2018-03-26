@@ -1,4 +1,6 @@
 <?php
+	session_start();
+	 $usuario=$_SESSION['user_id']; 
 	include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
 	/* Connect To Database*/
 	require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
@@ -101,7 +103,9 @@
 					<td class="text-center">
 						<a href="editar_factura.php?id_factura=<?php echo $id_factura;?>" class='btn btn-default' title='Editar factura' ><span class="fa fa-pencil-square-o fa-1x icono-table"></span></a> 
 						<a href="#" class='btn btn-default' title='Descargar factura' onclick="imprimir_factura('<?php echo $id_factura;?>');"><span class="fa fa-print fa-1x icono-table"></span></a> 
+						<?php if($usuario==1){ ?>
 						<a href="#" class='btn btn-default' title='Borrar factura' onclick="eliminar('<?php echo $numero_factura; ?>')"><span class="fa fa-trash fa-1x icono-table"></span> </a>
+						<?php  } ?>
 					</td>
 						
 					</tr>

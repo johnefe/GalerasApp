@@ -55,18 +55,26 @@
   <body>
 	<?php
 	include("navbar.php");
-	?>  
+	include("modal/buscar_productos.php");
+	include("modal/registro_clientes.php");
+	include("modal/registro_productos.php");
+	?> 
+
+	<section class="container bg-gris section-1">
+		<div class="row my-5   mx-0">
+			<div class="col-lg-12 my-3 ">
+				<div class="pt-md-3 pb-md-4">
+					<a href="facturas.php" class="btn btn-lg btn-new"><span class="fa fa-arrow-left fa-1x"></span></a>				   					    
+				 </div>		
+			</div>
+		</div>	
+	</section>
     <div class="container">
 	<div class="panel panel-info">
 		<div class="panel-heading">
 			<h4><i class='glyphicon glyphicon-edit'></i> Editar Factura</h4>
 		</div>
 		<div class="panel-body">
-		<?php 
-			include("modal/buscar_productos.php");
-			include("modal/registro_clientes.php");
-			include("modal/registro_productos.php");
-		?>
 			<form class="form-horizontal" role="form" id="datos_factura">
 				<div class="form-group row">
 				  <label for="nombre_cliente" class="col-md-1 control-label">Cliente</label>
@@ -79,7 +87,7 @@
 								<input type="text" class="form-control input-sm" id="tel1" placeholder="Teléfono" value="<?php echo $telefono_cliente;?>" readonly>
 							</div>
 					<label for="mail" class="col-md-1 control-label">Email</label>
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<input type="text" class="form-control input-sm" id="mail" placeholder="Email" readonly value="<?php echo $email_cliente;?>">
 							</div>
 				 </div>

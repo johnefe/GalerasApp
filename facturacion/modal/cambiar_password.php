@@ -7,8 +7,10 @@
 	  <div class="modal-dialog" role="document">
 		<div class="modal-content">
 		  <div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			<h4 class="modal-title" id="myModalLabel"><i class='glyphicon glyphicon-edit'></i> Cambiar contraseña</h4>
+			<div class="col-lg-12 col-md-12 col-sm-12">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="" id="myModalLabel">Cambiar contraseña</h4>
+			</div>
 		  </div>
 		  <div class="modal-body">
 			<form class="form-horizontal" method="post" id="editar_password" name="editar_password">
@@ -18,24 +20,19 @@
 			 
 			 
 			  <div class="form-group">
-				<label for="user_password_new3" class="col-sm-4 control-label">Nueva contraseña</label>
-				<div class="col-sm-8">
+				<label for="user_password_new3" class="col-sm-5 control-label">Nueva contraseña</label>
+				<div class="col-sm-12">
 				  <input type="password" class="form-control" id="user_password_new3" name="user_password_new3" placeholder="Nueva contraseña" pattern=".{6,}" title="Contraseña ( min . 6 caracteres)" required>
 					<input type="hidden" id="user_id_mod" name="user_id_mod">
 				</div>
 			  </div>
 			  <div class="form-group">
-				<label for="user_password_repeat3" class="col-sm-4 control-label">Repite contraseña</label>
-				<div class="col-sm-8">
+				<label for="user_password_repeat3" class="col-sm-5 control-label">Repite contraseña</label>
+				<div class="col-sm-12">
 				  <input type="password" class="form-control" id="user_password_repeat3" name="user_password_repeat3" placeholder="Repite contraseña" pattern=".{6,}" required>
 				</div>
 			  </div>
-			 
-			  
-
-			 
-			 
-			
+			 	
 		  </div>
 		  <div class="modal-footer">
 			<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
