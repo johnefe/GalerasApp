@@ -99,14 +99,12 @@
           	<div class="row">
           		<div class="col-md-12 order-md-1">
 			<div class="pull-right">
-						<!--<button type="button" class="btn btn-lg btn-new" data-toggle="modal" data-target="#nuevoProducto">
-						 <span class="glyphicon glyphicon-plus"></span> Nuevo producto
-						</button>-->
+					
 						<button type="button" class="btn btn-lg btn-new" data-toggle="modal" data-target="#nuevoCliente">
 						 <span class="fa fa-user fa-1x"></span> Nuevo cliente
 						</button>
 						<button type="button" class="btn btn-lg btn-new" data-toggle="modal" data-target="#myModal">
-						 <span class="glyphicon glyphicon-search"></span> Agregar productos
+						 <span class="fa fa-search fa-1x"></span> Agregar productos
 						</button>
 						<button type="submit" class="btn btn-lg btn-new" title="Guardar e imprimir">Guardar e Imprimir </button>
 					</div>	

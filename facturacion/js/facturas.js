@@ -14,7 +14,7 @@
 				success:function(data){
 					$(".outer_div").html(data).fadeIn('slow');
 					$('#loader').html('');
-					$('[data-toggle="tooltip"]').tooltip({html:true}); 
+					//$('[data-toggle="tooltip"]').tooltip({html:true}); 
 					
 				}
 			})
@@ -43,4 +43,5 @@
 		
 		function imprimir_factura(id_factura){
 			VentanaCentrada('./pdf/documentos/ver_factura.php?id_factura='+id_factura,'Factura','','1024','768','true');
+			alert("holaaaaa");
 		}

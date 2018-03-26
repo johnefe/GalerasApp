@@ -78,7 +78,9 @@
 			  $("#nombre_cliente").focus();
 			  return false;
 		  }
-		 VentanaCentrada('./pdf/documentos/factura_pdf.php?id_cliente='+id_cliente+'&id_vendedor='+id_vendedor+'&condiciones='+condiciones,'Factura','','1024','768','true');
+		 
+		VentanaCentrada('./pdf/documentos/factura_pdf.php?id_cliente='+id_cliente+'&id_vendedor='+id_vendedor+'&condiciones='+condiciones,'Factura','','1024','768','true');
+	
 	 	});
 		
 		$( "#guardar_cliente" ).submit(function( event ) {

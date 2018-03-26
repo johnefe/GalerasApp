@@ -44,7 +44,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
                     P&aacute;gina [[page_cu]]/[[page_nb]]
                 </td>
                 <td style="width: 50%; text-align: right">
-                    &copy; <?php echo "obedalvarado.pw "; echo  $anio=date('Y'); ?>
+                    &copy; <?php echo "JhonDiaz "; echo  $anio=date('Y'); ?>
                 </td>
             </tr>
         </table>
@@ -132,10 +132,10 @@ while ($row=mysqli_fetch_array($sql))
 	$nombre_producto=$row['nombre_producto'];
 	
 	$precio_venta=$row['precio_tmp'];
-	$precio_venta_f=number_format($precio_venta,2);//Formateo variables
+	$precio_venta_f=number_format($precio_venta,0);//Formateo variables
 	$precio_venta_r=str_replace(",","",$precio_venta_f);//Reemplazo las comas
 	$precio_total=$precio_venta_r*$cantidad;
-	$precio_total_f=number_format($precio_total,2);//Precio total formateado
+	$precio_total_f=number_format($precio_total,0);//Precio total formateado
 	$precio_total_r=str_replace(",","",$precio_total_f);//Reemplazo las comas
 	$sumador_total+=$precio_total_r;//Sumador
 	if ($nums%2==0){
@@ -154,8 +154,6 @@ while ($row=mysqli_fetch_array($sql))
         </tr>
 
 	<?php 
-	//Insert en la tabla detalle_cotizacion
-	//$insert_detail=mysqli_query($con, "INSERT INTO detalle_factura VALUES ('','$numero_factura','$id_producto','$cantidad','$precio_venta_r')");
 	
 	$select_stock=mysqli_query($con, "SELECT * FROM products where id_producto='".$id_producto."'");
 	
@@ -169,34 +167,22 @@ while ($row=mysqli_fetch_array($sql))
 
 	$nums++;
 	}
-	//$impuesto=get_row('perfil','impuesto', 'id_perfil', 1);
-	$subtotal=number_format($sumador_total,2,'.','');
-	//$total_iva=($subtotal * $impuesto )/100;
-	//$total_iva=number_format($total_iva,2,'.','');
-	//$total_factura=$subtotal+$total_iva;
+
+	$subtotal=number_format($sumador_total,0,'.','');
+
 	$total_factura=$subtotal;
 ?>
 	  
-        <!--<tr>
-            <td colspan="3" style="widtd: 85%; text-align: right;">SUBTOTAL <?php echo $simbolo_moneda;?> </td>
-            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($subtotal,2);?></td>
-        </tr>-->
-		<!-- <tr>
-           <td colspan="3" style="widtd: 85%; text-align: right;">IVA (<?php //echo $impuesto; ?>)% <?php// echo $simbolo_moneda;?> </td>
-            <td style="widtd: 15%; text-align: right;"> <?php //echo number_format($total_iva,2);?></td>
-        </tr>-->
         <tr>
             <td colspan="3" style="widtd: 85%; text-align: right;">TOTAL <?php echo $simbolo_moneda;?> </td>
-            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_factura,2);?></td>
+            <td style="widtd: 15%; text-align: right;"> <?php echo number_format($total_factura,0);?></td>
         </tr>
     </table>
 	
 	
 	
 	<br>
-	<div style="font-size:11pt;text-align:center;font-weight:bold">Gracias por su compra!</div>
-	
-	
+		
 	  
 
 </page>
@@ -205,4 +191,5 @@ while ($row=mysqli_fetch_array($sql))
 $date=date("Y-m-d H:i:s");
 $insert=mysqli_query($con,"INSERT INTO facturas VALUES (NULL,'$numero_factura','$date','$id_cliente','$id_vendedor','$condiciones','$total_factura','1')");
 $delete=mysqli_query($con,"DELETE FROM tmp WHERE session_id='".$session_id."'");
+
 ?>
