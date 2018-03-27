@@ -34,31 +34,7 @@
 		</div>
 		
 	</section>
-	<section class="container">
-		<div class="">
-            <form class="form-horizontal" role="form" id="datos_cotizacion">
-            
-                <div class="form-group row">
-                  
-                  <div class="col-lg-11 col-md-11 col-sm-11">
-                    <input type="text" class="form-control" id="q" placeholder="Escribir nombre de cliente o numero de Factura" onkeyup='load(1);'>
-                  </div>
-     
-                  <div class="col-lg-1 col-md-1 col-sm-1 text-left">
-                    <button type="button" class="btn btn-default" onclick='load(1);'>
-                      <span class="fa fa-search fa-1x" ></span></button>
-                    <span id="loader"></span>
-                  </div>
-                  
-                </div>
-            
-            
-            
-          </form>
-            <div id="resultados"></div><!-- Carga los datos ajax -->
-            <div class='outer_div'></div><!-- Carga los datos ajax -->
-          </div>
-	</section>
+	
 	<hr>
 	<?php
 	include("footer.php");

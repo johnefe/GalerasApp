@@ -1,5 +1,6 @@
 		$(document).ready(function(){
 			load(1);
+			load_diarias(1);
 			
 		});
 
@@ -8,6 +9,23 @@
 			$("#loader").fadeIn('slow');
 			$.ajax({
 				url:'./ajax/buscar_facturas.php?action=ajax&page='+page+'&q='+q,
+				 beforeSend: function(objeto){
+				 //$('#loader').html('<img src="./img/ajax-loader.gif"> Cargando...');
+			  },
+				success:function(data){
+					$(".outer_div").html(data).fadeIn('slow');
+					$('#loader').html('');
+					//$('[data-toggle="tooltip"]').tooltip({html:true}); 
+					
+				}
+			})
+		}
+
+		function load_diarias(page){
+			var z= $("#z").val();
+			$("#loader").fadeIn('slow');
+			$.ajax({
+				url:'./ajax/buscar_facturas_diarias.php?action=ajax&page='+page+'&z='+z,
 				 beforeSend: function(objeto){
 				 //$('#loader').html('<img src="./img/ajax-loader.gif"> Cargando...');
 			  },

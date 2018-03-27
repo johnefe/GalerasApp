@@ -1,9 +1,15 @@
 <?php
+ 
     session_start();
     if (!isset($_SESSION['user_login_status']) AND $_SESSION['user_login_status'] != 1) {
         header("location: login.php");
         exit;
         }
+ /* Connect To Database*/
+  require_once ("config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
+  require_once ("config/conexion.php");//Contiene funcion que conecta a la base de datos
+
+
     $usuario=$_SESSION['user_id']; 
     $active_estadisticas="active";
      
@@ -23,9 +29,30 @@
         <div class="row my-5   mx-0">
             <div class="col-lg-12 my-3 ">
                     <div class="pt-md-3 pb-md-4">
+                        <a href="estadisticas.php" class="btn btn-lg btn-new"><span class="fa fa-arrow-left fa-1x"></span></a>
                         <h1 class="bd-title mt-0">Ventas diarias</h1>
-                        <p class="bd-lead">Aqui puedes realizar una nueva venta o pueder buscar una venta realizada a un cliente en especifico</p>
-                        <a href="nueva_factura.php" class="btn btn-lg btn-new">Realizar una nueva venta</a>
+
+    <?php
+          
+          $select_tmp=mysqli_query($con,"SELECT * FROM facturas WHERE LEFT(fecha_factura,10)=CURDATE()");
+         // $row= mysqli_fetch_array($select_tmp);
+          $ventas_totales_diarias=0;
+          while ($row=mysqli_fetch_array($select_tmp)){ 
+            $numero_factura=$row['numero_factura'];
+             $fecha_factura=$row['fecha_factura'];
+
+             $fecha_convertida=strtotime($row['fecha_factura']);
+             $ventas_totales_diarias=$ventas_totales_diarias+$row['total_venta'];
+            }
+
+    ?>                    
+                        <p class="bd-lead"><h3>$ <?php echo $ventas_totales_diarias; ?></h3></p>
+                      
+                      
+            <?php
+             
+           
+            ?> 
                       </div>
                 
             </div>
@@ -35,25 +62,7 @@
     </section>
     <section class="container">
         <div class="">
-            <form class="form-horizontal" role="form" id="datos_cotizacion">
             
-                <div class="form-group row">
-                  
-                  <div class="col-lg-11 col-md-11 col-sm-11">
-                    <input type="text" class="form-control" id="q" placeholder="Escribir nombre de cliente o numero de Factura" onkeyup='load(1);'>
-                  </div>
-     
-                  <div class="col-lg-1 col-md-1 col-sm-1 text-left">
-                    <button type="button" class="btn btn-default" onclick='load(1);'>
-                      <span class="fa fa-search fa-1x" ></span></button>
-                    <span id="loader"></span>
-                  </div>
-                  
-                </div>
-            
-            
-            
-          </form>
             <div id="resultados"></div><!-- Carga los datos ajax -->
             <div class='outer_div'></div><!-- Carga los datos ajax -->
           </div>

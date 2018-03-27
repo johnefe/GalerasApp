@@ -64,6 +64,7 @@
                 <label for="empresa">Vendedor</label>
                 <select class="form-control " id="id_vendedor">
 					<?php
+
 						$sql_vendedor=mysqli_query($con,"select * from users order by lastname");
 							while ($rw=mysqli_fetch_array($sql_vendedor)){
 								$id_vendedor=$rw["user_id"];
@@ -83,7 +84,7 @@
 
 				<div class="col-lg-4 col-md-4 mb-3">
 					 <label for="fecha">Fecha</label>
-						   <input type="text" class="form-control" id="fecha" value="<?php echo date("d/m/Y");?>" readonly>		   
+						   <input type="text" class="form-control" id="fecha" value="<?php echo date("Y/m/d");?>" readonly>		   
 				</div>
 
 				<div class="col-lg-4 col-md-4 mb-3">
