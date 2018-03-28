@@ -121,6 +121,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 <?php
 $nums=1;
 $sumador_total=0;
+$sumador_total_compra=0;
 $sql=mysqli_query($con, "select * from products, tmp where products.id_producto=tmp.id_producto and tmp.session_id='".$session_id."'");
 
 while ($row=mysqli_fetch_array($sql))
@@ -138,6 +139,15 @@ while ($row=mysqli_fetch_array($sql))
 	$precio_total_f=number_format($precio_total,0);//Precio total formateado
 	$precio_total_r=str_replace(",","",$precio_total_f);//Reemplazo las comas
 	$sumador_total+=$precio_total_r;//Sumador
+
+	$precio_compra=$row['precio_compra_tmp'];
+	$precio_compra_f=number_format($precio_compra,0);//Formateo variables
+	$precio_compra_r=str_replace(",","",$precio_compra_f);//Reemplazo las comas
+	$precio_total_compra=$precio_compra_r*$cantidad;
+	$precio_total_compra_f=number_format($precio_total_compra,0);//Precio total formateado
+	$precio_total_compra_r=str_replace(",","",$precio_total_compra_f);//Reemplazo las comas
+	$sumador_total_compra+=$precio_total_compra_r;//Sumador
+
 	if ($nums%1==0){
 		$clase="clouds";
 	} else {
@@ -151,6 +161,7 @@ while ($row=mysqli_fetch_array($sql))
             <td class='<?php echo $clase;?>' style="width: 15%; text-align: right"><?php echo $precio_venta_f;?></td>
             <td class='<?php echo $clase;?>' style="width: 15%; text-align: right"><?php echo $precio_total_f;?></td>
             
+            
         </tr>
 
 	<?php 
@@ -161,7 +172,7 @@ while ($row=mysqli_fetch_array($sql))
 
 	$stock_old=$row['stock'];
 	$stock_new = $stock_old-$cantidad;
-	$insert_detail=mysqli_query($con, "INSERT INTO detalle_factura VALUES ('','$numero_factura','$id_producto','$cantidad','$precio_venta_r')");
+	$insert_detail=mysqli_query($con, "INSERT INTO detalle_factura VALUES ('','$numero_factura','$id_producto','$cantidad','$precio_venta_r','$precio_compra_r')");
 	
 	$update_products=mysqli_query($con, "UPDATE products SET stock='".$stock_new."' where id_producto='".$id_producto."'");
 
@@ -169,8 +180,10 @@ while ($row=mysqli_fetch_array($sql))
 	}
 
 	$subtotal=number_format($sumador_total,0,'.','');
-
 	$total_factura=$subtotal;
+
+	$subtotal_compra=number_format($sumador_total_compra,0,'.','');
+	$total_factura_compra=$subtotal_compra;
 ?>
 	  
         <tr>
@@ -189,7 +202,7 @@ while ($row=mysqli_fetch_array($sql))
 
 <?php
 $date=date("Y-m-d H:i:s");
-$insert=mysqli_query($con,"INSERT INTO facturas VALUES (NULL,'$numero_factura','$date','$id_cliente','$id_vendedor','$condiciones','$total_factura','1')");
+$insert=mysqli_query($con,"INSERT INTO facturas VALUES (NULL,'$numero_factura','$date','$id_cliente','$id_vendedor','$condiciones','$total_factura','1','$total_factura_compra')");
 $delete=mysqli_query($con,"DELETE FROM tmp WHERE session_id='".$session_id."'");
 
 ?>

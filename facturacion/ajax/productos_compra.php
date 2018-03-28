@@ -57,7 +57,7 @@
 					$codigo_producto=$row['codigo_producto'];
 					$nombre_producto=$row['nombre_producto'];
 					$precio_compra=$row["precio_producto"];
-					$precio_compra=number_format($precio_compra,2,'.','');
+					$precio_compra=number_format($precio_compra,0,'.','');
 					?>
 					<tr>
 						<td><?php echo $id_producto; ?></td>

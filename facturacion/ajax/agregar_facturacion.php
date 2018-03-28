@@ -1,9 +1,18 @@
 <?php
 include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
 $session_id= session_id();
-if (isset($_POST['id'])){$id=$_POST['id'];}
-if (isset($_POST['cantidad'])){$cantidad=$_POST['cantidad'];}
-if (isset($_POST['precio_venta'])){$precio_venta=$_POST['precio_venta'];}
+if (isset($_POST['id'])){
+	$id=$_POST['id'];
+}
+if (isset($_POST['cantidad'])){
+	$cantidad=$_POST['cantidad'];
+}
+if (isset($_POST['precio_venta'])){
+	$precio_venta=$_POST['precio_venta'];
+}
+if (isset($_POST['precio_compra'])){
+	$precio_compra=$_POST['precio_compra'];
+}
 
 	/* Connect To Database*/
 	require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
@@ -18,7 +27,7 @@ if (!empty($id) and !empty($cantidad) and !empty($precio_venta))
 	$row= mysqli_fetch_array($select_tmp);
 	
 	if($row == ""){
-		$insert_tmp=mysqli_query($con, "INSERT INTO tmp (id_producto,cantidad_tmp,precio_tmp,session_id) VALUES ('$id','$cantidad','$precio_venta','$session_id')");
+		$insert_tmp=mysqli_query($con, "INSERT INTO tmp (id_producto,cantidad_tmp,precio_tmp,precio_compra_tmp,session_id) VALUES ('$id','$cantidad','$precio_venta','$precio_compra','$session_id')");
 	}else{
 
 		$cantidad_old=$row['cantidad_tmp'];
@@ -45,6 +54,7 @@ $simbolo_moneda=get_row('perfil','moneda', 'id_perfil', 1);
 </tr>
 <?php
 	$sumador_total=0;
+	$sumador_total_compra=0;
 	$sql=mysqli_query($con, "select * from products, tmp where products.id_producto=tmp.id_producto and tmp.session_id='".$session_id."'");
 	while ($row=mysqli_fetch_array($sql))
 	{
@@ -62,6 +72,13 @@ $simbolo_moneda=get_row('perfil','moneda', 'id_perfil', 1);
 	$precio_total_r=str_replace(",","",$precio_total_f);//Reemplazo las comas
 	$sumador_total+=$precio_total_r;//Sumador
 	
+	$precio_compra=$row['precio_compra_tmp'];
+	$precio_compra_f=number_format($precio_compra,0);//Formateo variables
+	$precio_compra_r=str_replace(",","",$precio_compra_f);//Reemplazo las comas
+	$precio_total_compra=$precio_compra_r*$cantidad;
+	$precio_total_compra_f=number_format($precio_total_compra,0);//Precio total formateado
+	$precio_total_compra_r=str_replace(",","",$precio_total_compra_f);//Reemplazo las comas
+	$sumador_total_compra+=$precio_total_compra_r;//Sumador
 		?>
 		<tr>
 			<td class='text-center'><?php echo $codigo_producto;?></td>
@@ -77,11 +94,15 @@ $simbolo_moneda=get_row('perfil','moneda', 'id_perfil', 1);
 	$subtotal=number_format($sumador_total,0,'.','');
 	$total_factura=$subtotal;
 
+	$subtotal_compra=number_format($sumador_total_compra,0,'.','');
+	$total_factura_compra=$subtotal_compra;
+
+
 ?>
 
 <tr class="header-table">
 	<td class='text-right' colspan=4>TOTAL <?php echo $simbolo_moneda;?></td>
-	<td class='text-right'><?php echo number_format($total_factura,2);?></td>
+	<td class='text-right'><?php echo number_format($total_factura,0);?></td>
 	<td></td>
 </tr>
 

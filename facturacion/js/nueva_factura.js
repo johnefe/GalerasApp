@@ -22,6 +22,7 @@
 	function agregar (id)
 		{
 			var precio_venta=document.getElementById('precio_venta_'+id).value;
+			var precio_compra=document.getElementById('precio_compra_'+id).value;
 			var cantidad=document.getElementById('cantidad_'+id).value;
 			//Inicia validacion
 			if (isNaN(cantidad))
@@ -41,7 +42,7 @@
 			$.ajax({
         type: "POST",
         url: "./ajax/agregar_facturacion.php",
-        data: "id="+id+"&precio_venta="+precio_venta+"&cantidad="+cantidad,
+        data: "id="+id+"&precio_venta="+precio_venta+"&precio_compra="+precio_compra+"&cantidad="+cantidad,
 		 beforeSend: function(objeto){
 			$("#resultados").html("Mensaje: Cargando...");
 		  },

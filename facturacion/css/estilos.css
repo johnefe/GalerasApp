@@ -26,6 +26,14 @@ font-family: 'Raleway', sans-serif;
 	background: #FAFAFA;
 }
 
+.titulo-1{
+	font-family: 'Raleway', sans-serif;
+	color: #283593;
+}
+.titulo-2{
+	font-family: 'Raleway', sans-serif !important;
+	font-size: 15px !important;
+}
 /*.................*/
 .navbar-purple{
 	border-top: 7px solid #12005e;
