@@ -25,8 +25,8 @@
 					    <h1 class="bd-title mt-0">Módulo Estadísticas</h1>
 					    <p class="bd-lead">Aqui puedes las ventas diarias, semanales y mensuales que se hallan realizado. </p>
 					    <a href="ventas_diarias.php" class="btn btn-lg btn-new">Ver ventas diarias</a>
-					    <a href="ventas_semanales.php" class="btn btn-lg btn-new">Ver ventas semanales</a>
-					    <a href="ventas_mensuales.php" class="btn btn-lg btn-new">Ver ventas mensuales</a>
+					    <a href="ventas_semanales.php" class="btn btn-lg btn-new">Ver ventas específicas</a>
+					  
 					  </div>
 				
 			</div>

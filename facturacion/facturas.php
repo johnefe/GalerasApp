@@ -38,7 +38,7 @@
 		
 	</section>
 	<section class="container">
-		<div class="">
+		
             <form class="form-horizontal" role="form" id="datos_cotizacion">
             
                 <div class="form-group row">
@@ -60,7 +60,7 @@
           </form>
             <div id="resultados"></div><!-- Carga los datos ajax -->
             <div class='outer_div'></div><!-- Carga los datos ajax -->
-          </div>
+        
 	</section>
 	<hr>
 	<?php
