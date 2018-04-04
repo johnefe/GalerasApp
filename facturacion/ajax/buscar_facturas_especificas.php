@@ -30,35 +30,45 @@
 	}
 	if($action == 'ajax'){
 
-		
-
-		$enero="enero";
-		$febrero="febrero";
-		$marzo="marzo";
-		$abril="abril";
-		$mayo="mayo";
-		$junio="junio";
-		$julio="julio";
-		$agosto="agosto";
-		$septiembre="septiembre";
-		$octubre="octubre";
-		$noviembre="noviembre";
-		$diciembre="diciembre";
-
 		// escaping, additionally removing everything that could be (html/javascript-) code
          $q = mysqli_real_escape_string($con,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
+         $q=strtolower($q);
 		  $sTable = "facturas, clientes, users";
 		 $sWhere = "";
-		 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor=users.user_id";
+		 $sWhere.=" ";
 		if ( $_GET['q'] != "" )
 			$q = $_GET['q'];
-			echo $q;
+		 $q=strtolower($q);
 		{
 		if($q== "enero"){
-			$sWhere.= " and  (clientes.nombre_cliente like '%juan%' or facturas.numero_factura like '%juan%')";
+			 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor=users.user_id and (SELECT DATE_FORMAT(facturas.fecha_factura,'%M'))= 'January'";
+
+		}else if($q== "febrero"){
+			 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor=users.user_id and (SELECT DATE_FORMAT(facturas.fecha_factura,'%M'))= 'February'";
+		}else if($q== "marzo"){
+			 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor=users.user_id and (SELECT DATE_FORMAT(facturas.fecha_factura,'%M'))= 'march'";
+		}else if($q== "abril"){
+			 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor=users.user_id and (SELECT DATE_FORMAT(facturas.fecha_factura,'%M'))= 'april'";
+		}if($q== "mayo"){
+			 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor=users.user_id and (SELECT DATE_FORMAT(facturas.fecha_factura,'%M'))= 'may'";
+
+		}else if($q== "junio"){
+			 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor=users.user_id and (SELECT DATE_FORMAT(facturas.fecha_factura,'%M'))= 'june'";
+		}else if($q== "julio"){
+			 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor=users.user_id and (SELECT DATE_FORMAT(facturas.fecha_factura,'%M'))= 'july'";
+		}else if($q== "agosto"){
+			 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor=users.user_id and (SELECT DATE_FORMAT(facturas.fecha_factura,'%M'))= 'August'";
+		}if($q== "septiembre"){
+			 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor=users.user_id and (SELECT DATE_FORMAT(facturas.fecha_factura,'%M'))= 'september'";
+
+		}else if($q== "octubre"){
+			 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor=users.user_id and (SELECT DATE_FORMAT(facturas.fecha_factura,'%M'))= 'october'";
+		}else if($q== "noviembre"){
+			 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor=users.user_id and (SELECT DATE_FORMAT(facturas.fecha_factura,'%M'))= 'november'";
+		}else if($q== "diciembre"){
+			 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor=users.user_id and (SELECT DATE_FORMAT(facturas.fecha_factura,'%M'))= 'december'";
 		}
-		//$sWhere.= " and  (clientes.nombre_cliente like '%$q%' or facturas.numero_factura like '%$q%')";
-		//select fecha_factura from facturas where (SELECT DATE_FORMAT(fecha_factura, "%M")) = "march";	
+	
 		}
 		
 		$sWhere.=" order by facturas.id_factura desc";
@@ -79,11 +89,13 @@
 		//main query to fetch the data
 		$sql="SELECT * FROM  $sTable $sWhere LIMIT $offset,$per_page";
 		$query = mysqli_query($con, $sql);
-
+		$sumaMensual=0;
+		$compraMensual =0;
+		$ganaciasMesuales=0;
 		//main query to fetch the data
 		$sql_delete="DELETE FROM tmp ";
 		$query_delete = mysqli_query($con, $sql_delete);
-
+		if($q == "enero" || $q == "marzo" || $q == "febrero" || $q == "abril" || $q == "mayo" || $q == "junio"  || $q == "julio"  || $q == "agosto"  || $q == "septiembre"  || $q == "octubre"  || $q == "noviembre"  || $q == "diciembre"){   
 		//loop through fetched data
 		if ($numrows>0){
 			echo mysqli_error($con);
@@ -113,6 +125,8 @@
 						if ($estado_factura==1){$text_estado="Pagada";$label_class='label-success';}
 						else{$text_estado="Pendiente";$label_class='label-warning';}
 						$total_venta=$row['total_venta'];
+						$sumaMensual= $sumaMensual + $row['total_venta'];
+						$compraMensual=$compraMensual + $row['total_compra'];
 					?>
 					<tr>
 						<td><?php echo $numero_factura; ?></td>
@@ -120,7 +134,7 @@
 						<td><?php echo $nombre_cliente;?></td>
 						<td><?php echo $nombre_vendedor; ?></td>
 						<td><span class="label <?php echo $label_class;?>"><?php echo $text_estado; ?></span></td>
-						<td class='text-center'><?php echo number_format ($total_venta,2); ?></td>					
+						<td class='text-center'><?php echo number_format ($total_venta,0); ?></td>					
 					<td class="text-center">
 						<a href="editar_factura.php?id_factura=<?php echo $id_factura;?>" class='btn btn-default' title='Editar factura' ><span class="fa fa-pencil-square-o fa-1x icono-table"></span></a> 
 						<a href="#" class='btn btn-default' title='Descargar factura' onclick="imprimir_factura('<?php echo $id_factura;?>');"><span class="fa fa-print fa-1x icono-table"></span></a> 
@@ -140,7 +154,17 @@
 				</tr>
 			  </table>
 			</div>
+			<div class="col-lg-12 text-center">
+				<h4>Ventas del mes de <?php echo $q; ?> : $ <?php echo $sumaMensual;?> -- Ganancias mensuales: $ <?php $ganaciasMesuales = $sumaMensual - $compraMensual; echo $ganaciasMesuales; ?></h4>
+			</div>
 			<?php
+			
+		
+
+		}
 		}
 	}
-?>
+?>		
+		
+		
+	

@@ -72,7 +72,7 @@
                 <div class="form-group row">
                   
                   <div class="col-lg-11 col-md-11 col-sm-11">
-                    <input type="text" class="form-control" id="q" placeholder="Escribir mes de Facturación" onkeyup='load_especificas(1);'>
+                    <input type="text" class="form-control" id="q" placeholder="Escribe el mes de Facturación" onkeyup='load_especificas(1);'>
                   </div>
      
                   <div class="col-lg-1 col-md-1 col-sm-1 text-left">
