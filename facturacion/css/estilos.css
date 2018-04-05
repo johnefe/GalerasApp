@@ -15,7 +15,7 @@ font-family: 'Raleway', sans-serif;
 
 /*------ fondos---------*/
 .bg-purple{
-	background: #283593;
+	background: #283593 !important;
 }
 
 .bg-cafe{
