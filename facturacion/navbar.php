@@ -32,6 +32,12 @@
             <li class="nav-item <?php echo $active_estadisticas;?>">
               <a class="nav-link" href="estadisticas.php">Estadísticas</a>
             </li>
+            <li class="nav-item <?php echo $active_gastos;?>">
+              <a class="nav-link" href="gastos.php">Gastos</a>
+            </li>
+            <li class="nav-item <?php echo $active_activos;?>">
+              <a class="nav-link" href="activos.php">Activos</a>
+            </li>
             <?php if($usuario==1){ ?>
             <li class="nav-item <?php echo $active_usuarios;?>">
               <a class="nav-link" href="usuarios.php">Usuario</a>

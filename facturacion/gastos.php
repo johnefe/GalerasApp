@@ -9,11 +9,8 @@
 	require_once ("config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
 	require_once ("config/conexion.php");//Contiene funcion que conecta a la base de datos
 	
-	$active_facturas="";
-	$active_ventas="";
-	$active_productos="active";
-	$active_clientes="";
-	$active_usuarios="";	
+
+	$active_gastos="active";	
 	$title="Productos | Sys-Galeras";
 ?>
 <!DOCTYPE html>
@@ -29,9 +26,9 @@
 		<div class="row my-5   mx-0">
 			<div class="col-lg-12 my-3 ">
 					<div class="pt-md-3 pb-md-4">
-					    <h1 class="bd-title mt-0">Módulo Productos</h1>
-					    <p class="bd-lead">Aqui puedes registrar o actualizar información de productos.</p>
-					    <a data-toggle="modal" data-target="#nuevoProducto" class="btn btn-lg btn-new">Registrar nuevo producto</a>
+					    <h1 class="bd-title mt-0">Módulo Gastos</h1>
+					    <p class="bd-lead">Aqui puedes registrar o actualizar de los gastos realizados en el establecimiento.</p>
+					    <a data-toggle="modal" data-target="#nuevoGasto" class="btn btn-lg btn-new">Registrar nuevo gasto</a>
 					  </div>
 				
 			</div>
@@ -58,20 +55,7 @@
 			<div class="col-lg-12">
 				<div class="row text-center"> 
 					<div class="col-lg-3 col-sm-6">
-						<h4 style="font-size: 17px">Cantidad de productos</h4>
-						<p><?php  echo $row_cnt; ?></p>
-					</div>
-					<div class="col-lg-3 col-sm-6">
-						<h4 style="font-size: 17px">Valor productos venta</h4>
-						<p>$ <?php echo $productos_venta; ?></p>
-					</div>
-					<div class="col-lg-3 col-sm-6">
-						<h4 style="font-size: 17px">Valor productos compra</h4>
-						<p>$ <?php echo $productos_compra; ?></p>
-					</div>
-					<div class="col-lg-3 col-sm-6">
-						<h4 style="font-size: 17px">Ganancia estimada al momento</h4>
-						<p>$ <?php echo $ganancia = $productos_venta - $productos_compra; ?></p>
+						
 					</div>				
 				</div>
 			</div>
@@ -94,7 +78,7 @@
 						<div class="form-group row">
 							
 							<div class="col-lg-11 col-md-11 col-sm-11">
-								<input type="text" class="form-control" id="q" placeholder="Código o nombre del producto" onkeyup='load(1);'>
+								<input type="text" class="form-control" id="q" placeholder="Nombre del gasto" onkeyup='load(1);'>
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 text-left">
 								<button type="button" class="btn btn-default" onclick='load(1);'>
@@ -120,17 +104,17 @@
 	<?php
 	include("footer.php");
 	?>
-	<script type="text/javascript" src="js/productos.js"></script>
+	<script type="text/javascript" src="js/gastos.js"></script>
   </body>
 </html>
 <script>
-$( "#guardar_producto" ).submit(function( event ) {
+$( "#guardar_gasto" ).submit(function( event ) {
   $('#guardar_datos').attr("disabled", true);
   
  var parametros = $(this).serialize();
 	 $.ajax({
 			type: "POST",
-			url: "ajax/nuevo_producto.php",
+			url: "ajax/nuevo_gasto.php",
 			data: parametros,
 			 beforeSend: function(objeto){
 				$("#resultados_ajax_productos").html("Mensaje: Cargando...");
@@ -144,13 +128,13 @@ $( "#guardar_producto" ).submit(function( event ) {
   event.preventDefault();
 })
 
-$( "#editar_producto" ).submit(function( event ) {
+$( "#editar_gasto" ).submit(function( event ) {
   $('#actualizar_datos').attr("disabled", true);
   
  var parametros = $(this).serialize();
 	 $.ajax({
 			type: "POST",
-			url: "ajax/editar_producto.php",
+			url: "ajax/editar_gasto.php",
 			data: parametros,
 			 beforeSend: function(objeto){
 				$("#resultados_ajax2").html("Mensaje: Cargando...");
@@ -165,19 +149,11 @@ $( "#editar_producto" ).submit(function( event ) {
 })
 
 	function obtener_datos(id){
-			var codigo_producto = $("#codigo_producto"+id).val();
-			var nombre_producto = $("#nombre_producto"+id).val();
-			var estado = $("#estado"+id).val();
-			var precio_producto = $("#precio_producto"+id).val();
-			var precio_compra = $("#precio_compra"+id).val();
-			var stock_producto= $("#stock_producto"+id).val();
+			var descripcion = $("#descripcion"+id).val();
+			var valor_gasto= $("#valor_gasto"+id).val();
 			
 			$("#mod_id").val(id);
-			$("#mod_codigo").val(codigo_producto);
-			$("#mod_nombre").val(nombre_producto);
-			$("#mod_precio").val(precio_producto);
-			$("#mod_precio_compra").val(precio_compra);
-			$("#mod_estado").val(estado);
-			$("#mod_stock").val(stock);
+			$("#mod_decripcion").val(descripcion);
+			$("#mod_valor_gasto").val(valor_gasto);
 		}
 </script>
