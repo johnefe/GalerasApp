@@ -11,7 +11,7 @@
 	
 
 	$active_gastos="active";	
-	$title="Productos | Sys-Galeras";
+	$title="Gastos | Sys-Galeras";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,8 +70,8 @@
 		<div class="panel-body">
 		
 			<?php
-			include("modal/registro_productos.php");
-			include("modal/editar_productos.php");
+			include("modal/registro_gastos.php");
+			//include("modal/editar_productos.php");
 			?>
 			<form class="form-horizontal" role="form" id="datos_cotizacion">
 				
