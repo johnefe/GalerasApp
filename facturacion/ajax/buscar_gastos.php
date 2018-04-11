@@ -9,7 +9,7 @@
 	$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 	if (isset($_GET['id'])){
 		$id_gastos=intval($_GET['id']);
-		$query=mysqli_query($con, "select * from detalle_factura where id_producto='".$id_producto."'");
+		//$query=mysqli_query($con, "select * from detalle_factura where id_producto='".$id_producto."'");
 		$count=mysqli_num_rows($query);
 		if ($count==0){
 			if ($delete1=mysqli_query($con,"DELETE FROM gastos WHERE id_gastos='".$id_gastos."'")){

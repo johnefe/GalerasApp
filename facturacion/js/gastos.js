@@ -26,7 +26,7 @@
 		if (confirm("Realmente deseas eliminar el producto")){	
 		$.ajax({
         type: "GET",
-        url: "./ajax/buscar_productos.php",
+        url: "./ajax/buscar_gastos.php",
         data: "id="+id,"q":q,
 		 beforeSend: function(objeto){
 			$("#resultados").html("Mensaje: Cargando...");

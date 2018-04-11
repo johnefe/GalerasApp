@@ -13,21 +13,21 @@
 			</div>
 		  </div>
 		  <div class="modal-body">
-			<form class="form-horizontal" method="post" id="editar_producto" name="editar_producto">
+			<form class="form-horizontal" method="post" id="editar_gasto" name="editar_gasto">
 			<div id="resultados_ajax2"></div>
 			
 			   <div class="form-group">
-				<label for="mod_nombre" class="col-sm-4 control-label">Descripción</label>
+				<label for="mod_descripcion" class="col-sm-4 control-label">Descripción</label>
 				<div class="col-sm-12">
-				  <textarea class="form-control" id="mod_nombre" name="mod_nombre" placeholder="Nombre del producto" required></textarea>
+				  <textarea class="form-control" id="mod_descripcion" name="mod_descripcion" placeholder="Descripción del gasto" required></textarea>
 				</div>
 			  </div>
 			  
 			
 			  <div class="form-group">
-				<label for="mod_precio_compra" class="col-sm-4 control-label">Valor Gasto</label>
+				<label for="mod_valor_gasto" class="col-sm-4 control-label">Valor Gasto</label>
 				<div class="col-sm-12">
-				  <input type="text" class="form-control" id="mod_precio_compra" name="mod_precio_compra" placeholder="Precio venta al publico" required pattern="^[0-9]{1,5}(\.[0-9]{0,2})?$" title="Ingresa sólo números con 0 ó 2 decimales" maxlength="8">
+				  <input type="text" class="form-control" id="mod_valor_gasto" name="mod_valor_gasto" placeholder="Valor gasto" required pattern="^[0-9]{1,5}(\.[0-9]{0,2})?$" title="Ingresa sólo números con 0 ó 2 decimales" maxlength="8">
 				</div>
 			  </div>
 		

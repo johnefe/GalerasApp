@@ -71,7 +71,7 @@
 		
 			<?php
 			include("modal/registro_gastos.php");
-			//include("modal/editar_productos.php");
+			include("modal/editar_gastos.php");
 			?>
 			<form class="form-horizontal" role="form" id="datos_cotizacion">
 				
