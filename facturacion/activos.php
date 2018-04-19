@@ -11,7 +11,7 @@
 	
 
 	$active_gastos="active";	
-	$title="Gastos | Sys-Galeras";
+	$title="Activos | Sys-Galeras";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,27 +26,27 @@
 		<div class="row my-5   mx-0">
 			<div class="col-lg-12 my-3 ">
 					<div class="pt-md-3 pb-md-4">
-					    <h1 class="bd-title mt-0">Módulo Gastos</h1>
-					    <p class="bd-lead">Aqui puedes registrar o actualizar de los gastos realizados en el establecimiento.</p>
-					    <a data-toggle="modal" data-target="#nuevoGasto" class="btn btn-lg btn-new">Registrar nuevo gasto</a>
+					    <h1 class="bd-title mt-0">Módulo Activos</h1>
+					    <p class="bd-lead">Aqui puedes registrar o actualizar de los activos que esten dentro o hagan parte del negocio</p>
+					    <a data-toggle="modal" data-target="#nuevoGasto" class="btn btn-lg btn-new">Registrar nuevo activo</a>
 					  </div>
 				
 			</div>
 			 <?php
                                   
-                     $select_tmp=mysqli_query($con,"SELECT * FROM gastos");
+                     $select_tmp=mysqli_query($con,"SELECT * FROM activos");
                                  // $row= mysqli_fetch_array($select_tmp);
-                                  $total_gastos=0;
+                                  $total_activos=0;
                                   while ($row=mysqli_fetch_array($select_tmp)){ 
                                     
-                                   	$total_gastos=$total_gastos+$row['valor_gasto'];
+                                   	$total_activos=$total_activos+$row['valor'];
                                       
                                 }
                 ?> 
 			<div class="col-lg-12">
 				<div class="row text-center"> 
 					<div class="col-lg-3 col-sm-6">
-						<h4 class="bd-title mt-0 titulo-1">Total gastos: <?php echo number_format ($total_gastos,0); ?></h4>
+						<h4 class="bd-title mt-0 titulo-1">Total activos: <?php echo number_format ($total_activos,0); ?></h4>
 					</div>				
 				</div>
 			</div>
@@ -61,15 +61,15 @@
 		<div class="panel-body">
 		
 			<?php
-			include("modal/registro_gastos.php");
-			include("modal/editar_gastos.php");
+			include("modal/registro_activos.php");
+			include("modal/editar_activos.php");
 			?>
 			<form class="form-horizontal" role="form" id="datos_cotizacion">
 				
 						<div class="form-group row">
 							
 							<div class="col-lg-11 col-md-11 col-sm-11">
-								<input type="text" class="form-control" id="q" placeholder="Nombre del gasto" onkeyup='load(1);'>
+								<input type="text" class="form-control" id="q" placeholder="Nombre del activo" onkeyup='load(1);'>
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 text-left">
 								<button type="button" class="btn btn-default" onclick='load(1);'>
@@ -95,19 +95,19 @@
 	<?php
 	include("footer.php");
 	?>
-	<script type="text/javascript" src="js/gastos.js"></script>
+	<script type="text/javascript" src="js/activos.js"></script>
   </body>
 </html>
 <script>
 
 
-$( "#guardar_gasto" ).submit(function( event ) {
+$( "#guardar_activo" ).submit(function( event ) {
   $('#guardar_datos').attr("disabled", true);
   
  var parametros = $(this).serialize();
 	 $.ajax({
 			type: "POST",
-			url: "ajax/nuevo_gasto.php",
+			url: "ajax/nuevo_activo.php",
 			data: parametros,
 			 beforeSend: function(objeto){
 				$("#resultados_ajax_productos").html("Mensaje: Cargando...");
@@ -122,13 +122,13 @@ $( "#guardar_gasto" ).submit(function( event ) {
 })
 
 
-$( "#editar_gasto" ).submit(function( event ) {
+$( "#editar_activo" ).submit(function( event ) {
   $('#actualizar_datos').attr("disabled", true);
   
  var parametros = $(this).serialize();
 	 $.ajax({
 			type: "POST",
-			url: "ajax/editar_gastos.php",
+			url: "ajax/editar_activos.php",
 			data: parametros,
 			 beforeSend: function(objeto){
 				$("#resultados_ajax2").html("Mensaje: Cargando...");
@@ -144,10 +144,10 @@ $( "#editar_gasto" ).submit(function( event ) {
 
 	function obtener_datos(id){
 			var descripcion = $("#descripcion"+id).val();
-			var valor_gasto= $("#valor_gasto"+id).val();
+			var valor= $("#valor"+id).val();
 			
 			$("#mod_id").val(id);
 			$("#mod_descripcion").val(descripcion);
-			$("#mod_valor_gasto").val(valor_gasto);
+			$("#mod_valor").val(valor);
 		}
 </script>

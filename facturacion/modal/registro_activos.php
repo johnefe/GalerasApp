@@ -1,0 +1,46 @@
+	<?php
+		if (isset($con))
+		{
+	?>
+	<!-- Modal -->
+	<div class="modal fade" id="nuevoGasto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<div class="col-lg-12 col-md-12 col-sm-12">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="" id="myModalLabel">Agregar nuevo activo</h4>
+			</div>
+		  </div>
+		  <div class="modal-body">
+			<form class="form-horizontal" method="post" id="guardar_activo" name="guardar_activo">
+			<div id="resultados_ajax_productos"></div>
+			 			  
+			  <div class="form-group">
+				<label for="descripcion" class="col-sm-4 control-label">Descripción</label>
+				<div class="col-sm-12">
+					<textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción del activo" required maxlength="255" ></textarea>
+				  
+				</div>
+			  </div>
+			 			  
+			  
+			  <div class="form-group">
+				<label for="valor_gasto" class="col-sm-4 control-label">Valor activo</label>
+				<div class="col-sm-12">
+				  <input type="text" class="form-control" id="valor" name="valor" placeholder="Valor activo" required pattern="^[0-9]{1,12}(\.[0-9]{0})?$" title="Ingresa sólo números con 0 ó 2 decimales" maxlength="8">
+				</div>
+			  </div>
+			 			 
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-lg btn-new" data-dismiss="modal" title="Cancelar"><span class="fa fa-ban fa-1x "></span></button>
+			<button type="submit" class="btn btn-lg btn-new" id="guardar_datos"title="Guardar"><span class="fa fa-floppy-o fa-1x "></span></button>
+		  </div>
+		  </form>
+		</div>
+	  </div>
+	</div>
+	<?php
+		}
+	?>

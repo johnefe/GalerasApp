@@ -99,7 +99,7 @@
 						<td><?php echo $nombre_cliente;?></td>
 						<td><?php echo $nombre_vendedor; ?></td>
 						<td><span class="label <?php echo $label_class;?>"><?php echo $text_estado; ?></span></td>
-						<td class='text-center'><?php echo number_format ($total_venta,2); ?></td>					
+						<td class='text-center'><?php echo number_format ($total_venta,0); ?></td>					
 					<td class="text-center">
 						<a href="editar_factura.php?id_factura=<?php echo $id_factura;?>" class='btn btn-default' title='Editar factura' ><span class="fa fa-pencil-square-o fa-1x icono-table"></span></a> 
 						<a href="#" class='btn btn-default' title='Descargar factura' onclick="imprimir_factura('<?php echo $id_factura;?>');"><span class="fa fa-print fa-1x icono-table"></span></a> 

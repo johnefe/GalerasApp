@@ -8,11 +8,11 @@
 	include("../funciones.php");
 	$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 	if (isset($_GET['id'])){
-		$id_gastos=intval($_GET['id']);
-		$query=mysqli_query($con, "select * from gastos where id_gastos='".$id_gastos."'");
+		$id_activo=intval($_GET['id']);
+		$query=mysqli_query($con, "select * from activos where id_activo='".$id_activo."'");
 		$count=mysqli_num_rows($query);
 		if ($count >0){
-			if ($delete1=mysqli_query($con,"DELETE FROM gastos WHERE id_gastos='".$id_gastos."'")){
+			if ($delete1=mysqli_query($con,"DELETE FROM activos WHERE id_activo='".$id_activo."'")){
 			?>
 			<div class="alert alert-success alert-dismissible" role="alert">
 			  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -37,7 +37,7 @@
 		// escaping, additionally removing everything that could be (html/javascript-) code
          $q = mysqli_real_escape_string($con,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
 		 $aColumns = array('descripcion', 'valor_gasto');//Columnas de busqueda
-		 $sTable = "gastos";
+		 $sTable = "activos";
 		 $sWhere = "";
 		if ( $_GET['q'] != "" )
 		{
@@ -49,7 +49,7 @@
 			$sWhere = substr_replace( $sWhere, "", -3 );
 			$sWhere .= ')';
 		}
-		$sWhere.=" order by id_gastos desc";
+		$sWhere.=" order by id_activo desc";
 		include 'pagination.php'; //include pagination file
 		//pagination variables
 		$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
@@ -61,7 +61,7 @@
 		$row= mysqli_fetch_array($count_query);
 		$numrows = $row['numrows'];
 		$total_pages = ceil($numrows/$per_page);
-		$reload = './gastos.php';
+		$reload = './activos.php';
 		//main query to fetch the data
 		$sql="SELECT * FROM  $sTable $sWhere LIMIT $offset,$per_page";
 		$query = mysqli_query($con, $sql);
@@ -75,32 +75,32 @@
 					<th>id</th>
 					<th>descripcion</th>
 					<th>Agregado</th>
-					<th class='text-right'>Valor gasto</th>
+					<th class='text-right'>Valor activo</th>
 					<th class='text-right'>Acciones</th>
 					
 				</tr>
 				<?php
 				while ($row=mysqli_fetch_array($query)){
-						$id_gasto=$row['id_gastos'];
+						$id_activo=$row['id_activo'];
 						$descripcion=$row['descripcion'];
 						$date_added= date('d/m/Y', strtotime($row['fecha']));
-						$valor_gasto=$row['valor_gasto'];
+						$valor=$row['valor'];
 					?>
 					
 
-					<input type="hidden" value="<?php echo $descripcion;?>" id="descripcion<?php echo $id_gasto;?>">
+					<input type="hidden" value="<?php echo $descripcion;?>" id="descripcion<?php echo $id_activo;?>">
 
 
-					<input type="hidden" value="<?php echo number_format($valor_gasto,0,'.','');?>" id="valor_gasto<?php echo $id_gasto;?>">
+					<input type="hidden" value="<?php echo number_format($valor,0,'.','');?>" id="valor<?php echo $id_activo;?>">
 					<tr>
 						
-						<td><?php echo $id_gasto; ?></td>
+						<td><?php echo $id_activo; ?></td>
 						<td ><?php echo $descripcion; ?></td>
 						<td><?php echo $date_added;?></td>
-						<td><span class='pull-right'><?php echo number_format($valor_gasto,0);?></span></td>
+						<td><span class='pull-right'><?php echo number_format($valor,0);?></span></td>
 					<td ><span class="pull-right">
-					<a href="#" class='btn btn-default' title='Editar gasto' onclick="obtener_datos('<?php echo $id_gasto;?>');" data-toggle="modal" data-target="#myModal2"><span class="fa fa-pencil-square-o fa-1x icono-table"></span></a> 
-					<a href="#" class='btn btn-default' title='Borrar gasto' onclick="eliminar('<?php echo $id_gasto; ?>')"><span class="fa fa-trash fa-1x icono-table"></span> </a></span></td>
+					<a href="#" class='btn btn-default' title='Editar Activo' onclick="obtener_datos('<?php echo $id_activo;?>');" data-toggle="modal" data-target="#myModal2"><span class="fa fa-pencil-square-o fa-1x icono-table"></span></a> 
+					<a href="#" class='btn btn-default' title='Borrar Activo' onclick="eliminar('<?php echo $id_activo; ?>')"><span class="fa fa-trash fa-1x icono-table"></span> </a></span></td>
 						
 					</tr>
 					<?php

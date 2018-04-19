@@ -60,6 +60,10 @@
                               <h4 class="bd-title mt-0 titulo-1">Ganancias diarias</h4>
                                <p class="bd-lead titulo-2"><h4>$ <?php echo $ganancias_diarias; ?></h4></p>
                           </div>
+                           <div class="col-lg-6">
+                              
+                                <a href="ventas_diarias.php" class="btn btn-lg btn-new">ver listado ventas</span></a>
+                          </div>
                   </div>
                 
             </div>

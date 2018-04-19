@@ -1,4 +1,4 @@
-		$(document).ready(function(){
+$(document).ready(function(){
 			load(1);
 		});
 
@@ -6,7 +6,7 @@
 			var q= $("#q").val();
 			$("#loader").fadeIn('slow');
 			$.ajax({
-				url:'./ajax/buscar_gastos.php?action=ajax&page='+page+'&q='+q,
+				url:'./ajax/buscar_activos.php?action=ajax&page='+page+'&q='+q,
 				 beforeSend: function(objeto){
 				 $('#loader').html('<img src="./img/ajax-loader.gif"> Cargando...');
 			  },
@@ -20,13 +20,13 @@
 
 	
 		
-			function eliminar (id)
+		function eliminar (id)
 		{
 			var q= $("#q").val();
-		if (confirm("Realmente deseas eliminar el gasto")){	
+		if (confirm("Realmente deseas eliminar  este activo?")){	
 		$.ajax({
         type: "GET",
-        url: "./ajax/buscar_gastos.php",
+        url: "./ajax/buscar_activos.php",
         data: "id="+id,"q":q,
 		 beforeSend: function(objeto){
 			$("#resultados").html("Mensaje: Cargando...");
@@ -41,5 +41,3 @@
 		
 		
 		
-		
-
