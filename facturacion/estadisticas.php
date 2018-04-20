@@ -17,6 +17,9 @@
   <body>
 	<?php
 	include("navbar.php");
+
+	if($usuario==1){ 
+
 	?>  
     <section class="container bg-gris section-1">
 		<div class="row my-5   mx-0">
@@ -35,9 +38,23 @@
 		
 	</section>
 	
-	<hr>
 	<?php
-	include("footer.php");
+	 }else{
+	 	?>
+
+	 	<section class="container">
+		<div class="msj text-center">
+ 
+
+            <h2 style="color: black;">Sitio no autorizado</h2>
+    
+          </div>
+	</section>
+
+	 	<?php
+	  	
+	  }
+	  include("footer.php");
 	?>
 	<script type="text/javascript" src="js/VentanaCentrada.js"></script>
 	<script type="text/javascript" src="js/facturas.js"></script>

@@ -1,10 +1,9 @@
 <?php
 
-	include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
-	/* Connect To Database*/
-	require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
-	require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
-	
+	include('is_logged.php');
+	require_once ("../config/db.php");
+	require_once ("../config/conexion.php");
+	$usuario=$_SESSION['user_id']; 
 	$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 	if (isset($_GET['id'])){
 		$id_cliente=intval($_GET['id']);
@@ -119,7 +118,9 @@
 						
 					<td ><span class="pull-right">
 					<a href="#" class='btn btn-default' title='Editar cliente' onclick="obtener_datos('<?php echo $id_cliente;?>');" data-toggle="modal" data-target="#myModal2"><span class="fa fa-pencil-square-o fa-1x icono-table"></span></a> 
-					<a href="#" class='btn btn-default' title='Borrar cliente' onclick="eliminar('<?php echo $id_cliente; ?>')"><span class="fa fa-trash fa-1x icono-table"></span> </a></span></td>
+					<?php if($usuario==1){ ?>
+					<a href="#" class='btn btn-default' title='Borrar cliente' onclick="eliminar('<?php echo $id_cliente; ?>')"><span class="fa fa-trash fa-1x icono-table"></span> </a>
+				</span><?php   } ?> </td>
 						
 					</tr>
 					<?php

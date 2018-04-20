@@ -26,6 +26,7 @@
   <body>
  	<?php
 	include("navbar.php");
+		if($usuario==1){ 
 
 	?> 
 	 <section class="container bg-gris section-1">
@@ -146,8 +147,23 @@
 	</div>
 	<br>
 	<hr>
-	<?php 
-	include("footer.php");
+	<?php
+	 }else{
+	 	?>
+
+	 	<section class="container">
+		<div class="msj text-center">
+ 
+
+            <h2 style="color: black;">Sitio no autorizado</h2>
+    
+          </div>
+	</section>
+
+	 	<?php
+	  	
+	  }
+	  include("footer.php");
 	?>
   </body>
 </html>

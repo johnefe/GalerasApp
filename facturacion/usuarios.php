@@ -15,6 +15,9 @@
 	$active_clientes="";
 	$active_usuarios="active";	
 	$title="Usuarios | Sys-Galeras";
+
+	$usuario=$_SESSION['user_id']; 
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +30,7 @@
 	include("modal/registro_usuarios.php");
 	include("modal/editar_usuarios.php");
 	include("modal/cambiar_password.php");
+	if($usuario==1){ 
 ?>
 
 	<section class="container bg-gris section-1">
@@ -71,7 +75,23 @@
 	<hr>
 		
 	<?php
+	 }else{
+	 	?>
+
+	 	<section class="container">
+		<div class="msj text-center">
+ 
+
+            <h2 style="color: black;">Sitio no autorizado</h2>
+    
+          </div>
+	</section>
+
+	 	<?php
+	  	
+	  }
 	include("footer.php");
+
 	?>
 	<script type="text/javascript" src="js/usuarios.js"></script>
 

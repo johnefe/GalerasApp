@@ -126,3 +126,10 @@ font-family: 'Raleway', sans-serif;
 .img-perfil img{
 	width: 100%;
 }
+
+/**/
+.msj{
+	margin-top: 90px !important;
+	padding-top: 50px !important;
+
+}

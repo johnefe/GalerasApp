@@ -5,10 +5,8 @@
 		exit;
         }
 
-	/* Connect To Database*/
-	require_once ("config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
-	require_once ("config/conexion.php");//Contiene funcion que conecta a la base de datos
-	
+	require_once ("config/db.php");
+	require_once ("config/conexion.php");
 
 	$active_gastos="active";	
 	$title="Activos | Sys-Galeras";
@@ -21,6 +19,7 @@
   <body>
 	<?php
 	include("navbar.php");
+		if($usuario==1){ 
 	?>
 	  <section class="container bg-gris section-1">
 		<div class="row my-5   mx-0">
@@ -92,7 +91,23 @@
 		 
 	</div>
 	<hr>
-	<?php
+		<?php
+	 }else{
+	 	?>
+
+	 	<section class="container">
+		<div class="msj text-center">
+ 
+
+            <h2 style="color: black;">Sitio no autorizado</h2>
+    
+          </div>
+	</section>
+
+	 	<?php
+	  	
+	  }
+
 	include("footer.php");
 	?>
 	<script type="text/javascript" src="js/activos.js"></script>

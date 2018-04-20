@@ -6,6 +6,7 @@
 	require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
 	//Archivo de funciones PHP
 	include("../funciones.php");
+	$usuario=$_SESSION['user_id']; 
 	$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 	if (isset($_GET['id'])){
 		$id_producto=intval($_GET['id']);
@@ -126,7 +127,8 @@
 						<td><span class='pull-right'><?php echo number_format($precio_compra,0);?></span></td>
 					<td ><span class="pull-right">
 					<a href="#" class='btn btn-default' title='Editar producto' onclick="obtener_datos('<?php echo $id_producto;?>');" data-toggle="modal" data-target="#myModal2"><span class="fa fa-pencil-square-o fa-1x icono-table"></span></a> 
-					<a href="#" class='btn btn-default' title='Borrar producto' onclick="eliminar('<?php echo $id_producto; ?>')"><span class="fa fa-trash fa-1x icono-table"></span> </a></span></td>
+					<?php if($usuario==1){ ?>
+					<a href="#" class='btn btn-default' title='Borrar producto' onclick="eliminar('<?php echo $id_producto; ?>')"><span class="fa fa-trash fa-1x icono-table"></span> </a> <?php  } ?></span></td>
 						
 					</tr>
 					<?php

@@ -1,6 +1,6 @@
 		$(document).ready(function(){
 			load(1);
-			load_diarias(1);
+			//load_diarias(1);
 			
 		});
 

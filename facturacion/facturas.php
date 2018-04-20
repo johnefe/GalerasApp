@@ -4,7 +4,9 @@
         header("location: login.php");
 		exit;
         }
+
 	$usuario=$_SESSION['user_id']; 
+
 	$active_facturas="active";
 	$active_compras="";
 	$active_productos="";
