@@ -97,10 +97,10 @@
 						<td><span class="label <?php echo $label_class;?>"><?php echo $text_estado; ?></span></td>
 						<td class='text-right'><?php echo number_format ($total_compra,0); ?></td>					
 					<td class="text-right">
-						<a href="editar_compra.php?id_compra=<?php echo $id_compra;?>" class='btn btn-default' title='Editar compra' ><span class="fa fa-pencil-square-o fa-1x icono-table"></a> 
-						<a href="#" class='btn btn-default' title='Descargar facctura de compra' onclick="imprimir_compra('<?php echo $id_compra;?>');"><span class="fa fa-print fa-1x icono-table"></span></a> 
+						<a href="editar_compra.php?id_compra=<?php echo $id_compra;?>" class='btn btn-default' title='Editar compra' ><span class=""><img src="img/iconos/edit.png"></a> 
+						<a href="#" class='btn btn-default' title='Descargar facctura de compra' onclick="imprimir_compra('<?php echo $id_compra;?>');"><span class=""><img src="img/iconos/printer.png"></span></a> 
 						<?php if($usuario==1){ ?>
-						<a href="#" class='btn btn-default' title='Borrar compra' onclick="eliminar('<?php echo $numero_compra; ?>')"><span class="fa fa-trash fa-1x icono-table"></span> </a>
+						<a href="#" class='btn btn-default' title='Borrar compra' onclick="eliminar('<?php echo $numero_compra; ?>')"><span class=""><img src="img/iconos/garbage.png"></span> </a>
 						<?php   } ?>
 					</td>
 						

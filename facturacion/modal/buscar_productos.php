@@ -20,7 +20,7 @@
 						  <input type="text" class="form-control" id="q" placeholder="Buscar productos" onkeyup="load(1)">
 						</div>
 						<div class="col-lg-2 col-md-10 col-sm-2">
-							<button type="button" class="btn btn-default" onclick="load(1)"><span class='fa fa-search fa-1x'></span> Buscar</button>
+							<button type="button" class="btn btn-default" onclick="load(1)"><span class=''><img src="img/iconos/search.png" style="width: 70%;height: 70%;"></span></button>
 						</div>
 
 						</div>

@@ -59,7 +59,7 @@
      
                   <div class="col-lg-1 col-md-1 col-sm-1 text-left">
                     <button type="button" class="btn btn-default" onclick='load(1);'>
-                      <span class="fa fa-search fa-1x" ></span></button>
+                      <span class="" ><img src="img/iconos/search.png" style="width: 90%;height: 90%;"></span></button>
                     <span id="loader"></span>
                   </div>
                   
@@ -82,7 +82,9 @@
 		<div class="msj text-center">
  
 
-            <h2 style="color: black;">Sitio no autorizado</h2>
+            <h2 style="color: black;">Sitio no autorizado</h2><br>
+            <img src="img/iconos/sad.png">
+    
     
           </div>
 	</section>

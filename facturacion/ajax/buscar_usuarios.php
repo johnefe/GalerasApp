@@ -110,9 +110,9 @@
 						<td><?php echo $date_added;?></td>
 						
 					<td ><span class="pull-right">
-					<a href="#" class='btn btn-default' title='Editar usuario' onclick="obtener_datos('<?php echo $user_id;?>');" data-toggle="modal" data-target="#myModal2"><span class="fa fa-pencil-square-o fa-1x icono-table"></span></a> 
-					<a href="#" class='btn btn-default' title='Cambiar contraseña' onclick="get_user_id('<?php echo $user_id;?>');" data-toggle="modal" data-target="#myModal3"><span class="fa fa-cog fa-1x icono-table"></span></a>
-					<a href="#" class='btn btn-default' title='Borrar usuario' onclick="eliminar('<? echo $user_id; ?>')"><span class="fa fa-trash fa-1x icono-table"></span> </a></span></td>
+					<a href="#" class='btn btn-default' title='Editar usuario' onclick="obtener_datos('<?php echo $user_id;?>');" data-toggle="modal" data-target="#myModal2"><span class=""><img src="img/iconos/edit.png"></span></a> 
+					<a href="#" class='btn btn-default' title='Cambiar contraseña' onclick="get_user_id('<?php echo $user_id;?>');" data-toggle="modal" data-target="#myModal3"><span class=""><img src="img/iconos/config.png"></span></a>
+					<a href="#" class='btn btn-default' title='Borrar usuario' onclick="eliminar('<? echo $user_id; ?>')"><span class=""><img src="img/iconos/garbage.png"></span> </a></span></td>
 						
 					</tr>
 					<?php

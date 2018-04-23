@@ -35,8 +35,8 @@
 			 	
 		  </div>
 		  <div class="modal-footer">
-			<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-			<button type="submit" class="btn btn-primary" id="actualizar_datos3">Cambiar contraseña</button>
+			<button type="button" class="btn" data-dismiss="modal"><img src="img/iconos/cancel.png"></button>
+			<button type="submit" class="btn" id="actualizar_datos3"><img src="img/iconos/save.png"></button>
 		  </div>
 		  </form>
 		</div>

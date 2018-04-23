@@ -30,7 +30,7 @@
             <div class="col-lg-12 my-3 ">
                     <div class="pt-md-6 pb-md-6">
                       
-                          <a href="estadisticas.php" class="btn btn-lg btn-new"><span class="fa fa-arrow-left fa-1x"></span></a>
+                          <a href="estadisticas.php" class="btn btn-lg btn-new"><span class=""><img src="img/iconos/back.png"></span></a>
                           
                         <div class="row">
                         <div class="col-lg-6 py-2">

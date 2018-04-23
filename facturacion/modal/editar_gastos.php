@@ -33,8 +33,8 @@
 		
 		  </div>
 		  <div class="modal-footer">
-			<button type="button" class="btn btn-lg btn-new" data-dismiss="modal" title="Cancelar"><span class="fa fa-ban fa-1x "></span></button>
-			<button type="submit" class="btn btn-lg btn-new" id="guardar_datos"title="Guardar"><span class="fa fa-floppy-o fa-1x "></span></button>
+			<button type="button" class="btn" data-dismiss="modal" title="Cancelar"><span class=""><img src="img/iconos/cancel.png"></span></button>
+			<button type="submit" class="btn" id="guardar_datos"title="Guardar"><span class=""><img src="img/iconos/save.png"></span></button>
 		  </div>
 		  </form>
 		</div>

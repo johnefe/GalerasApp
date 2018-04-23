@@ -46,7 +46,8 @@
 		<div class="msj text-center">
  
 
-            <h2 style="color: black;">Sitio no autorizado</h2>
+            <h2 style="color: black;">Sitio no autorizado</h2><br>
+            <img src="img/iconos/sad.png">
     
           </div>
 	</section>

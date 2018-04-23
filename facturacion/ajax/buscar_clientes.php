@@ -117,9 +117,9 @@
 						<td><?php echo $date_added;?></td>
 						
 					<td ><span class="pull-right">
-					<a href="#" class='btn btn-default' title='Editar cliente' onclick="obtener_datos('<?php echo $id_cliente;?>');" data-toggle="modal" data-target="#myModal2"><span class="fa fa-pencil-square-o fa-1x icono-table"></span></a> 
+					<a href="#" class='btn btn-default' title='Editar cliente' onclick="obtener_datos('<?php echo $id_cliente;?>');" data-toggle="modal" data-target="#myModal2"><span class=""><img src="img/iconos/edit.png"></span></a> 
 					<?php if($usuario==1){ ?>
-					<a href="#" class='btn btn-default' title='Borrar cliente' onclick="eliminar('<?php echo $id_cliente; ?>')"><span class="fa fa-trash fa-1x icono-table"></span> </a>
+					<a href="#" class='btn btn-default' title='Borrar cliente' onclick="eliminar('<?php echo $id_cliente; ?>')"><span class=""><img src="img/iconos/garbage.png"></span> </a>
 				</span><?php   } ?> </td>
 						
 					</tr>

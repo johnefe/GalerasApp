@@ -62,12 +62,12 @@
 		$numrows = $row['numrows'];
 		$total_pages = ceil($numrows/$per_page);
 		$reload = './activos.php';
-		//main query to fetch the data
+
 		$sql="SELECT * FROM  $sTable $sWhere LIMIT $offset,$per_page";
 		$query = mysqli_query($con, $sql);
-		//loop through fetched data
+
 		if ($numrows>0){
-			//$simbolo_moneda=get_row('perfil','moneda', 'id_perfil', 1);
+
 			?>
 			<div class="table-responsive">
 			  <table class="table table-striped table-facturas datos">
@@ -99,8 +99,8 @@
 						<td><?php echo $date_added;?></td>
 						<td><span class='pull-right'><?php echo number_format($valor,0);?></span></td>
 					<td ><span class="pull-right">
-					<a href="#" class='btn btn-default' title='Editar Activo' onclick="obtener_datos('<?php echo $id_activo;?>');" data-toggle="modal" data-target="#myModal2"><span class="fa fa-pencil-square-o fa-1x icono-table"></span></a> 
-					<a href="#" class='btn btn-default' title='Borrar Activo' onclick="eliminar('<?php echo $id_activo; ?>')"><span class="fa fa-trash fa-1x icono-table"></span> </a></span></td>
+					<a href="#" class='btn btn-default' title='Editar Activo' onclick="obtener_datos('<?php echo $id_activo;?>');" data-toggle="modal" data-target="#myModal2"><span class=""><img src="img/iconos/edit.png"></span></a> 
+					<a href="#" class='btn btn-default' title='Borrar Activo' onclick="eliminar('<?php echo $id_activo; ?>')"><span class=""><img src="img/iconos/garbage.png"></span> </a></span></td>
 						
 					</tr>
 					<?php

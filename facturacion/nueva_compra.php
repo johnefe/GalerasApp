@@ -28,7 +28,7 @@
 		<div class="row my-5   mx-0">
 			<div class="col-lg-12 my-3 ">
 				<div class="pt-md-3 pb-md-4">
-					<a href="compras.php" class="btn btn-lg btn-new"><span class="fa fa-arrow-left fa-1x"></span></a>				   					    
+					<a href="compras.php" class="btn btn-lg btn-new"><span class=""><img src="img/iconos/back.png" title="regresar"></span></a>				   					    
 				 </div>		
 			</div>
 		</div>	

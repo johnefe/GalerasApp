@@ -31,16 +31,15 @@
             <div class="col-lg-12 my-3 ">
                     <div class="pt-md-6 pb-md-6">
                       
-                          <a href="estadisticas.php" class="btn btn-lg btn-new"><span class="fa fa-arrow-left fa-1x"></span></a>
+                          <a href="estadisticas.php" class="btn btn-lg btn-new"><span class=""><img src="img/iconos/back.png"></span></a>
                           
                         <div class="row">
                         <div class="col-lg-6 py-2">
-                          <!--<h4 class="bd-title mt-0 titulo-1">Ventas semanales</h4>-->
-                          <!-- select fecha_factura from facturas where (SELECT DATE_FORMAT(fecha_factura, "%M")) = "march";-->
+                      
                             <?php
                                   
                                   $select_tmp=mysqli_query($con,"SELECT * FROM facturas WHERE LEFT(fecha_factura,10)=CURDATE()");
-                                 // $row= mysqli_fetch_array($select_tmp);
+                              
                                   $ventas_totales_diarias=0;
                                   $ventas_totales_diarias_reales=0;
                                   $ganancias_diarias=0;
@@ -54,14 +53,9 @@
                                     }
                                     $ganancias_diarias= $ventas_totales_diarias -$ventas_totales_diarias_reales;
 
-                            ?>                    
-                                               <!-- <p class="bd-lead titulo-2"><h4>$ <?php echo $ventas_totales_diarias; ?></h4></p>-->
-                       
+                            ?>   
                           </div>
-                          <div class="col-lg-6">
-                              <!--<h4 class="bd-title mt-0 titulo-1">Ganancias semanales</h4>-->
-                              <!-- <p class="bd-lead titulo-2"><h4>$ <?php echo $ganancias_diarias; ?></h4></p>-->
-                          </div>
+                         
                   </div>
                 
             </div>
@@ -77,7 +71,7 @@
      
                   <div class="col-lg-1 col-md-1 col-sm-1 text-left">
                     <button type="button" class="btn btn-default" onclick='load_especificas(1);'>
-                      <span class="fa fa-search fa-1x" ></span></button>
+                      <span class="" ><img src="img/iconos/search.png" style="width: 90%;height: 90%;"></span></button>
                     <span id="loader"></span>
                   </div>
                   

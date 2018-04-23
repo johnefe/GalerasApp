@@ -35,12 +35,12 @@ if ($login->isUserLoggedIn() == true) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
+   <link rel=icon href='img/iconos/sale.png' sizes="32x32" type="image/png">
 
     <title>Sys-Galeras | Login</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
    <link href="css/login.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   </head>
 
@@ -79,7 +79,7 @@ if ($login->isUserLoggedIn() == true) {
         }
         ?>
 
-      <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+      <img class="mb-4" src="img/iconos/sale.png" alt="" width="72" height="72">
       <h1 class="h3 mb-3 font-weight-normal">SYS-GALERAS 2018</h1>
       <label for="user_name" class="sr-only">Nombre de usuario</label>
       <input type="text" id="user_name" name="user_name" class="form-control py-2 my-2" placeholder="Nombre de usuario" required autofocus>
