@@ -79,7 +79,7 @@
 			<div class="table-responsive">
 			  <table class="table table-striped table-facturas datos">
 				<tr  class="info header-table">
-					<th>ID</th>
+					
 					<th>Nombres</th>
 					<th>Usuario</th>
 					<th>Email</th>
@@ -103,7 +103,7 @@
 					<input type="hidden" value="<?php echo $user_email;?>" id="email<?php echo $user_id;?>">
 				
 					<tr>
-						<td><?php echo $user_id; ?></td>
+					
 						<td><?php echo $fullname; ?></td>
 						<td ><?php echo $user_name; ?></td>
 						<td ><?php echo $user_email; ?></td>

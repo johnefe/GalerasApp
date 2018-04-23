@@ -71,7 +71,7 @@
 			<div class="table-responsive">
 			  <table class="table table-striped table-facturas datos">
 				<tr  class="info header-table">
-					<th>id</th>
+				
 					<th>descripcion</th>
 					<th>Agregado</th>
 					<th class='text-right'>Valor gasto</th>
@@ -93,7 +93,7 @@
 					<input type="hidden" value="<?php echo number_format($valor_gasto,0,'.','');?>" id="valor_gasto<?php echo $id_gasto;?>">
 					<tr>
 						
-						<td><?php echo $id_gasto; ?></td>
+			
 						<td ><?php echo $descripcion; ?></td>
 						<td><?php echo $date_added;?></td>
 						<td><span class='pull-right'><?php echo number_format($valor_gasto,0);?></span></td>

@@ -8,7 +8,7 @@
       <!-- Fixed navbar -->
 
       <nav class="navbar navbar-expand-md navbar-purple fixed-top bg-purple">
-        <a class="navbar-brand" href="#">SYS-GALERAS</a>
+        <a class="navbar-brand" href="facturas.php">SYS-GALERAS</a>
         <button class="navbar-toggler icon-menu" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="fa fa-bars fa-1x"></span>
         </button>
