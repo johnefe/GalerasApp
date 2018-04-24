@@ -1,32 +1,18 @@
 <?php
-// checking for minimum PHP version
 if (version_compare(PHP_VERSION, '5.3.7', '<')) {
     exit("Sorry, Simple PHP Login does not run on a PHP version smaller than 5.3.7 !");
 } else if (version_compare(PHP_VERSION, '5.5.0', '<')) {
-    // if you are using PHP 5.3 or PHP 5.4 you have to include the password_api_compatibility_library.php
-    // (this library adds the PHP 5.5 password hashing functions to older versions of PHP)
     require_once("libraries/password_compatibility_library.php");
 }
-
-// include the configs / constants for the database connection
 require_once("config/db.php");
-
-// load the login class
 require_once("classes/Login.php");
 
-// create a login object. when this object is created, it will do all login/logout stuff automatically
-// so this single line handles the entire login process. in consequence, you can simply ...
 $login = new Login();
 
-// ... ask if we are logged in here:
 if ($login->isUserLoggedIn() == true) {
-    // the user is logged in. you can do whatever you want here.
-    // for demonstration purposes, we simply show the "you are logged in" view.
    header("location: facturas.php");
 
 } else {
-    // the user is not logged in. you can do whatever you want here.
-    // for demonstration purposes, we simply show the "you are not logged in" view.
 ?>
 <!doctype html>
 <html lang="en">
@@ -39,16 +25,16 @@ if ($login->isUserLoggedIn() == true) {
 
     <title>Sys-Galeras | Login</title>
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-   <link href="css/login.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link href="css/login.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   </head>
 
   <body class="text-center">
     <form method="post" accept-charset="utf-8" action="login.php" name="loginform" autocomplete="off" role="form" class="form-signin" >
       
         <?php
-        //show potential errors / feedback (from login object)
+
         if (isset($login)) {
           if ($login->errors) {
             ?>
@@ -58,7 +44,6 @@ if ($login->isUserLoggedIn() == true) {
             
             <?php 
             foreach ($login->errors as $error) {
-              //echo $error;
             }
             ?>
             </div>
@@ -94,9 +79,9 @@ if ($login->isUserLoggedIn() == true) {
       <p class="mt-5 mb-3 text-muted">&copy; 2018 | Pasto,Nariño</p>
     </form>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.2.1.slim.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
   </body>
 </html>
   <?php

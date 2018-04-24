@@ -21,22 +21,7 @@
 			})
 		}
 
-		function load_diarias(page){
-			var z= $("#z").val();
-			$("#loader").fadeIn('slow');
-			$.ajax({
-				url:'./ajax/buscar_facturas_diarias.php?action=ajax&page='+page+'&z='+z,
-				 beforeSend: function(objeto){
-				 //$('#loader').html('<img src="./img/ajax-loader.gif"> Cargando...');
-			  },
-				success:function(data){
-					$(".outer_div").html(data).fadeIn('slow');
-					$('#loader').html('');
-					//$('[data-toggle="tooltip"]').tooltip({html:true}); 
-					
-				}
-			})
-		}
+		
 
 		function load_especificas(page){
 			var q= $("#q").val();
@@ -78,5 +63,4 @@
 		
 		function imprimir_factura(id_factura){
 			VentanaCentrada('./pdf/documentos/ver_factura.php?id_factura='+id_factura,'Factura','','1024','768','true');
-			alert("holaaaaa");
 		}

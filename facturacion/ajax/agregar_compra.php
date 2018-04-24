@@ -1,5 +1,5 @@
 <?php
-include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
+include('is_logged.php');
 $session_id= session_id();
 if (isset($_POST['id'])){
 	$id=$_POST['id'];
@@ -11,10 +11,8 @@ if (isset($_POST['precio_compra'])){
 	$precio_compra=$_POST['precio_compra'];
 }
 
-	/* Connect To Database*/
-	require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
-	require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
-	//Archivo de funciones PHP
+	require_once ("../config/db.php");
+	require_once ("../config/conexion.php");
 	include("../funciones.php");
 
 if (!empty($id) and !empty($cantidad) and !empty($precio_compra))
@@ -30,10 +28,10 @@ if (!empty($id) and !empty($cantidad) and !empty($precio_compra))
 		$cantidad_new = $cantidad + $cantidad_old;
 		$update_tmp=mysqli_query($con, "UPDATE tmp_compras SET cant_tmp='".$cantidad_new."' where id_producto='".$id."'");
 	}
-//
+
 
 }
-if (isset($_GET['id']))//codigo elimina un elemento del array
+if (isset($_GET['id']))
 {
 $id_tmp=intval($_GET['id']);	
 $delete=mysqli_query($con, "DELETE FROM tmp_compras WHERE id_tmp='".$id_tmp."'");
@@ -61,12 +59,12 @@ $simbolo_moneda=get_row('perfil','moneda', 'id_perfil', 1);
 	
 	
 	$precio_compra=$row['precio_tmp'];
-	$precio_compra_f=number_format($precio_compra,0);//Formateo variables
-	$precio_compra_r=str_replace(",","",$precio_compra_f);//Reemplazo las comas
+	$precio_compra_f=number_format($precio_compra,0);
+	$precio_compra_r=str_replace(",","",$precio_compra_f);
 	$precio_total=$precio_compra_r*$cantidad;
-	$precio_total_f=number_format($precio_total,0);//Precio total formateado
-	$precio_total_r=str_replace(",","",$precio_total_f);//Reemplazo las comas
-	$sumador_total+=$precio_total_r;//Sumador
+	$precio_total_f=number_format($precio_total,0);
+	$precio_total_r=str_replace(",","",$precio_total_f);
+	$sumador_total+=$precio_total_r;
 	
 		?>
 		<tr>

@@ -34,7 +34,6 @@
 			 <?php
                                   
                      $select_tmp=mysqli_query($con,"SELECT * FROM activos");
-                                 // $row= mysqli_fetch_array($select_tmp);
                                   $total_activos=0;
                                   while ($row=mysqli_fetch_array($select_tmp)){ 
                                     
@@ -78,8 +77,8 @@
 							
 						</div>	
 			</form>
-				<div id="resultados"></div><!-- Carga los datos ajax -->
-				<div class='outer_div'></div><!-- Carga los datos ajax -->
+				<div id="resultados"></div>
+				<div class='outer_div'></div>
 			
 		
 	

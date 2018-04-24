@@ -4,10 +4,8 @@
         header("location: login.php");
 		exit;
         }
-
-	/* Connect To Database*/
-	require_once ("config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
-	require_once ("config/conexion.php");//Contiene funcion que conecta a la base de datos
+	require_once ("config/db.php");
+	require_once ("config/conexion.php");
 	
 	$active_facturas="";
 	$active_ventas="";
@@ -38,7 +36,6 @@
 			 <?php
                                   
                      $select_tmp=mysqli_query($con,"SELECT * FROM products");
-                                 // $row= mysqli_fetch_array($select_tmp);
                                   $productos_compra=0;
                                   $productos_venta=0;
                                   $ganancias_diarias=0;

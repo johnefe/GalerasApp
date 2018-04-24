@@ -40,9 +40,9 @@
 		
 	}
 	if($action == 'ajax'){
-		// escaping, additionally removing everything that could be (html/javascript-) code
+		
          $q = mysqli_real_escape_string($con,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
-		 $aColumns = array('nombre_cliente');//Columnas de busqueda
+		 $aColumns = array('nombre_cliente');
 		 $sTable = "clientes";
 		 $sWhere = "";
 		if ( $_GET['q'] != "" )
@@ -56,22 +56,18 @@
 			$sWhere .= ')';
 		}
 		$sWhere.=" order by nombre_cliente";
-		include 'pagination.php'; //include pagination file
-		//pagination variables
+		include 'pagination.php'; 
 		$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
-		$per_page = 10; //how much records you want to show
-		$adjacents  = 4; //gap between pages after number of adjacents
+		$per_page = 10; 
+		$adjacents  = 4;
 		$offset = ($page - 1) * $per_page;
-		//Count the total number of row in your table*/
 		$count_query   = mysqli_query($con, "SELECT count(*) AS numrows FROM $sTable  $sWhere");
 		$row= mysqli_fetch_array($count_query);
 		$numrows = $row['numrows'];
 		$total_pages = ceil($numrows/$per_page);
 		$reload = './clientes.php';
-		//main query to fetch the data
 		$sql="SELECT * FROM  $sTable $sWhere LIMIT $offset,$per_page";
 		$query = mysqli_query($con, $sql);
-		//loop through fetched data
 		if ($numrows>0){
 			
 			?>

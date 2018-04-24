@@ -5,9 +5,8 @@
         header("location: login.php");
         exit;
         }
- /* Connect To Database*/
-  require_once ("config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
-  require_once ("config/conexion.php");//Contiene funcion que conecta a la base de datos
+  require_once ("config/db.php");
+  require_once ("config/conexion.php");
 
 
     $usuario=$_SESSION['user_id']; 
@@ -60,10 +59,6 @@
                               <h4 class="bd-title mt-0 titulo-1">Ganancias diarias</h4>
                                <p class="bd-lead titulo-2"><h4>$ <?php echo $ganancias_diarias; ?></h4></p>
                           </div>
-                           <div class="col-lg-6">
-                              
-                                <a href="ventas_diarias.php" class="btn btn-lg btn-new">ver listado ventas</span></a>
-                          </div>
                   </div>
                 
             </div>
@@ -84,6 +79,6 @@
     include("footer.php");
     ?>
     <script type="text/javascript" src="js/VentanaCentrada.js"></script>
-    <script type="text/javascript" src="js/facturas.js"></script>
+    <script type="text/javascript" src="js/facturas_diarias.js"></script>
   </body>
 </html>

@@ -1,6 +1,5 @@
 <?php
-include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
-	/*Inicia validacion del lado del servidor*/
+include('is_logged.php');
 	if (empty($_POST['descripcion'])) {
            $errors[] = "descripcion vacía";
         } else if (empty($_POST['valor_gasto'])){
@@ -9,10 +8,9 @@ include('is_logged.php');//Archivo verifica que el usario que intenta acceder a 
 			!empty($_POST['descripcion']) &&
 			!empty($_POST['valor_gasto'])
 		){
-		/* Connect To Database*/
-		require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
-		require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
-		// escaping, additionally removing everything that could be (html/javascript-) code
+
+		require_once ("../config/db.php");
+		require_once ("../config/conexion.php");
 		$descripcion=mysqli_real_escape_string($con,(strip_tags($_POST["descripcion"],ENT_QUOTES)));
 		$valor_gasto=floatval($_POST['valor_gasto']);
 		$date_added=date("Y-m-d H:i:s");

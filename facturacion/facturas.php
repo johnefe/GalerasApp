@@ -45,11 +45,11 @@
             
                 <div class="form-group row">
                   
-                  <div class="col-lg-11 col-md-11 col-sm-11">
+                  <div class="col-lg-11 col-md-11 col-sm-9 col-xs-9">
                     <input type="text" class="form-control" id="q" placeholder="Escribir nombre de cliente o numero de Factura" onkeyup='load(1);'>
                   </div>
      
-                  <div class="col-lg-1 col-md-1 col-sm-1 text-left">
+                  <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 text-left">
                     <button type="button" class="btn" onclick='load(1);'>
                       <span class="" ><img src="img/iconos/search.png" style="width: 90%;height: 90%;"></span></button>
                     <span id="loader"></span>

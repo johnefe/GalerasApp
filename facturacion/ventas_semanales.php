@@ -5,9 +5,8 @@
         header("location: login.php");
         exit;
         }
- /* Connect To Database*/
-  require_once ("config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
-  require_once ("config/conexion.php");//Contiene funcion que conecta a la base de datos
+  require_once ("config/db.php");
+  require_once ("config/conexion.php");
 
 
     $usuario=$_SESSION['user_id']; 
@@ -89,8 +88,8 @@
     <section class="container">
         <div class="">
             
-            <div id="resultados"></div><!-- Carga los datos ajax -->
-            <div class='outer_div'></div><!-- Carga los datos ajax -->
+            <div id="resultados"></div>
+            <div class='outer_div'></div>
           </div>
     </section>
     <hr>

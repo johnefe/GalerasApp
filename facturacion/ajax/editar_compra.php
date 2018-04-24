@@ -1,7 +1,6 @@
 <?php
-	include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
+	include('is_logged.php');
 	$id_compra= $_SESSION['id_compra'];
-	/*Inicia validacion del lado del servidor*/
 	if (empty($_POST['id_proveedor'])) {
            $errors[] = "ID vacío";
         }else if (empty($_POST['id_vendedor'])) {
@@ -16,10 +15,9 @@
 			!empty($_POST['condiciones']) &&
 			$_POST['estado_compra']!="" 
 		){
-		/* Connect To Database*/
-		require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
-		require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
-		// escaping, additionally removing everything that could be (html/javascript-) code
+		
+		require_once ("../config/db.php");
+		require_once ("../config/conexion.php");
 		$id_proveedor=intval($_POST['id_proveedor']);
 		$id_vendedor=intval($_POST['id_vendedor']);
 		$condiciones=intval($_POST['condiciones']);

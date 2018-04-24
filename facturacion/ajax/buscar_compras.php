@@ -1,9 +1,8 @@
 <?php
 
-	include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
-	/* Connect To Database*/
-	require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
-	require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
+	include('is_logged.php');
+	require_once ("../config/db.php");
+	require_once ("../config/conexion.php");
 	$usuario=$_SESSION['user_id']; 
 
 	$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
@@ -29,7 +28,6 @@
 		}
 	}
 	if($action == 'ajax'){
-		// escaping, additionally removing everything that could be (html/javascript-) code
          $q = mysqli_real_escape_string($con,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
 		  $sTable = "compras, proveedores, users";
 		 $sWhere = "";
@@ -39,27 +37,22 @@
 		$sWhere.= " and  (proveedores.nombre_proveedor like '%$q%' or compras.numero_compra like '%$q%')";
 			
 		}
-		
 		$sWhere.=" order by compras.id_compra desc";
-		include 'pagination.php'; //include pagination file
-		//pagination variables
+		include 'pagination.php'; 
 		$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
-		$per_page = 10; //how much records you want to show
-		$adjacents  = 4; //gap between pages after number of adjacents
+		$per_page = 10; 
+		$adjacents  = 4; 
 		$offset = ($page - 1) * $per_page;
-		//Count the total number of row in your table*/
 		$count_query   = mysqli_query($con, "SELECT count(*) AS numrows FROM $sTable  $sWhere");
 		$row= mysqli_fetch_array($count_query);
 		$numrows = $row['numrows'];
 		$total_pages = ceil($numrows/$per_page);
 		$reload = './compras.php';
-		//main query to fetch the data
 		$sql="SELECT * FROM  $sTable $sWhere LIMIT $offset,$per_page";
 		$query = mysqli_query($con, $sql);
 
 		$sql_delete="DELETE FROM tmp_compras ";
 		$query_delete = mysqli_query($con, $sql_delete);
-		//loop through fetched data
 		if ($numrows>0){
 			echo mysqli_error($con);
 			?>

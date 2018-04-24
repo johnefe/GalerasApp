@@ -5,9 +5,8 @@
 		exit;
         }
 
-	/* Connect To Database*/
-	require_once ("config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
-	require_once ("config/conexion.php");//Contiene funcion que conecta a la base de datos
+	require_once ("config/db.php");
+	require_once ("config/conexion.php");
 	
 
 	$active_gastos="active";	
@@ -35,7 +34,6 @@
 			 <?php
                                   
                      $select_tmp=mysqli_query($con,"SELECT * FROM gastos");
-                                 // $row= mysqli_fetch_array($select_tmp);
                                   $total_gastos=0;
                                   while ($row=mysqli_fetch_array($select_tmp)){ 
                                     
@@ -80,13 +78,7 @@
 						</div>	
 			</form>
 				<div id="resultados"></div><!-- Carga los datos ajax -->
-				<div class='outer_div'></div><!-- Carga los datos ajax -->
-			
-		
-	
-			
-			
-			
+				<div class='outer_div'></div><!-- Carga los datos ajax -->		
   </div>
 </div>
 		 

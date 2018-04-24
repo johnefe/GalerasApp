@@ -1,5 +1,5 @@
 <?php
-include('is_logged.php');//Archivo verifica que el usario que intenta acceder a la URL esta logueado
+include('is_logged.php');
 $id_factura= $_SESSION['id_factura'];
 $numero_factura= $_SESSION['numero_factura'];
 if (isset($_POST['id'])){
@@ -12,10 +12,9 @@ if (isset($_POST['precio_venta'])){
 	$precio_venta=floatval($_POST['precio_venta']);
 }
 
-	/* Connect To Database*/
-	require_once ("../config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
-	require_once ("../config/conexion.php");//Contiene funcion que conecta a la base de datos
-	//Archivo de funciones PHP
+	require_once ("../config/db.php");
+	require_once ("../config/conexion.php");
+
 	include("../funciones.php");
 
 	
@@ -24,9 +23,6 @@ if (isset($_POST['precio_venta'])){
 if (!empty($id) and !empty($cantidad) and !empty($precio_venta))
 {
 
-	//selecciona los productos si existen en la tabla detalle_factura
-	//si no estan lo inserta como nuevo producto
-	//si ya esta simplemente actualiza la cantidad de ese producto
 	$select_tmp_detalle_factura=mysqli_query($con,"SELECT* FROM detalle_factura where id_producto='".$id."' and numero_factura='".$numero_factura."' ");
 	$row= mysqli_fetch_array($select_tmp_detalle_factura);
 
@@ -43,7 +39,7 @@ if (!empty($id) and !empty($cantidad) and !empty($precio_venta))
 }
 
 
-if (isset($_GET['id']))//codigo elimina un elemento del array
+if (isset($_GET['id']))
 {
 $id_detalle=intval($_GET['id']);	
 $delete=mysqli_query($con, "DELETE FROM detalle_factura WHERE id_detalle='".$id_detalle."'");
@@ -71,12 +67,12 @@ $simbolo_moneda=get_row('perfil','moneda', 'id_perfil', 1);
 	
 	
 	$precio_venta=$row['precio_venta'];
-	$precio_venta_f=number_format($precio_venta,0);//Formateo variables
-	$precio_venta_r=str_replace(",","",$precio_venta_f);//Reemplazo las comas
+	$precio_venta_f=number_format($precio_venta,0);
+	$precio_venta_r=str_replace(",","",$precio_venta_f);
 	$precio_total=$precio_venta_r*$cantidad;
-	$precio_total_f=number_format($precio_total,0);//Precio total formateado
-	$precio_total_r=str_replace(",","",$precio_total_f);//Reemplazo las comas
-	$sumador_total+=$precio_total_r;//Sumador
+	$precio_total_f=number_format($precio_total,0);
+	$precio_total_r=str_replace(",","",$precio_total_f);
+	$sumador_total+=$precio_total_r;
 	
 		?>
 		<tr>

@@ -5,8 +5,6 @@
 
    <link rel="stylesheet" href="css/bootstrap.min.css">
    <link rel="stylesheet" href="css/icons.css">
-	<!--<script src="https://use.fontawesome.com/74edfe93a4.js"></script>-->
-	<!--<link rel="stylesheet" href="css/custom.css">-->
   <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
   <link rel="stylesheet" type="text/css" href="css/sticky-footer-navbar.css">
   <link rel="stylesheet" type="text/css" href="css/estilos.css">

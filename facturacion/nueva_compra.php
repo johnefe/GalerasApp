@@ -10,10 +10,9 @@
 	$active_usuarios="";
 	$active_compras="active";	
 	$title="Nueva Compra | Sys Galeras";
-	
-	/* Connect To Database*/
-	require_once ("config/db.php");//Contiene las variables de configuracion para conectar a la base de datos
-	require_once ("config/conexion.php");//Contiene funcion que conecta a la base de datos
+
+	require_once ("config/db.php");
+	require_once ("config/conexion.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
