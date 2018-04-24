@@ -1,7 +1,7 @@
 <?php
 function paginate($reload, $page, $tpages, $adjacents) {
-	$prevlabel = "&lsaquo; Prev";
-	$nextlabel = "Next &rsaquo;";
+	$prevlabel = "<img src='img/iconos/atras.png' />";
+	$nextlabel = "<img src='img/iconos/next.png' />";
 	$out = '<ul class="pagination pagination-large">';
 	
 
@@ -19,7 +19,7 @@ function paginate($reload, $page, $tpages, $adjacents) {
 	}
 
 	if($page>($adjacents+2)) {
-		$out.= "<li><a>...</a></li>";
+		$out.= "<li><a style='color:#fff;'>...</a></li>";
 	}
 
 
@@ -27,11 +27,11 @@ function paginate($reload, $page, $tpages, $adjacents) {
 	$pmax = ($page<($tpages-$adjacents)) ? ($page+$adjacents) : $tpages;
 	for($i=$pmin; $i<=$pmax; $i++) {
 		if($i==$page) {
-			$out.= "<li class='active'><a>$i</a></li>";
+			$out.= "<li class='active'><a style='color:#fff;'>$i</a></li>";
 		}else if($i==1) {
-			$out.= "<li><a href='javascript:void(0);' onclick='load(1)'>$i</a></li>";
+			$out.= "<li><a style='color:#fff;' href='javascript:void(0);' onclick='load(1)'>$i</a></li>";
 		}else {
-			$out.= "<li><a href='javascript:void(0);' onclick='load(".$i.")'>$i</a></li>";
+			$out.= "<li><a style='color:#fff;' href='javascript:void(0);' onclick='load(".$i.")'>$i</a></li>";
 		}
 	}
 
@@ -41,13 +41,13 @@ function paginate($reload, $page, $tpages, $adjacents) {
 	}
 
 	if($page<($tpages-$adjacents)) {
-		$out.= "<li><a href='javascript:void(0);' onclick='load($tpages)'>$tpages</a></li>";
+		$out.= "<li class='color:red;'><a href='javascript:void(0);' style='color:#fff;' onclick='load($tpages)'>$tpages</a></li>";
 	}
 
 	if($page<$tpages) {
-		$out.= "<li><span><a href='javascript:void(0);' onclick='load(".($page+1).")'>$nextlabel</a></span></li>";
+		$out.= "<li><span><a href='javascript:void(0);' style='color:#fff;' onclick='load(".($page+1).")'>$nextlabel</a></span></li>";
 	}else {
-		$out.= "<li class='disabled'><span><a>$nextlabel</a></span></li>";
+		$out.= "<li class='disabled' style='color:#fff;'><span style='color:#fff;'><a>$nextlabel</a></span></li>";
 	}
 	
 	$out.= "</ul>";

@@ -18,7 +18,22 @@
 			})
 		}
 
-	
+		function load_especificas(page){
+			var q= $("#q").val();
+			$("#loader").fadeIn('slow');
+			$.ajax({
+				url:'./ajax/buscar_gastos_mensuales.php?action=ajax&page='+page+'&q='+q,
+				 beforeSend: function(objeto){
+				 $('#loader').html('<img src="./img/ajax-loader.gif"> Cargando...');
+			  },
+				success:function(data){
+					$(".outer_div").html(data).fadeIn('slow');
+					$('#loader').html('');
+					//$('[data-toggle="tooltip"]').tooltip({html:true}); 
+					
+				}
+			})
+		}
 		
 			function eliminar (id)
 		{

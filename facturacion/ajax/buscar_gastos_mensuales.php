@@ -4,14 +4,13 @@
 	include('is_logged.php');
 	require_once ("../config/db.php");
 	require_once ("../config/conexion.php");
-	$usuario=$_SESSION['user_id']; 
-
+	
 	$action = (isset($_REQUEST['action'])&& $_REQUEST['action'] !=NULL)?$_REQUEST['action']:'';
 	if (isset($_GET['id'])){
-		$numero_factura=intval($_GET['id']);
-		$del1="delete from facturas where numero_factura='".$numero_factura."'";
-		$del2="delete from detalle_factura where numero_factura='".$numero_factura."'";
-		if ($delete1=mysqli_query($con,$del1) and $delete2=mysqli_query($con,$del2)){
+		$id_gastos=intval($_GET['id']);
+		$del1="delete from gastos where id_gastos='".$id_gastos."'";
+		//$del2="delete from detalle_factura where numero_factura='".$numero_factura."'";
+		if ($delete1=mysqli_query($con,$del1)){
 			?>
 			<div class="alert alert-success alert-dismissible" role="alert">
 			  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -29,24 +28,55 @@
 		}
 	}
 	if($action == 'ajax'){
+
          $q = mysqli_real_escape_string($con,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
-		  $sTable = "facturas, clientes, users";
+         $q=strtolower($q);
+		  $sTable = "gastos";
 		 $sWhere = "";
-		 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor=users.user_id";
+		 $sWhere.=" ";
 		if ( $_GET['q'] != "" )
+			$q = $_GET['q'];
+		 $q=strtolower($q);
 		{
-		$sWhere.= " and  (clientes.nombre_cliente like '%$q%' or facturas.numero_factura like '%$q%')";
-			
+		if($q== "enero"){
+			 $sWhere.=" WHERE gastos.id_gastos= falta poner  and (SELECT DATE_FORMAT(gastos.fecha,'%M'))= 'January'";
+
+		}else if($q== "febrero"){
+			 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor=users.user_id and (SELECT DATE_FORMAT(facturas.fecha_factura,'%M'))= 'February'";
+		}else if($q== "marzo"){
+			 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor=users.user_id and (SELECT DATE_FORMAT(facturas.fecha_factura,'%M'))= 'march'";
+		}else if($q== "abril"){
+			 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor=users.user_id and (SELECT DATE_FORMAT(facturas.fecha_factura,'%M'))= 'april'";
+		}if($q== "mayo"){
+			 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor=users.user_id and (SELECT DATE_FORMAT(facturas.fecha_factura,'%M'))= 'may'";
+
+		}else if($q== "junio"){
+			 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor=users.user_id and (SELECT DATE_FORMAT(facturas.fecha_factura,'%M'))= 'june'";
+		}else if($q== "julio"){
+			 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor=users.user_id and (SELECT DATE_FORMAT(facturas.fecha_factura,'%M'))= 'july'";
+		}else if($q== "agosto"){
+			 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor=users.user_id and (SELECT DATE_FORMAT(facturas.fecha_factura,'%M'))= 'August'";
+		}if($q== "septiembre"){
+			 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor=users.user_id and (SELECT DATE_FORMAT(facturas.fecha_factura,'%M'))= 'september'";
+
+		}else if($q== "octubre"){
+			 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor=users.user_id and (SELECT DATE_FORMAT(facturas.fecha_factura,'%M'))= 'october'";
+		}else if($q== "noviembre"){
+			 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor=users.user_id and (SELECT DATE_FORMAT(facturas.fecha_factura,'%M'))= 'november'";
+		}else if($q== "diciembre"){
+			 $sWhere.=" WHERE facturas.id_cliente=clientes.id_cliente and facturas.id_vendedor=users.user_id and (SELECT DATE_FORMAT(facturas.fecha_factura,'%M'))= 'december'";
+		}
+	
 		}
 		
 		$sWhere.=" order by facturas.id_factura desc";
 
 
-		include 'pagination.php';
-
+		include 'pagination.php'; 
+		
 		$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
-		$per_page = 5; 
-		$adjacents  = 4; 
+		$per_page = 10; 
+		$adjacents  = 4;
 		$offset = ($page - 1) * $per_page;
 		$count_query   = mysqli_query($con, "SELECT count(*) AS numrows FROM $sTable  $sWhere");
 		$row= mysqli_fetch_array($count_query);
@@ -55,8 +85,13 @@
 		$reload = './facturas.php';
 		$sql="SELECT * FROM  $sTable $sWhere LIMIT $offset,$per_page";
 		$query = mysqli_query($con, $sql);
+		$sumaMensual=0;
+		$compraMensual =0;
+		$ganaciasMesuales=0;
 		$sql_delete="DELETE FROM tmp ";
 		$query_delete = mysqli_query($con, $sql_delete);
+		if($q == "enero" || $q == "marzo" || $q == "febrero" || $q == "abril" || $q == "mayo" || $q == "junio"  || $q == "julio"  || $q == "agosto"  || $q == "septiembre"  || $q == "octubre"  || $q == "noviembre"  || $q == "diciembre"){   
+
 		if ($numrows>0){
 			echo mysqli_error($con);
 			?>
@@ -85,6 +120,8 @@
 						if ($estado_factura==1){$text_estado="Pagada";$label_class='label-success';}
 						else{$text_estado="Pendiente";$label_class='label-warning';}
 						$total_venta=$row['total_venta'];
+						$sumaMensual= $sumaMensual + $row['total_venta'];
+						$compraMensual=$compraMensual + $row['total_compra'];
 					?>
 					<tr>
 						<td><?php echo $numero_factura; ?></td>
@@ -96,8 +133,8 @@
 					<td class="text-center">
 						<a href="editar_factura.php?id_factura=<?php echo $id_factura;?>" class='btn btn-default' title='Editar factura' ><span class=""><img src="img/iconos/edit.png"></span></a> 
 						<a href="#" class='btn btn-default' title='Descargar factura' onclick="imprimir_factura('<?php echo $id_factura;?>');"><span class=""><img src="img/iconos/printer.png"></span></a> 
-						<?php if($usuario==1){ ?>
-						<a href="#" class='btn btn-default' title='Borrar factura' onclick="eliminar('<?php echo $numero_factura; ?>')"><span class=""><img src="img/iconos/garbage.png"></span> </a> <?php  } ?>
+						
+						<a href="#" class='btn btn-default' title='Borrar factura' onclick="eliminar('<?php echo $numero_factura; ?>')"><span class=""><img src="img/iconos/garbage.png"></span> </a>
 						
 					</td>
 						
@@ -112,7 +149,16 @@
 				</tr>
 			  </table>
 			</div>
+			<div class="col-lg-12 text-center">
+				<h4>Ventas del mes de <?php echo $q; ?> : $ <?php echo $sumaMensual;?> -- Ganancias mensuales: $ <?php $ganaciasMesuales = $sumaMensual - $compraMensual; echo $ganaciasMesuales; ?></h4>
+			</div>
 			<?php
+			
+
+		}
 		}
 	}
-?>
+?>		
+		
+		
+	

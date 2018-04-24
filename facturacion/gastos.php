@@ -28,6 +28,8 @@
 					    <h1 class="bd-title mt-0">Módulo Gastos</h1>
 					    <p class="bd-lead">Aqui puedes registrar o actualizar de los gastos realizados en el establecimiento.</p>
 					    <a data-toggle="modal" data-target="#nuevoGasto" class="btn btn-lg btn-new">Registrar nuevo gasto</a>
+					    <a href="gastos_diarios.php" class="btn btn-lg btn-new">Gastos diarios</a>
+					    <a href="gastos_mensuales.php" class="btn btn-lg btn-new">Gastos mensuales</a>
 					  </div>
 				
 			</div>
