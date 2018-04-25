@@ -11,6 +11,7 @@
 
 	$active_gastos="active";	
 	$title="Gastos | Sys-Galeras";
+		$usuario=$_SESSION['user_id']; 
 ?>
 <!DOCTYPE html>
 <html lang="en">

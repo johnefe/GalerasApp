@@ -12,7 +12,7 @@
     $usuario=$_SESSION['user_id']; 
     $active_gastos="active";
      
-    $title="estadisticas | Sys-Galeras";
+    $title="Gastos | Sys-Galeras";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,8 +30,8 @@
             <div class="col-lg-12 my-3 ">
                     <div class="pt-md-6 pb-md-6">
                       
-                          <a href="gastos.php" class="btn btn-lg btn-new"><span class=""><img src="img/iconos/back.png"></span></a>
-                          
+                          <a href="gastos.php" class="btn btn-lg btn-new"><span class=""><img src="img/iconos/back.png"></span></a><br><br><br>
+                           <h4 class="bd-title mt-0 titulo-1">Gastos agrupados por mes</h4>
                         <div class="row">
                         <div class="col-lg-6 py-2">
                       
@@ -40,17 +40,12 @@
                                   $select_tmp=mysqli_query($con,"SELECT * FROM gastos WHERE LEFT(fecha,10)=CURDATE()");
                               
                                   $ventas_totales_diarias=0;
-                                 // $ventas_totales_diarias_reales=0;
-                                 // $ganancias_diarias=0;
                                   while ($row=mysqli_fetch_array($select_tmp)){ 
-                                    //$numero_factura=$row['numero_factura'];
-                                    // $fecha_factura=$row['fecha_factura'];
-                                     $fecha_convertida=strtotime($row['fecha']);
-                                     $ventas_totales_diarias=$ventas_totales_diarias+$row['total_gasto'];
 
-                                    // $ventas_totales_diarias_reales= $ventas_totales_diarias_reales+$row['total_compra'];
+                                     $fecha_convertida=strtotime($row['fecha']);
+                                     $ventas_totales_diarias=$ventas_totales_diarias+$row['valor_gasto'];
                                     }
-                                   // $ganancias_diarias= $ventas_totales_diarias -$ventas_totales_diarias_reales;
+
 
                             ?>   
                           </div>
@@ -87,7 +82,6 @@
     </section>
     <section class="container">
         <div class="">
-            
             <div id="resultados"></div>
             <div class='outer_div'></div>
           </div>
@@ -97,6 +91,6 @@
     include("footer.php");
     ?>
     <script type="text/javascript" src="js/VentanaCentrada.js"></script>
-    <script type="text/javascript" src="js/gastos.js"></script>
+    <script type="text/javascript" src="js/gastos_mensuales.js"></script>
   </body>
 </html>

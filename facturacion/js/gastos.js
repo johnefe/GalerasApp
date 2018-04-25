@@ -35,7 +35,7 @@
 			})
 		}
 		
-			function eliminar (id)
+		function eliminar (id)
 		{
 			var q= $("#q").val();
 		if (confirm("Realmente deseas eliminar el gasto")){	

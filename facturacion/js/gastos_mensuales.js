@@ -1,6 +1,5 @@
 	$(document).ready(function(){
-		
-			load_diarias(1);
+		load_especificas(1);
 			
 	});
 
@@ -8,7 +7,7 @@
 			var z= $("#z").val();
 			$("#loader").fadeIn('slow');
 			$.ajax({
-				url:'./ajax/buscar_gastos_diarios.php?action=ajax&page='+page+'&z='+z,
+				url:'./ajax/buscar_gastos_mensuales.php?action=ajax&page='+page+'&z='+z,
 				 beforeSend: function(objeto){
 				 //$('#loader').html('<img src="./img/ajax-loader.gif"> Cargando...');
 			  },
@@ -31,7 +30,7 @@
 				success:function(data){
 					$(".outer_div").html(data).fadeIn('slow');
 					$('#loader').html('');
-					//$('[data-toggle="tooltip"]').tooltip({html:true}); 
+					$('[data-toggle="tooltip"]').tooltip({html:true}); 
 					
 				}
 			})
